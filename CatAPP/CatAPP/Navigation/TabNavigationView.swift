@@ -11,12 +11,12 @@ struct TabNavigationView: View {
     var body: some View {
         TabView {
             CatView()
-                .tabItem{
+                .tabItem {
                     Label(Constants.TabNavigation.catLabel,
                           systemImage: Constants.TabNavigation.catTabImage)
                 }
             RandomCatView()
-                .tabItem{
+                .tabItem {
                     Label(Constants.TabNavigation.randomLabel,
                           systemImage: Constants.TabNavigation.catRandomImage)
                 }
