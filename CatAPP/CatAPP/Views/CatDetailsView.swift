@@ -11,7 +11,7 @@ import PhotosUI
 struct CatDetailsView: View {
     fileprivate typealias DetailsConstants = Constants.Details
     @Environment(\.dismiss) var dismiss
-
+    @StateObject var petViewModel = CatDetailViewModel()
     @State var petName: String = ""
     @State var petAge: String = ""
     @State var petAppointment: Date = Date.now
@@ -38,6 +38,11 @@ struct CatDetailsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
+                        petViewModel.saveData(name: petName,
+                                              petAge: petAge,
+                                              appointment: petAppointment,
+                                              breed: petBreed)
+                        petViewModel.printData()
                     } label: {
                         Text(DetailsConstants.saveButton)
                     }
