@@ -10,6 +10,7 @@ import SwiftUI
 struct CatView: View {
     @State private var showingSheet = false
     private var petIsCreatedState = false
+
     var body: some View {
         NavigationStack {
             ZStack {
