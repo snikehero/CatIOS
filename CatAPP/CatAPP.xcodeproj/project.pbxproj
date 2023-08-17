@@ -11,6 +11,7 @@
 		4A8D85D92A8EA909007A7F7C /* VaccineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D85D82A8EA909007A7F7C /* VaccineFormView.swift */; };
 		4A8D85DB2A8EAD7A007A7F7C /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D85DA2A8EAD7A007A7F7C /* PetModel.swift */; };
 		4A8D85DD2A8EAE7F007A7F7C /* CatDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D85DC2A8EAE7F007A7F7C /* CatDetailViewModel.swift */; };
+		4A8D85DF2A8EBECC007A7F7C /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D85DE2A8EBECC007A7F7C /* PhotoPicker.swift */; };
 		4AEBF0022A8BD3DB00A6DBF7 /* CatAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBF0012A8BD3DB00A6DBF7 /* CatAPPApp.swift */; };
 		4AEBF0042A8BD3DB00A6DBF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBF0032A8BD3DB00A6DBF7 /* ContentView.swift */; };
 		4AEBF0062A8BD3DD00A6DBF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEBF0052A8BD3DD00A6DBF7 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		4A8D85D82A8EA909007A7F7C /* VaccineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineFormView.swift; sourceTree = "<group>"; };
 		4A8D85DA2A8EAD7A007A7F7C /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
 		4A8D85DC2A8EAE7F007A7F7C /* CatDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewModel.swift; sourceTree = "<group>"; };
+		4A8D85DE2A8EBECC007A7F7C /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		4AEBEFFE2A8BD3DB00A6DBF7 /* CatAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AEBF0012A8BD3DB00A6DBF7 /* CatAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPPApp.swift; sourceTree = "<group>"; };
 		4AEBF0032A8BD3DB00A6DBF7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		4AEBF0152A8D261700A6DBF7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4A8D85DE2A8EBECC007A7F7C /* PhotoPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A8D85D92A8EA909007A7F7C /* VaccineFormView.swift in Sources */,
+				4A8D85DF2A8EBECC007A7F7C /* PhotoPicker.swift in Sources */,
 				4AEBF0042A8BD3DB00A6DBF7 /* ContentView.swift in Sources */,
 				4AEBF0022A8BD3DB00A6DBF7 /* CatAPPApp.swift in Sources */,
 				4AEBF0252A8D2AA400A6DBF7 /* RandomCatView.swift in Sources */,

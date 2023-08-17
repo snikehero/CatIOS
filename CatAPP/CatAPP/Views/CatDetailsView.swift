@@ -19,6 +19,11 @@ struct CatDetailsView: View {
     var body: some View {
         NavigationStack {
             Form {
+                HStack {
+                    Spacer()
+                    PhotoPicker()
+                    Spacer()
+                }
                 Section(header: Text(DetailsConstants.detailsSection)) {
                     TextField(DetailsConstants.nameForm,
                               text: $petName)
@@ -27,7 +32,7 @@ struct CatDetailsView: View {
                     TextField(DetailsConstants.breedForm,
                               text: $petBreed)
                     DatePicker(selection: $petAppointment, in: Date.now...,
-                                displayedComponents: .date) {
+                               displayedComponents: .date) {
                         Text(DetailsConstants.dateForm)
                     }
                 }
