@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct PhotoPicker: View {
+    fileprivate typealias PickerConstants = Constants.PhotoPicker
     var body: some View {
         Button {
         } label: {
             Image(systemName: "plus")
                 .resizable()
                 .clipped()
-                .frame(width: 100, height: 100, alignment: .center)
+                .frame(width: PickerConstants.placeholderFrameWidth,
+                       height: PickerConstants.placeholderFrameHeight,
+                       alignment: .center)
                 .clipShape(Circle())
         }
     }
