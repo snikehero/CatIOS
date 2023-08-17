@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CatView: View {
+    fileprivate typealias CatConstants = Constants.CatView
+
     @State private var showingSheet = false
     private var petIsCreatedState = false
 
@@ -22,7 +24,7 @@ struct CatView: View {
                                 Button {
                                     showingSheet.toggle()
                                 } label: {
-                                    Constants.CatView.plusIcon
+                                    CatConstants.plusIcon
                                 }
                             }
                         }
@@ -30,7 +32,7 @@ struct CatView: View {
                     Button {
                         showingSheet.toggle()
                     } label: {
-                        Text("\(Constants.CatView.plusIcon) \(Constants.CatView.createPetLabel)")
+                        Text("\(CatConstants.plusIcon) \(CatConstants.createPetLabel)")
                     }
                 }
             }
