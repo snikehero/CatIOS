@@ -30,5 +30,6 @@ enum Constants {
         public static let ageForm = "Age"
         public static let breedForm = "Breed"
         public static let dateForm = "Date"
+        public static let vaccineSection = "Vaccines"
     }
 }

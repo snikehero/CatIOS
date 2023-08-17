@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VaccineFormView: View {
     var body: some View {
-            Text("hello")
+            Text("Vaccine 1")
     }
 }
 

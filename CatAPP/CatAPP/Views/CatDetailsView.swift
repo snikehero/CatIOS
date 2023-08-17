@@ -31,7 +31,7 @@ struct CatDetailsView: View {
                         Text(DetailsConstants.dateForm)
                     }
                 }
-                Section(header: Text("Vaccine")) {
+                Section(header: Text(DetailsConstants.vaccineSection)) {
                     VaccineFormView()
                 }
             }
