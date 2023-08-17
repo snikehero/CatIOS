@@ -16,7 +16,6 @@ struct CatDetailsView: View {
     @State var petAge: String = ""
     @State var petAppointment: Date = Date.now
     @State var petBreed: String = ""
-
     var body: some View {
         NavigationStack {
             Form {
@@ -31,6 +30,9 @@ struct CatDetailsView: View {
                                 displayedComponents: .date) {
                         Text(DetailsConstants.dateForm)
                     }
+                }
+                Section(header: Text("Vaccine")) {
+                    VaccineFormView()
                 }
             }
             .toolbar {
