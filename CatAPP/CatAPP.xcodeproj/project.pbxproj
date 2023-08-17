@@ -11,6 +11,10 @@
 		4AEBF0042A8BD3DB00A6DBF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBF0032A8BD3DB00A6DBF7 /* ContentView.swift */; };
 		4AEBF0062A8BD3DD00A6DBF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEBF0052A8BD3DD00A6DBF7 /* Assets.xcassets */; };
 		4AEBF0092A8BD3DD00A6DBF7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEBF0082A8BD3DD00A6DBF7 /* Preview Assets.xcassets */; };
+		4AEBF0212A8D2A8D00A6DBF7 /* TabNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBF0202A8D2A8D00A6DBF7 /* TabNavigationView.swift */; };
+		4AEBF0232A8D2A9D00A6DBF7 /* CatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBF0222A8D2A9D00A6DBF7 /* CatView.swift */; };
+		4AEBF0252A8D2AA400A6DBF7 /* RandomCatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBF0242A8D2AA400A6DBF7 /* RandomCatView.swift */; };
+		4AEBF0272A8D2B5E00A6DBF7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBF0262A8D2B5E00A6DBF7 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		4AEBF0032A8BD3DB00A6DBF7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4AEBF0052A8BD3DD00A6DBF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AEBF0082A8BD3DD00A6DBF7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4AEBF0202A8D2A8D00A6DBF7 /* TabNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavigationView.swift; sourceTree = "<group>"; };
+		4AEBF0222A8D2A9D00A6DBF7 /* CatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatView.swift; sourceTree = "<group>"; };
+		4AEBF0242A8D2AA400A6DBF7 /* RandomCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCatView.swift; sourceTree = "<group>"; };
+		4AEBF0262A8D2B5E00A6DBF7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,7 @@
 		4AEBF00F2A8D25DF00A6DBF7 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				4AEBF0202A8D2A8D00A6DBF7 /* TabNavigationView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -83,6 +92,8 @@
 		4AEBF0122A8D25F700A6DBF7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4AEBF0222A8D2A9D00A6DBF7 /* CatView.swift */,
+				4AEBF0242A8D2AA400A6DBF7 /* RandomCatView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -111,6 +122,7 @@
 		4AEBF01A2A8D275100A6DBF7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4AEBF0262A8D2B5E00A6DBF7 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -209,6 +221,10 @@
 			files = (
 				4AEBF0042A8BD3DB00A6DBF7 /* ContentView.swift in Sources */,
 				4AEBF0022A8BD3DB00A6DBF7 /* CatAPPApp.swift in Sources */,
+				4AEBF0252A8D2AA400A6DBF7 /* RandomCatView.swift in Sources */,
+				4AEBF0212A8D2A8D00A6DBF7 /* TabNavigationView.swift in Sources */,
+				4AEBF0232A8D2A9D00A6DBF7 /* CatView.swift in Sources */,
+				4AEBF0272A8D2B5E00A6DBF7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
