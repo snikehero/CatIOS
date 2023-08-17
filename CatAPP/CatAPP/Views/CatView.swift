@@ -38,7 +38,7 @@ struct CatView: View {
             }
         }
         .sheet(isPresented: $showingSheet) {
-            EmptyView()
+            CatDetailsView()
         }
     }
 }
