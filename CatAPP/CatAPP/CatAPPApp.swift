@@ -11,7 +11,7 @@ import SwiftUI
 struct CatAPPApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabNavigationView()
         }
     }
 }
