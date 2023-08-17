@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct TabNavigationView: View {
+    fileprivate typealias TabConstants = Constants.TabNavigation
+
     var body: some View {
         TabView {
             CatView()
                 .tabItem {
-                    Label(Constants.TabNavigation.catLabel,
-                          systemImage: Constants.TabNavigation.catTabImage)
+                    Label(TabConstants.catLabel,
+                          systemImage: TabConstants.catTabImage)
                 }
             RandomCatView()
                 .tabItem {
-                    Label(Constants.TabNavigation.randomLabel,
-                          systemImage: Constants.TabNavigation.catRandomImage)
+                    Label(TabConstants.randomLabel,
+                          systemImage: TabConstants.catRandomImage)
                 }
         }
     }
