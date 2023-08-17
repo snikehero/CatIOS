@@ -9,20 +9,28 @@ import SwiftUI
 
 struct CatView: View {
     @State private var showingSheet = false
-    private var catExist = false
+    private var petIsCreatedState = false
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(.red)
-                Text("Cat View")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button {
-                                showingSheet.toggle()
-                            } label: {
-                                Image(systemName: "plus")
+                Color(Constants.Color.mainBackgroundColor)
+                if petIsCreatedState {
+                    Text("Cat View")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button {
+                                    showingSheet.toggle()
+                                } label: {
+                                    Constants.CatView.plusIcon
+                                }
                             }
                         }
+                } else {
+                    Button {
+                        showingSheet.toggle()
+                    } label: {
+                        Text("\(Constants.CatView.plusIcon) \(Constants.CatView.createPetLabel)")
+                    }
                 }
             }
         }

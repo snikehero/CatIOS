@@ -15,4 +15,11 @@ enum Constants {
         public static let randomLabel = "Random"
         public static let catRandomImage = "magazine"
     }
+    enum CatView {
+        public static let plusIcon = Image(systemName: "plus")
+        public static let createPetLabel = "Tap to add a pet"
+    }
+    enum Color {
+        public static let mainBackgroundColor = "BackgroundColor"
+    }
 }
