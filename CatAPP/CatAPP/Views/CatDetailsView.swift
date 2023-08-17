@@ -10,6 +10,7 @@ import SwiftUI
 struct CatDetailsView: View {
     @Environment(\.dismiss) var dismiss
     @State var username: String = ""
+
     var body: some View {
         NavigationStack {
             Form {
