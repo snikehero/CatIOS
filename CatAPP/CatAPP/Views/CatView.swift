@@ -37,7 +37,7 @@ struct CatView: View {
                 }
             }
         }
-        .sheet(isPresented: $showingSheet) {
+        .fullScreenCover(isPresented: $showingSheet) {
             CatDetailsView()
         }
     }
