@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 enum Constants {
     enum TabNavigation {
         public static let catLabel = "Cat"
