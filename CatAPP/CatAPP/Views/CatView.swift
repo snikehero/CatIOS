@@ -11,7 +11,7 @@ struct CatView: View {
     fileprivate typealias CatConstants = Constants.CatView
 
     @State private var showingSheet = false
-    private var petIsCreatedState = true
+    private var petIsCreatedState = false
 
     var body: some View {
         NavigationStack {
