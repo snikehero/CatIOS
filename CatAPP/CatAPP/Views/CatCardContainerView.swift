@@ -8,15 +8,9 @@
 import SwiftUI
 
 struct CatCardContainerView: View {
+    var pets = Array(repeating: 0, count: 10)
     var body: some View {
-        Form {
-            CatCardView()
-            CatCardView()
-            CatCardView()
-            CatCardView()
-            CatCardView()
-            CatCardView()
-            CatCardView()
+        List(pets, id: \.self) { onePet in
             CatCardView()
         }
     }

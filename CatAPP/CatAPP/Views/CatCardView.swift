@@ -14,22 +14,25 @@ struct CatCardView: View {
             RoundedRectangle(cornerRadius: CardConstants.cardCornerRadius, style: .continuous)
                 .fill(.white)
                 .shadow(radius: CardConstants.cardShadow)
-            HStack(spacing: CardConstants.spacing) {
-                CardNameText(name: CardConstants.defaultName)
-                Spacer()
-                VStack {
-                    CardDetailText(label: CardConstants.ageLabel,
-                                   content: CardConstants.defaultAge)
+            Button {
+            } label : {
+                HStack(spacing: CardConstants.spacing) {
+                    CardNameText(name: CardConstants.defaultName)
                     Spacer()
-                    CardDetailText(label: CardConstants.breedLabel,
-                                   content: CardConstants.defaultBreed)
-                    Spacer()
-                    CardDetailText(label: CardConstants.appointmentLabel,
-                                   content: CardConstants.defaultAppointment)
+                    VStack {
+                        CardDetailText(label: CardConstants.ageLabel,
+                                       content: CardConstants.defaultAge)
+                        Spacer()
+                        CardDetailText(label: CardConstants.breedLabel,
+                                       content: CardConstants.defaultBreed)
+                        Spacer()
+                        CardDetailText(label: CardConstants.appointmentLabel,
+                                       content: CardConstants.defaultAppointment)
+                    }
                 }
+                .padding(CardConstants.padding)
             }
-            .padding(CardConstants.padding)
-            .multilineTextAlignment(.center)
+            .buttonStyle(PlainButtonStyle())
         }
         .frame(width: CardConstants.cardWidth, height: CardConstants.cardHeight)
     }
@@ -59,3 +62,4 @@ struct CardDetailText: View {
         }
     }
 }
+
