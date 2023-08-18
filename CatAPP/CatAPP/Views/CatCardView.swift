@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CatCardView: View {
     fileprivate typealias CardConstants = Constants.CatCard
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: CardConstants.cardCornerRadius, style: .continuous)
@@ -44,6 +45,7 @@ struct CatCardView_Previews: PreviewProvider {
 }
 struct CardNameText: View {
     let name: String
+
     var body: some View {
         Text(name)
             .font(.largeTitle)
@@ -62,4 +64,3 @@ struct CardDetailText: View {
         }
     }
 }
-
