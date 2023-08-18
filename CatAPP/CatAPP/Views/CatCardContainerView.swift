@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct CatCardContainerView: View {
-    var pets = Array(repeating: 0, count: 10)
+    var pets: [Int]
     var body: some View {
-        List(pets, id: \.self) { onePet in
+        List(pets, id: \.self) { _ in
             CatCardView()
         }
     }
@@ -18,6 +18,6 @@ struct CatCardContainerView: View {
 
 struct CatCardContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        CatCardContainerView()
+        CatCardContainerView(pets: (1...10).map {$0})
     }
 }
