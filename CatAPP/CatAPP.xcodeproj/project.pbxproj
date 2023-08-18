@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A8C8CDE2A8FC61F00FEB53A /* CatCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C8CDD2A8FC61F00FEB53A /* CatCardView.swift */; };
+		4A8C8CE02A8FC7A700FEB53A /* CatCardContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C8CDF2A8FC7A700FEB53A /* CatCardContainerView.swift */; };
 		4AEBF0022A8BD3DB00A6DBF7 /* CatAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBF0012A8BD3DB00A6DBF7 /* CatAPPApp.swift */; };
 		4AEBF0042A8BD3DB00A6DBF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBF0032A8BD3DB00A6DBF7 /* ContentView.swift */; };
 		4AEBF0062A8BD3DD00A6DBF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEBF0052A8BD3DD00A6DBF7 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		4A8C8CDD2A8FC61F00FEB53A /* CatCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCardView.swift; sourceTree = "<group>"; };
+		4A8C8CDF2A8FC7A700FEB53A /* CatCardContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCardContainerView.swift; sourceTree = "<group>"; };
 		4AEBEFFE2A8BD3DB00A6DBF7 /* CatAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AEBF0012A8BD3DB00A6DBF7 /* CatAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPPApp.swift; sourceTree = "<group>"; };
 		4AEBF0032A8BD3DB00A6DBF7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				4AEBF0222A8D2A9D00A6DBF7 /* CatView.swift */,
 				4AEBF0242A8D2AA400A6DBF7 /* RandomCatView.swift */,
 				4A8C8CDD2A8FC61F00FEB53A /* CatCardView.swift */,
+				4A8C8CDF2A8FC7A700FEB53A /* CatCardContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				4AEBF0022A8BD3DB00A6DBF7 /* CatAPPApp.swift in Sources */,
 				4AEBF0252A8D2AA400A6DBF7 /* RandomCatView.swift in Sources */,
 				4AEBF0212A8D2A8D00A6DBF7 /* TabNavigationView.swift in Sources */,
+				4A8C8CE02A8FC7A700FEB53A /* CatCardContainerView.swift in Sources */,
 				4AEBF0232A8D2A9D00A6DBF7 /* CatView.swift in Sources */,
 				4AEBF0272A8D2B5E00A6DBF7 /* Constants.swift in Sources */,
 			);

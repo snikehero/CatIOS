@@ -11,14 +11,14 @@ struct CatView: View {
     fileprivate typealias CatConstants = Constants.CatView
 
     @State private var showingSheet = false
-    private var petIsCreatedState = false
+    private var petIsCreatedState = true
 
     var body: some View {
         NavigationStack {
             ZStack {
                 Color(Constants.Color.mainBackgroundColor)
                 if petIsCreatedState {
-                    Text("Cat View")
+                    CatCardContainerView()
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
