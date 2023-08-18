@@ -15,8 +15,7 @@ struct CatCardView: View {
                 .fill(.white)
                 .shadow(radius: CardConstants.cardShadow)
             HStack(spacing: CardConstants.spacing) {
-                Text("Pitt")
-                    .font(.largeTitle)
+                CardNameText(name: CardConstants.defaultName)
                 Spacer()
                 VStack {
                     CardDetailText(label: CardConstants.ageLabel,
@@ -38,6 +37,13 @@ struct CatCardView: View {
 struct CatCardView_Previews: PreviewProvider {
     static var previews: some View {
         CatCardView()
+    }
+}
+struct CardNameText: View {
+    let name: String
+    var body: some View {
+        Text(name)
+            .font(.largeTitle)
     }
 }
 struct CardDetailText: View {
