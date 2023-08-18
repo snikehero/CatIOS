@@ -31,6 +31,7 @@ enum Constants {
         public static let breedForm = "Breed"
         public static let dateForm = "Date"
         public static let vaccineSection = "Vaccines"
+        public static let ageLabel = " Years"
     }
     enum PhotoPicker {
         public static let placeholderFrameWidth = CGFloat(100)

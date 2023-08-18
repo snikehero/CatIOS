@@ -13,7 +13,7 @@ struct CatDetailsView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var petViewModel = CatDetailViewModel()
     @State var petName: String = ""
-    @State var petAge: String = ""
+    @State var petAge: Int = 0
     @State var petAppointment: Date = Date.now
     @State var petBreed: String = ""
     var body: some View {
@@ -27,8 +27,11 @@ struct CatDetailsView: View {
                 Section(header: Text(DetailsConstants.detailsSection)) {
                     TextField(DetailsConstants.nameForm,
                               text: $petName)
-                    TextField(DetailsConstants.ageForm,
-                              text: $petAge)
+                    Picker(DetailsConstants.ageForm, selection: $petAge) {
+                        ForEach(0 ..< 20) {
+                            Text("\($0) \(DetailsConstants.ageLabel)")
+                        }
+                    }
                     TextField(DetailsConstants.breedForm,
                               text: $petBreed)
                     DatePicker(selection: $petAppointment, in: Date.now...,
@@ -47,7 +50,6 @@ struct CatDetailsView: View {
                                               petAge: petAge,
                                               appointment: petAppointment,
                                               breed: petBreed)
-                        petViewModel.printData()
                     } label: {
                         Text(DetailsConstants.saveButton)
                     }

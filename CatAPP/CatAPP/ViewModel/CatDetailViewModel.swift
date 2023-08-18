@@ -8,22 +8,11 @@
 import Foundation
 @MainActor class CatDetailViewModel: ObservableObject {
     @Published var pets: [PetDetail] = petsMock
-    @Published var petName: String = ""
-    @Published var petAge: String = ""
-    @Published var petAppointment: Date = Date.now
-    @Published var petBreed: String = ""
-    func saveData(name: String, petAge: String, appointment: Date, breed: String ) {
-        petName = name
-        self.petAge = petAge
-        petAppointment = appointment
-        petBreed = breed
-    }
-
-    func printData() {
-        print("Name" + petName)
-        print("Age" + petAge)
-        print("Appointment \(petAppointment)")
-        print("Breed" + petBreed)
+    func saveData(name: String, petAge: Int, appointment: Date, breed: String ) {
+        print("Saving Data to VM")
+        let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
+        pets.append(singlePet)
+        print(singlePet)
     }
 }
 
