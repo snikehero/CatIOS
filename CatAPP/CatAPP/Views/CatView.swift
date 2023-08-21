@@ -18,7 +18,7 @@ struct CatView: View {
             ZStack {
                 Color(Constants.Color.mainBackgroundColor)
                 if petIsCreatedState {
-                    Text("Cat View")
+                    CatCardContainerView(pets: (1...10).map {$0})
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
