@@ -16,6 +16,7 @@ struct CatDetailsView: View {
     @State var petAge: Int = 0
     @State var petAppointment: Date = Date.now
     @State var petBreed: String = ""
+    @State private var showingAlert = false
     var body: some View {
         NavigationStack {
             Form {
@@ -43,6 +44,11 @@ struct CatDetailsView: View {
                     VaccineFormView()
                 }
             }
+            .alert(DetailsConstants.alertMessage, isPresented: $showingAlert) {
+                Button(DetailsConstants.alertButton, role: .cancel) {
+                    dismiss()
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -50,6 +56,7 @@ struct CatDetailsView: View {
                                               petAge: petAge,
                                               appointment: petAppointment,
                                               breed: petBreed)
+                        showingAlert = true
                     } label: {
                         Text(DetailsConstants.saveButton)
                     }

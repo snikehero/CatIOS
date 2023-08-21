@@ -47,6 +47,8 @@ enum Constants {
         public static let dateForm = "Date"
         public static let vaccineSection = "Vaccines"
         public static let ageLabel = " Years"
+        public static let alertMessage = "Data has been saved."
+        public static let alertButton = "Ok"
     }
     enum PhotoPicker {
         public static let placeholderFrameWidth = CGFloat(100)
