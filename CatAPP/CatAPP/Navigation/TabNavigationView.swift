@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct TabNavigationView: View {
+    @StateObject var petViewModel = CatDetailViewModel()
     fileprivate typealias TabConstants = Constants.TabNavigation
 
     var body: some View {
         TabView {
-            CatView()
+            CatView(catViewModel: petViewModel)
                 .tabItem {
                     Label(TabConstants.catLabel,
                           systemImage: TabConstants.catTabImage)

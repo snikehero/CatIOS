@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct CatCardContainerView: View {
-    var pets: [Int]
+    var pets: [PetDetail]
     var body: some View {
-        List(pets, id: \.self) { _ in
-            CatCardView()
+        List {
+            ForEach(pets) { singlePet in
+                CatCardView(singlePet: singlePet)
+            }
         }
     }
 }
 
 struct CatCardContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        CatCardContainerView(pets: (1...10).map {$0})
+        CatCardContainerView(pets: CatDetailViewModel.petsMock)
     }
 }
