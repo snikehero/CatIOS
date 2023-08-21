@@ -13,6 +13,7 @@ import Foundation
         let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
         pets.append(singlePet)
         print(singlePet)
+
     }
 }
 
