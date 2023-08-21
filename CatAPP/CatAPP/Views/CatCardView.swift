@@ -28,7 +28,7 @@ struct CatCardView: View {
                                        content: singlePet.breed)
                         Spacer()
                         CardDetailText(label: CardConstants.appointmentLabel,
-                                       content: singlePet.appointment.formatted(.dateTime.day().month()))
+                                       content: singlePet.appointment.formatted(.dateTime.day().month().year()))
                     }
                 }
                 .padding(CardConstants.padding)
