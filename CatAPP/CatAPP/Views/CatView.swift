@@ -12,13 +12,13 @@ struct CatView: View {
 
     fileprivate typealias CatConstants = Constants.CatView
     @State private var showingSheet = false
-    @State private var petIsCreatedState = true
+    @State private var petIsCreatedState = false
 
     var body: some View {
         NavigationStack {
             ZStack {
                 Color(Constants.Color.mainBackgroundColor)
-                if petIsCreatedState {
+                if !catViewModel.pets.isEmpty {
                     CatCardContainerView(pets: catViewModel.pets)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
@@ -39,7 +39,7 @@ struct CatView: View {
             }
         }
         .fullScreenCover(isPresented: $showingSheet) {
-            CatDetailsView(petAppointment: Date())
+            CatDetailsView(petViewModel: catViewModel, petAppointment: Date())
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 @MainActor class CatDetailViewModel: ObservableObject {
-    @Published var pets: [PetDetail] = petsMock
+    @Published var pets: [PetDetail] = []
     func saveData(name: String, petAge: Int, appointment: Date, breed: String ) {
         print("Saving Data to VM")
         let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
