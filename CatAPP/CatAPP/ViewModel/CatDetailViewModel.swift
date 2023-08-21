@@ -17,9 +17,9 @@ import Foundation
 }
 
 extension CatDetailViewModel {
-    static let petsMock = [PetDetail(name: "Pitt", petYear: 7, breed: "Cruza", appointment: Date.now),
-                           PetDetail(name: "Jojo", petYear: 4, breed: "Electrico", appointment: Date.now),
-                           PetDetail(name: "Momo", petYear: 3, breed: "Volador", appointment: Date.now),
-                           PetDetail(name: "Mica", petYear: 5, breed: "Callejero", appointment: Date.now)
+    static let petsMock = [PetDetail.mockJojo,
+                           PetDetail.mockMica,
+                           PetDetail.mockMomo,
+                           PetDetail.mockSushi
                            ]
 }
