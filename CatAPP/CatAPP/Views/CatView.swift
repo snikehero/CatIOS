@@ -37,8 +37,8 @@ struct CatView: View {
                 }
             }
         }
-        .sheet(isPresented: $showingSheet) {
-            EmptyView()
+        .fullScreenCover(isPresented: $showingSheet) {
+            CatDetailsView(petAppointment: Date())
         }
     }
 }
