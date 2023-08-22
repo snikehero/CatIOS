@@ -10,12 +10,14 @@ import SwiftUI
 struct CatCardView: View {
     fileprivate typealias CardConstants = Constants.CatCard
     var singlePet: PetDetail
+    @State private var isPresented = false
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: CardConstants.cardCornerRadius, style: .continuous)
                 .fill(.white)
                 .shadow(radius: CardConstants.cardShadow)
             Button {
+                isPresented.toggle()
             } label : {
                 HStack(spacing: CardConstants.spacing) {
                     CardNameText(name: singlePet.name)
@@ -36,7 +38,11 @@ struct CatCardView: View {
             .buttonStyle(PlainButtonStyle())
         }
         .frame(width: CardConstants.cardWidth, height: CardConstants.cardHeight)
+        .fullScreenCover(isPresented: $isPresented) {
+            ShowCatDetailsView(singlePet: singlePet)
+        }
     }
+    
 }
 struct CatCardView_Previews: PreviewProvider {
     static var previews: some View {
