@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CatCardView: View {
     fileprivate typealias CardConstants = Constants.CatCard
-
+    var singlePet: PetDetail
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: CardConstants.cardCornerRadius, style: .continuous)
@@ -18,17 +18,17 @@ struct CatCardView: View {
             Button {
             } label : {
                 HStack(spacing: CardConstants.spacing) {
-                    CardNameText(name: CardConstants.defaultName)
+                    CardNameText(name: singlePet.name)
                     Spacer()
                     VStack {
                         CardDetailText(label: CardConstants.ageLabel,
-                                       content: CardConstants.defaultAge)
+                                       content: singlePet.petYear.description)
                         Spacer()
                         CardDetailText(label: CardConstants.breedLabel,
-                                       content: CardConstants.defaultBreed)
+                                       content: singlePet.breed)
                         Spacer()
                         CardDetailText(label: CardConstants.appointmentLabel,
-                                       content: CardConstants.defaultAppointment)
+                                       content: singlePet.appointment.formatted(.dateTime.day().month().year()))
                     }
                 }
                 .padding(CardConstants.padding)
@@ -40,7 +40,7 @@ struct CatCardView: View {
 }
 struct CatCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CatCardView()
+        CatCardView(singlePet: PetDetail.mockMomo)
     }
 }
 struct CardNameText: View {

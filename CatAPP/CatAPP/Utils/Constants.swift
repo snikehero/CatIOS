@@ -13,7 +13,7 @@ enum Constants {
        public static let cardCornerRadius = CGFloat(20)
         public static let cardShadow = CGFloat(10)
         public static let spacing = CGFloat(10)
-        public static let ageLabel = "Name: "
+        public static let ageLabel = "Age: "
         public static let breedLabel = "Breed: "
         public static let appointmentLabel = "Appointment: "
         public static let defaultName = "Cat"
@@ -47,6 +47,8 @@ enum Constants {
         public static let dateForm = "Date"
         public static let vaccineSection = "Vaccines"
         public static let ageLabel = " Years"
+        public static let alertMessage = "Data has been saved."
+        public static let alertButton = "Ok"
     }
     enum PhotoPicker {
         public static let placeholderFrameWidth = CGFloat(100)

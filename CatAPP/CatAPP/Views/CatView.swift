@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct CatView: View {
-    fileprivate typealias CatConstants = Constants.CatView
+    @ObservedObject var catViewModel: CatDetailViewModel
 
+    fileprivate typealias CatConstants = Constants.CatView
     @State private var showingSheet = false
-    private var petIsCreatedState = false
+    @State private var petIsCreatedState = false
 
     var body: some View {
         NavigationStack {
             ZStack {
                 Color(Constants.Color.mainBackgroundColor)
-                if petIsCreatedState {
-                    CatCardContainerView(pets: (1...10).map {$0})
+                if !catViewModel.pets.isEmpty {
+                    CatCardContainerView(pets: catViewModel.pets)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
@@ -38,13 +39,13 @@ struct CatView: View {
             }
         }
         .fullScreenCover(isPresented: $showingSheet) {
-            CatDetailsView(petAppointment: Date())
+            CatDetailsView(petViewModel: catViewModel, petAppointment: Date())
         }
     }
 }
 
 struct CatView_Previews: PreviewProvider {
     static var previews: some View {
-        CatView()
+        CatView(catViewModel: CatDetailViewModel())
     }
 }

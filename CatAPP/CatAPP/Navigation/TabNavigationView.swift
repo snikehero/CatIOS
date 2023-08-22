@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct TabNavigationView: View {
+    @StateObject var petViewModel = CatDetailViewModel()
     fileprivate typealias TabConstants = Constants.TabNavigation
 
     var body: some View {
         TabView {
-            CatView()
+            CatView(catViewModel: petViewModel)
                 .tabItem {
                     Label(TabConstants.catLabel,
                           systemImage: TabConstants.catTabImage)
@@ -21,6 +22,11 @@ struct TabNavigationView: View {
                 .tabItem {
                     Label(TabConstants.randomLabel,
                           systemImage: TabConstants.catRandomImage)
+                }
+            CoreDataUsageView()
+                .tabItem {
+                    Label("CoreData",
+                    systemImage: "externaldrive.fill")
                 }
         }
     }
