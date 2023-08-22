@@ -29,6 +29,9 @@ struct TabNavigationView: View {
                     systemImage: "externaldrive.fill")
                 }
         }
+        .onAppear {
+            petViewModel.coreDataManager.load()
+        }
     }
 }
 

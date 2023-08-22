@@ -10,7 +10,6 @@ import PhotosUI
 
 struct CatDetailsView: View {
     fileprivate typealias DetailsConstants = Constants.Details
-    let coreDataManager = CoreDataManager(modelName: "CatAPP")
     @Environment(\.dismiss) var dismiss
     @ObservedObject var petViewModel : CatDetailViewModel
     @State var petName: String = ""
@@ -45,9 +44,6 @@ struct CatDetailsView: View {
                     VaccineFormView()
                 }
             }
-            .onAppear {
-                coreDataManager.load()
-            }
             .alert(DetailsConstants.alertMessage, isPresented: $showingAlert) {
                 Button(DetailsConstants.alertButton, role: .cancel) {
                     dismiss()
@@ -61,7 +57,7 @@ struct CatDetailsView: View {
                                               appointment: petAppointment,
                                               breed: petBreed)
                         showingAlert = true
-                        coreDataManager.saveCat(name: petName, year: petAge,
+                        petViewModel.coreDataManager.saveCat(name: petName, year: petAge,
                                                 appointment: petAppointment, breed: petBreed)
                     } label: {
                         Text(DetailsConstants.saveButton)

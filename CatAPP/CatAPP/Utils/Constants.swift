@@ -13,7 +13,7 @@ enum Constants {
        public static let cardCornerRadius = CGFloat(20)
         public static let cardShadow = CGFloat(10)
         public static let spacing = CGFloat(10)
-        public static let ageLabel = "Name: "
+        public static let ageLabel = "Age: "
         public static let breedLabel = "Breed: "
         public static let appointmentLabel = "Appointment: "
         public static let defaultName = "Cat"
