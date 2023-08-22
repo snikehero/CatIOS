@@ -57,8 +57,6 @@ struct CatDetailsView: View {
                                               appointment: petAppointment,
                                               breed: petBreed)
                         showingAlert = true
-                        petViewModel.coreDataManager.saveCat(name: petName, year: petAge,
-                                                appointment: petAppointment, breed: petBreed)
                     } label: {
                         Text(DetailsConstants.saveButton)
                     }

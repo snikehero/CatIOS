@@ -8,17 +8,14 @@
 import SwiftUI
 
 struct CoreDataUsageView: View {
-    let coreDataManager = CoreDataManager(modelName: "CatAPP")
+
     var body: some View {
         VStack {
             Button {
-                coreDataManager.createDefaultItem()
+                CoreDataManager.shared.createDefaultItem()
             } label: {
                 Text("Create Cat")
             }
-        }
-        .onAppear {
-            coreDataManager.load()
         }
     }
 }
