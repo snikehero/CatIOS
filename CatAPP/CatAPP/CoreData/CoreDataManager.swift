@@ -36,8 +36,8 @@ class CoreDataManager {
         if viewContext.hasChanges {
             do {
                 try viewContext.save()
-            } catch {
-                // Show some error here
+            } catch let error {
+                fatalError(error.localizedDescription)
             }
         }
     }
