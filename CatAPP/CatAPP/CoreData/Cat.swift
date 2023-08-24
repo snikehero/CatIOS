@@ -9,6 +9,6 @@ import Foundation
 import CoreData
 
 @objc(Cat)
-public class CatObject: NSManagedObject {
+public class Cat: NSManagedObject {
 
 }

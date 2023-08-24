@@ -60,6 +60,7 @@ struct CatDetailsView: View {
                     } label: {
                         Text(DetailsConstants.saveButton)
                     }
+                    .disabled(petName.isEmpty || petBreed.isEmpty)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {

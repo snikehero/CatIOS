@@ -8,10 +8,10 @@
 import Foundation
 import CoreData
 
-extension CatObject {
+extension Cat {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CatObject> {
-        return NSFetchRequest<CatObject>(entityName: "Cat")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Cat> {
+        return NSFetchRequest<Cat>(entityName: "Cat")
     }
 
     @NSManaged public var year: Int32
@@ -21,6 +21,6 @@ extension CatObject {
 
 }
 
-extension CatObject : Identifiable {
+extension Cat : Identifiable {
 
 }

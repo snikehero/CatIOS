@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22G90" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CatObject" representedClassName="CatObject" syncable="YES">
+    <entity name="Cat" representedClassName="Cat" syncable="YES">
         <attribute name="appointment" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="breed" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
