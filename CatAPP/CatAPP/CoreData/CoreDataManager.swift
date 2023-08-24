@@ -59,6 +59,7 @@ extension CoreDataManager {
 
     func saveCat(singlePet: PetDetail) {
         let newCat = Cat(context: viewContext)
+        newCat.identifier = singlePet.id
         newCat.name = singlePet.name
         newCat.year = Int32(singlePet.petYear)
         newCat.appointment = singlePet.appointment

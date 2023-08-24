@@ -8,7 +8,6 @@
 import Foundation
 @MainActor class CatDetailViewModel: ObservableObject {
     @Published var pets: [PetDetail] = []
-
     func saveData(name: String, petAge: Int, appointment: Date, breed: String ) {
         let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
         updateArray(singlePet: singlePet)
@@ -27,10 +26,8 @@ import Foundation
     }
 
     func transformData(petModel: [Cat]) {
-        pets = petModel.map({PetDetail(name: $0.name ,
-                                       petYear: Int($0.year),
-                                       breed: $0.breed ,
-                                       appointment: $0.appointment )})
+       // pets = petModel.map { PetDetail(catObject: $0) }
+        pets = petModel.map { $0.toPetDetail() }
     }
 }
 
