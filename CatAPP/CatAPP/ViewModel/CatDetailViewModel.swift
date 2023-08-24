@@ -25,6 +25,13 @@ import Foundation
         CoreDataManager.shared.saveCat(singlePet: singlePet)
         print("Saved to CoreData")
     }
+
+    func transformData(petModel: [Cat]) {
+        pets = petModel.map({PetDetail(name: $0.name ?? "",
+                                       petYear: Int($0.age),
+                                       breed: $0.breed ?? "",
+                                       appointment: $0.appointment ?? Date.now)})
+    }
 }
 
 extension CatDetailViewModel {
