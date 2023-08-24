@@ -42,7 +42,7 @@ struct CatCardView: View {
             ShowCatDetailsView(singlePet: singlePet)
         }
     }
-    
+
 }
 struct CatCardView_Previews: PreviewProvider {
     static var previews: some View {

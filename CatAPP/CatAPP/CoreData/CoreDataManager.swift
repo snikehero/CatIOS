@@ -9,7 +9,6 @@ import CoreData
 
 class CoreDataManager {
     private let persistenceContainer: NSPersistentContainer
-
     static let shared : CoreDataManager = {
        let coreDataManager = CoreDataManager(modelName: "CatAPP")
         coreDataManager.load()
@@ -30,6 +29,16 @@ class CoreDataManager {
                 fatalError(String(describing: error?.localizedDescription))
             }
             print(storeDescription)
+        }
+    }
+
+    func save() {
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+            } catch {
+                // Show some error here
+            }
         }
     }
 }
@@ -60,4 +69,14 @@ extension CoreDataManager {
             fatalError(error.localizedDescription)
         }
     }
+
+    func fetch() -> [Cat] {
+        let fetchRequest = Cat.fetchRequest()
+        if let result = try? self.viewContext.fetch(fetchRequest) {
+            return result
+        } else {
+            return []
+        }
+    }
+
 }

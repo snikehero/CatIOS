@@ -10,7 +10,7 @@ import SwiftUI
 struct TabNavigationView: View {
     @StateObject var petViewModel = CatDetailViewModel()
     fileprivate typealias TabConstants = Constants.TabNavigation
-
+    @Environment(\.managedObjectContext) var managedObjectContext
     var body: some View {
         TabView {
             CatView(catViewModel: petViewModel)
@@ -29,6 +29,7 @@ struct TabNavigationView: View {
                     systemImage: "externaldrive.fill")
                 }
         }
+
     }
 }
 
