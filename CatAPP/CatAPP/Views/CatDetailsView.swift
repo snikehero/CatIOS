@@ -17,6 +17,7 @@ struct CatDetailsView: View {
     @State var petAppointment: Date = Date.now
     @State var petBreed: String = ""
     @State private var showingAlert = false
+
     var body: some View {
         NavigationStack {
             Form {

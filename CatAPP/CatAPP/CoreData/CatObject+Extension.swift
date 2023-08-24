@@ -31,6 +31,4 @@ extension Cat {
     }
 }
 
-extension Cat : Identifiable {
-
-}
+extension Cat : Identifiable { }

@@ -8,11 +8,11 @@
 import Foundation
 @MainActor class CatDetailViewModel: ObservableObject {
     @Published var pets: [PetDetail] = []
+
     func saveData(name: String, petAge: Int, appointment: Date, breed: String ) {
         let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
         updateArray(singlePet: singlePet)
         saveToCoreData(singlePet: singlePet)
-
     }
 
     private func updateArray(singlePet: PetDetail) {
@@ -26,15 +26,15 @@ import Foundation
     }
 
     func transformData(petModel: [Cat]) {
-       // pets = petModel.map { PetDetail(catObject: $0) }
         pets = petModel.map { $0.toPetDetail() }
     }
 }
 
 extension CatDetailViewModel {
-    static let petsMock = [PetDetail.mockJojo,
-                           PetDetail.mockMica,
-                           PetDetail.mockMomo,
-                           PetDetail.mockSushi
-                           ]
+    static let petsMock = [
+        PetDetail.mockJojo,
+        PetDetail.mockMica,
+        PetDetail.mockMomo,
+        PetDetail.mockSushi
+    ]
 }

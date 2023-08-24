@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CoreDataUsageView: View {
     @State var pets: [Cat] = []
+
     var body: some View {
         VStack {
             Button {

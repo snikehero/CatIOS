@@ -9,6 +9,7 @@ import CoreData
 
 class CoreDataManager {
     private let persistenceContainer: NSPersistentContainer
+
     static let shared : CoreDataManager = {
        let coreDataManager = CoreDataManager(modelName: "CatAPP")
         coreDataManager.load()

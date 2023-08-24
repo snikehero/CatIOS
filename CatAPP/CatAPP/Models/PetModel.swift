@@ -21,14 +21,6 @@ struct PetDetail: Identifiable, Codable {
         self.breed = breed
         self.appointment = appointment
     }
-//
-//    init(catObject: Cat) {
-//        self.id = catObject.identifier
-//        self.name = catObject.name
-//        self.petYear = Int(catObject.year)
-//        self.breed = catObject.breed
-//        self.appointment = catObject.appointment
-//    }
 }
 
 extension PetDetail {
