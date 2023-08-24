@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CoreDataUsageView: View {
-    @State var pets: [Cat] = []
+    @State var pets: [CatObject] = []
     var body: some View {
         VStack {
             Button {
@@ -17,7 +17,7 @@ struct CoreDataUsageView: View {
                 Text("Create Cat")
             }
             List(pets) { singlePet in
-                Text(singlePet.name ?? "Unknown")
+                Text(singlePet.name )
             }
         }
     }

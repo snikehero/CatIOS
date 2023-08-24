@@ -26,11 +26,11 @@ import Foundation
         print("Saved to CoreData")
     }
 
-    func transformData(petModel: [Cat]) {
-        pets = petModel.map({PetDetail(name: $0.name ?? "",
-                                       petYear: Int($0.age),
-                                       breed: $0.breed ?? "",
-                                       appointment: $0.appointment ?? Date.now)})
+    func transformData(petModel: [CatObject]) {
+        pets = petModel.map({PetDetail(name: $0.name ,
+                                       petYear: Int($0.year),
+                                       breed: $0.breed ,
+                                       appointment: $0.appointment )})
     }
 }
 

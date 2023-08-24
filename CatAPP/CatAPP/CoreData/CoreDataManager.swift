@@ -45,9 +45,9 @@ class CoreDataManager {
 
 extension CoreDataManager {
     func createDefaultItem() {
-        let defaultCat = Cat(context: viewContext)
+        let defaultCat = CatObject(context: viewContext)
         defaultCat.name = "Jojo"
-        defaultCat.age = 5
+        defaultCat.year = 5
         defaultCat.appointment = Date.now
         defaultCat.breed = "Electrico"
         do {
@@ -58,9 +58,9 @@ extension CoreDataManager {
     }
 
     func saveCat(singlePet: PetDetail) {
-        let newCat = Cat(context: viewContext)
+        let newCat = CatObject(context: viewContext)
         newCat.name = singlePet.name
-        newCat.age = Int32(singlePet.petYear)
+        newCat.year = Int32(singlePet.petYear)
         newCat.appointment = singlePet.appointment
         newCat.breed = singlePet.breed
         do {
@@ -70,8 +70,8 @@ extension CoreDataManager {
         }
     }
 
-    func fetch() -> [Cat] {
-        let fetchRequest = Cat.fetchRequest()
+    func fetch() -> [CatObject] {
+        let fetchRequest = CatObject.fetchRequest()
         if let result = try? self.viewContext.fetch(fetchRequest) {
             return result
         } else {
