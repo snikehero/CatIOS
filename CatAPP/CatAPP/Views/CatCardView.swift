@@ -22,7 +22,7 @@ struct CatCardView: View {
                 HStack(spacing: CardConstants.spacing) {
                     CardNameText(name: singlePet.name)
                     Spacer()
-                    VStack {
+                    VStack(alignment: .leading) {
                         CardDetailText(label: CardConstants.ageLabel,
                                        content: singlePet.petYear.description)
                         Spacer()
@@ -62,11 +62,6 @@ struct CardDetailText: View {
     let content: String
 
     var body: some View {
-        HStack {
-            Text(label)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Text(content)
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
+        Text(label).font(.system(size: 18, weight: .bold)) + Text(content).font(.system(size: 16, weight: .regular))
     }
 }
