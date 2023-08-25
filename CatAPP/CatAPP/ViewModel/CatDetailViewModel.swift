@@ -27,6 +27,7 @@ import Foundation
     func transformData(petModel: [Cat]) {
         pets = petModel.map { $0.toPetDetail() }
     }
+
     func searchById(arrayOfPets: [PetDetail], identifier: String) -> PetDetail {
         if let singlePet = arrayOfPets.first(where: {$0.id == identifier}) {
             return singlePet
@@ -34,9 +35,18 @@ import Foundation
             return PetDetail.mockJojo
         }
     }
-    private func updateToCoreData(singlePet: PetDetail, identifier: String ) {
+
+    func updateToCoreData(singlePet: PetDetail, identifier: String ) {
         CoreDataManager.shared.updateData(singlePet: singlePet, identifier: identifier)
         print("Updated to coredata")
+        updatePets(singlePet: singlePet)
+    }
+
+    private func updatePets(singlePet: PetDetail) {
+        if let index = pets.firstIndex(where: { $0.id == singlePet.id }) {
+            pets.remove(at: index)
+            pets.insert(singlePet, at: index)
+        }
     }
 }
 

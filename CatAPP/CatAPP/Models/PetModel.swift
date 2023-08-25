@@ -9,10 +9,10 @@ import Foundation
 
 struct PetDetail: Identifiable, Codable {
     let id: String
-    let name: String
-    let petYear: Int
-    let breed: String
-    let appointment: Date
+    var name: String
+    var petYear: Int
+    var breed: String
+    var appointment: Date
 
     init(id: String = UUID().uuidString, name: String, petYear: Int, breed: String, appointment: Date) {
         self.id = id
