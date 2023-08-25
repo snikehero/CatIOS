@@ -16,12 +16,10 @@ import Foundation
 
     private func updateArray(singlePet: PetDetail) {
         pets.append(singlePet)
-        print("Updated Array")
     }
 
     private func saveToCoreData(singlePet: PetDetail) {
         CoreDataManager.shared.saveCat(singlePet: singlePet)
-        print("Saved to CoreData")
     }
 
     func transformData(petModel: [Cat]) {
@@ -38,7 +36,6 @@ import Foundation
 
     func updateToCoreData(singlePet: PetDetail, identifier: String ) {
         CoreDataManager.shared.updateData(singlePet: singlePet, identifier: identifier)
-        print("Updated to coredata")
         updatePets(singlePet: singlePet)
     }
 
