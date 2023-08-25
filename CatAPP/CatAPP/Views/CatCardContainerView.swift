@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct CatCardContainerView: View {
-    var pets: [PetDetail]
+    @ObservedObject var catViewModel: CatDetailViewModel
+    @State private var isPresented = false
+    @State private var identifierValue = "123"
     var body: some View {
         List {
-            ForEach(pets) { singlePet in
-                CatCardView(singlePet: singlePet)
+            ForEach(catViewModel.pets) { singlePet in
+                Button {
+                    identifierValue = singlePet.id
+                    isPresented.toggle()
+                } label : {
+                    CatCardView(singlePet: singlePet)
+                }
+                .buttonStyle(PlainButtonStyle())
+
+            }
+            .fullScreenCover(isPresented: $isPresented) {
+                ShowCatDetailsView(petViewModel: catViewModel, identifier: $identifierValue)
             }
         }
     }
@@ -20,6 +32,6 @@ struct CatCardContainerView: View {
 
 struct CatCardContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        CatCardContainerView(pets: CatDetailViewModel.petsMock)
+        CatCardContainerView(catViewModel: CatDetailViewModel())
     }
 }

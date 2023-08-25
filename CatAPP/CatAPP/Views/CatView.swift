@@ -19,7 +19,7 @@ struct CatView: View {
             ZStack {
                 Color(Constants.Color.mainBackgroundColor)
                 if !catViewModel.pets.isEmpty {
-                    CatCardContainerView(pets: catViewModel.pets)
+                    CatCardContainerView(catViewModel: catViewModel)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {

@@ -8,7 +8,6 @@
 import Foundation
 @MainActor class CatDetailViewModel: ObservableObject {
     @Published var pets: [PetDetail] = []
-
     func saveData(name: String, petAge: Int, appointment: Date, breed: String ) {
         let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
         updateArray(singlePet: singlePet)
@@ -27,6 +26,13 @@ import Foundation
 
     func transformData(petModel: [Cat]) {
         pets = petModel.map { $0.toPetDetail() }
+    }
+    func searchById(arrayOfPets: [PetDetail], identifier: String) -> PetDetail {
+        if let singlePet = arrayOfPets.first(where: {$0.id == identifier}) {
+            return singlePet
+        } else {
+            return PetDetail.mockJojo
+        }
     }
 }
 

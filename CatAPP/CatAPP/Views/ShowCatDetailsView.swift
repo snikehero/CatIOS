@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShowCatDetailsView: View {
-    let singlePet: PetDetail
+    @ObservedObject var petViewModel : CatDetailViewModel
     fileprivate typealias DetailsConstants = Constants.Details
     @Environment(\.dismiss) var dismiss
     @State private var showingAlert = false
@@ -16,6 +16,9 @@ struct ShowCatDetailsView: View {
     @State var petAge: Int = 0
     @State var petAppointment: Date = Date.now
     @State var petBreed: String = ""
+    @State var isEditable = true
+    @Binding var identifier: String
+    @State var singlePet = PetDetail.mockJojo
     var body: some View {
         NavigationStack {
             Form {
@@ -27,26 +30,35 @@ struct ShowCatDetailsView: View {
                 Section(header: Text(DetailsConstants.detailsSection)) {
                     TextField(DetailsConstants.nameForm,
                               text: $petName)
+                    .disabled(isEditable)
                     Picker(DetailsConstants.ageForm, selection: $petAge) {
                         ForEach(0 ..< 20) {
                             Text("\($0) \(DetailsConstants.ageLabel)")
                         }
                     }
+                    .disabled(isEditable)
                     TextField(DetailsConstants.breedForm,
                               text: $petBreed)
+                    .disabled(isEditable)
                     DatePicker(selection: $petAppointment, in: Date.now...,
                                displayedComponents: .date) {
                         Text(DetailsConstants.dateForm)
                     }
+                               .disabled(isEditable)
                 }
                 Section(header: Text(DetailsConstants.vaccineSection)) {
                     VaccineFormView()
                 }
             }
+            .onAppear {
+                singlePet = petViewModel.searchById(arrayOfPets: petViewModel.pets,
+                                        identifier: identifier)
+                fillData(singlePet: singlePet)
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        showingAlert = true
+                        isEditable.toggle()
                     } label: {
                         Text("Edit")
                     }
@@ -61,10 +73,16 @@ struct ShowCatDetailsView: View {
             }
         }
     }
+    func fillData(singlePet: PetDetail) {
+        petName = singlePet.name
+        petBreed = singlePet.breed
+        petAge = singlePet.petYear
+        petAppointment = singlePet.appointment
+    }
 }
 
 struct ShowCatDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ShowCatDetailsView(singlePet: PetDetail.mockJojo)
+        ShowCatDetailsView(petViewModel: CatDetailViewModel(), identifier: .constant("123"))
     }
 }
