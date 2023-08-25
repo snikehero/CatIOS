@@ -19,6 +19,8 @@ struct ShowCatDetailsView: View {
     @State var isEditable = true
     @Binding var identifier: String
     @State var singlePet = PetDetail.mockJojo
+    @State var isEditingState = true
+
     var body: some View {
         NavigationStack {
             Form {
@@ -31,6 +33,7 @@ struct ShowCatDetailsView: View {
                     TextField(DetailsConstants.nameForm,
                               text: $petName)
                     .disabled(isEditable)
+                    .autocorrectionDisabled()
                     Picker(DetailsConstants.ageForm, selection: $petAge) {
                         ForEach(0 ..< 20) {
                             Text("\($0) \(DetailsConstants.ageLabel)")
@@ -40,6 +43,7 @@ struct ShowCatDetailsView: View {
                     TextField(DetailsConstants.breedForm,
                               text: $petBreed)
                     .disabled(isEditable)
+                    .autocorrectionDisabled()
                     DatePicker(selection: $petAppointment, in: Date.now...,
                                displayedComponents: .date) {
                         Text(DetailsConstants.dateForm)
@@ -52,15 +56,28 @@ struct ShowCatDetailsView: View {
             }
             .onAppear {
                 singlePet = petViewModel.searchById(arrayOfPets: petViewModel.pets,
-                                        identifier: identifier)
+                                                    identifier: identifier)
                 fillData(singlePet: singlePet)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isEditable.toggle()
-                    } label: {
-                        Text("Edit")
+                if isEditingState {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            isEditable.toggle()
+                            isEditingState.toggle()
+                        } label: {
+                            Text("Edit")
+                        }
+
+                    }
+                } else {
+                    ToolbarItem(placement: .navigationBarTrailing ) {
+                        Button {
+                            isEditingState.toggle()
+                            isEditable.toggle()
+                        } label: {
+                            Text("Save")
+                        }
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
