@@ -34,6 +34,10 @@ import Foundation
             return PetDetail.mockJojo
         }
     }
+    private func updateToCoreData(singlePet: PetDetail, identifier: String ) {
+        CoreDataManager.shared.updateData(singlePet: singlePet, identifier: identifier)
+        print("Updated to coredata")
+    }
 }
 
 extension CatDetailViewModel {

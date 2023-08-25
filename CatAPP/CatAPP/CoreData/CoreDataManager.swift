@@ -80,5 +80,8 @@ extension CoreDataManager {
             return []
         }
     }
+    func updateData(singlePet: PetDetail, identifier: String) {
+
+    }
 
 }
