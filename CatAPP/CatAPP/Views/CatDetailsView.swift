@@ -17,6 +17,7 @@ struct CatDetailsView: View {
     @State var petAppointment: Date = Date.now
     @State var petBreed: String = ""
     @State private var showingAlert = false
+
     var body: some View {
         NavigationStack {
             Form {
@@ -60,6 +61,7 @@ struct CatDetailsView: View {
                     } label: {
                         Text(DetailsConstants.saveButton)
                     }
+                    .disabled(petName.isEmpty || petBreed.isEmpty)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {

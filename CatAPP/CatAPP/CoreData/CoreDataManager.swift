@@ -32,13 +32,23 @@ class CoreDataManager {
             print(storeDescription)
         }
     }
+
+    func save() {
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+            } catch let error {
+                fatalError(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension CoreDataManager {
     func createDefaultItem() {
         let defaultCat = Cat(context: viewContext)
         defaultCat.name = "Jojo"
-        defaultCat.age = 5
+        defaultCat.year = 5
         defaultCat.appointment = Date.now
         defaultCat.breed = "Electrico"
         do {
@@ -50,8 +60,9 @@ extension CoreDataManager {
 
     func saveCat(singlePet: PetDetail) {
         let newCat = Cat(context: viewContext)
+        newCat.identifier = singlePet.id
         newCat.name = singlePet.name
-        newCat.age = Int32(singlePet.petYear)
+        newCat.year = Int32(singlePet.petYear)
         newCat.appointment = singlePet.appointment
         newCat.breed = singlePet.breed
         do {
@@ -60,4 +71,14 @@ extension CoreDataManager {
             fatalError(error.localizedDescription)
         }
     }
+
+    func fetch() -> [Cat] {
+        let fetchRequest = Cat.fetchRequest()
+        if let result = try? self.viewContext.fetch(fetchRequest) {
+            return result
+        } else {
+            return []
+        }
+    }
+
 }

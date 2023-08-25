@@ -8,11 +8,19 @@
 import Foundation
 
 struct PetDetail: Identifiable, Codable {
-    var id = UUID()
+    let id: String
     let name: String
     let petYear: Int
     let breed: String
     let appointment: Date
+
+    init(id: String = UUID().uuidString, name: String, petYear: Int, breed: String, appointment: Date) {
+        self.id = id
+        self.name = name
+        self.petYear = petYear
+        self.breed = breed
+        self.appointment = appointment
+    }
 }
 
 extension PetDetail {

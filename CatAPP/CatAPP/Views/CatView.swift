@@ -38,6 +38,9 @@ struct CatView: View {
                 }
             }
         }
+        .onAppear {
+            catViewModel.transformData(petModel: CoreDataManager.shared.fetch())
+        }
         .fullScreenCover(isPresented: $showingSheet) {
             CatDetailsView(petViewModel: catViewModel, petAppointment: Date())
         }
