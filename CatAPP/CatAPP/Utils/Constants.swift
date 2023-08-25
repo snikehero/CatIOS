@@ -49,6 +49,7 @@ enum Constants {
         public static let ageLabel = " Years"
         public static let alertMessage = "Data has been saved."
         public static let alertButton = "Ok"
+        public static let editButton = "Edit"
     }
     enum PhotoPicker {
         public static let placeholderFrameWidth = CGFloat(100)

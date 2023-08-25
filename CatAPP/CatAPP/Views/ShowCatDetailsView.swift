@@ -66,7 +66,7 @@ struct ShowCatDetailsView: View {
                             isEditable.toggle()
                             isEditingState.toggle()
                         } label: {
-                            Text("Edit")
+                            Text(DetailsConstants.editButton)
                         }
 
                     }
@@ -76,7 +76,7 @@ struct ShowCatDetailsView: View {
                             isEditingState.toggle()
                             isEditable.toggle()
                         } label: {
-                            Text("Save")
+                            Text(DetailsConstants.saveButton)
                         }
                     }
                 }
