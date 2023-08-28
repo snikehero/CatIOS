@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A21FF892A954FD60053D7E1 /* ShowCatDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21FF882A954FD60053D7E1 /* ShowCatDetailsView.swift */; };
+		4A490ADF2A9CF97D00605AC1 /* RandomCatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A490ADE2A9CF97D00605AC1 /* RandomCatModel.swift */; };
 		4A6963B42A97D2DE00EC5049 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6963B32A97D2DE00EC5049 /* Cat.swift */; };
 		4A6963B62A97D2FD00EC5049 /* CatObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6963B52A97D2FD00EC5049 /* CatObject+Extension.swift */; };
 		4A701C8F2A93BB9100CFB002 /* CatCardContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A701C8E2A93BB9100CFB002 /* CatCardContainerView.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		4A21FF882A954FD60053D7E1 /* ShowCatDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCatDetailsView.swift; sourceTree = "<group>"; };
+		4A490ADE2A9CF97D00605AC1 /* RandomCatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCatModel.swift; sourceTree = "<group>"; };
 		4A6963B32A97D2DE00EC5049 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		4A6963B52A97D2FD00EC5049 /* CatObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatObject+Extension.swift"; sourceTree = "<group>"; };
 		4A701C8E2A93BB9100CFB002 /* CatCardContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatCardContainerView.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				4A8D85DA2A8EAD7A007A7F7C /* PetModel.swift */,
+				4A490ADE2A9CF97D00605AC1 /* RandomCatModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				4A701C8F2A93BB9100CFB002 /* CatCardContainerView.swift in Sources */,
 				4A94017B2A93CF5100509779 /* CoreDataManager.swift in Sources */,
 				4A8D85DF2A8EBECC007A7F7C /* PhotoPicker.swift in Sources */,
+				4A490ADF2A9CF97D00605AC1 /* RandomCatModel.swift in Sources */,
 				4A94017D2A93D07F00509779 /* CoreDataUsageView.swift in Sources */,
 				4AEBF0042A8BD3DB00A6DBF7 /* ContentView.swift in Sources */,
 				4AEBF0022A8BD3DB00A6DBF7 /* CatAPPApp.swift in Sources */,
