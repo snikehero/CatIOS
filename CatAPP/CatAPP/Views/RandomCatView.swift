@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RandomCatView: View {
     fileprivate typealias CardConstants = Constants.RandomCat
+    @ObservedObject var randomCatViewModel: RandomCatViewModel
+
     var body: some View {
         NavigationStack {
             Image("randomCatMock")
@@ -28,6 +30,6 @@ struct RandomCatView: View {
 
 struct RandomCatView_Previews: PreviewProvider {
     static var previews: some View {
-        RandomCatView()
+        RandomCatView(randomCatViewModel: RandomCatViewModel())
     }
 }
