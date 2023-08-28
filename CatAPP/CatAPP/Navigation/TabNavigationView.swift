@@ -9,7 +9,8 @@ import SwiftUI
 
 struct TabNavigationView: View {
     @StateObject var petViewModel = CatDetailViewModel()
-    @StateObject var randomCatViewModel = RandomCatViewModel()
+    @StateObject var randomCatViewModel = RandomCatViewModel(networkManager: NetworkManager(),
+                                                             endpointBuilder: EndpointBuilder())
     fileprivate typealias TabConstants = Constants.TabNavigation
     @Environment(\.managedObjectContext) var managedObjectContext
     var body: some View {
@@ -25,7 +26,6 @@ struct TabNavigationView: View {
                           systemImage: TabConstants.catRandomImage)
                 }
         }
-
     }
 }
 

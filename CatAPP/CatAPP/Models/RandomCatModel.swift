@@ -8,14 +8,16 @@
 import Foundation
 
 struct RandomCatModel: Codable {
-    let imageUrl: String
     let id: String
-
+    let urlString: String
     enum CodingKeys: String, CodingKey {
-        case imageUrl = "url"
         case id = "id"
+        case urlString = "url"
     }
 }
 extension RandomCatModel {
-    static let randomCatMock = RandomCatModel(imageUrl: "https://cdn2.thecatapi.com/images/Wd_Py_Mj8.jpg", id: "Wd_Py_Mj8")
+    static let randomCatMock = RandomCatModel(
+        id: "Wd_Py_Mj8",
+        urlString: "https://cdn2.thecatapi.com/images/Wd_Py_Mj8.jpg")
+
 }

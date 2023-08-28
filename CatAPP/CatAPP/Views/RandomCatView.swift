@@ -13,23 +13,34 @@ struct RandomCatView: View {
 
     var body: some View {
         NavigationStack {
-            Image("randomCatMock")
-                .resizable()
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                        } label: {
-                            Text(CardConstants.reloadButton)
-                        }
+            AsyncImage(url: URL(string: randomCatViewModel.randomCat.first?.urlString
+                                ?? RandomCatModel.randomCatMock.urlString),
+                       content: { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(30)
+            }, placeholder: {
+                ProgressView()
+            })
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        print(randomCatViewModel.fetchRandomCat())
+                    } label: {
+                        Text(CardConstants.reloadButton)
                     }
                 }
+            }
         }
-
     }
 }
 
 struct RandomCatView_Previews: PreviewProvider {
     static var previews: some View {
-        RandomCatView(randomCatViewModel: RandomCatViewModel())
+        RandomCatView(randomCatViewModel:
+                        RandomCatViewModel(networkManager:
+                                            NetworkManager(),
+                                           endpointBuilder: EndpointBuilder()))
     }
 }
