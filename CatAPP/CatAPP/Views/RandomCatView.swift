@@ -13,25 +13,22 @@ struct RandomCatView: View {
 
     var body: some View {
         NavigationStack {
-            AsyncImage(url: URL(string: randomCatViewModel.randomCat.first?.urlString
-                                ?? RandomCatModel.randomCatMock.urlString),
-                       content: { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(30)
-            }, placeholder: {
-                ProgressView()
-            })
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        print(randomCatViewModel.fetchRandomCat())
-                    } label: {
-                        Text(CardConstants.reloadButton)
-                    }
-                }
+            ScrollView {
+                AsyncImage(url: URL(string: randomCatViewModel.randomCat.first?.urlString
+                                    ?? RandomCatModel.randomCatMock.urlString),
+                           content: { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(30)
+                }, placeholder: {
+                    ProgressView()
+                })
+                Text("Swipe down to refresh")
             }
+        }
+        .refreshable {
+            randomCatViewModel.fetchRandomCat()
         }
     }
 }
