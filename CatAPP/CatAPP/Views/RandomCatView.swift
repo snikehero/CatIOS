@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct RandomCatView: View {
+    fileprivate typealias CardConstants = Constants.RandomCat
     var body: some View {
-        Text("RandomCatView")
+        NavigationStack {
+            Image("randomCatMock")
+                .resizable()
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                        } label: {
+                            Text(CardConstants.reloadButton)
+                        }
+                    }
+                }
+        }
+
     }
 }
 

@@ -23,11 +23,6 @@ struct TabNavigationView: View {
                     Label(TabConstants.randomLabel,
                           systemImage: TabConstants.catRandomImage)
                 }
-            CoreDataUsageView()
-                .tabItem {
-                    Label("CoreData",
-                    systemImage: "externaldrive.fill")
-                }
         }
 
     }

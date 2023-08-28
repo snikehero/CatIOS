@@ -55,4 +55,7 @@ enum Constants {
         public static let placeholderFrameWidth = CGFloat(100)
         public static let placeholderFrameHeight = CGFloat(100)
     }
+    enum RandomCat {
+        public static let reloadButton = "Reload"
+    }
 }
