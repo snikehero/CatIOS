@@ -112,7 +112,6 @@ extension CoreDataManager {
         backgroundContext.perform {
             if let catObject = try? self.backgroundContext.fetch(fetchRequest).first {
                 self.backgroundContext.delete(catObject)
-                print("removed Data")
                 try? self.backgroundContext.save()
             }
         }
