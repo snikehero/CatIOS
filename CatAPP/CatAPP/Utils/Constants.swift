@@ -58,4 +58,9 @@ enum Constants {
     enum RandomCat {
         public static let reloadButton = "Reload"
     }
+    enum NetworkMonitorConstants {
+        public static let networkMonitor = "NetworkMonitor"
+        public static let networkMonitorMock = "MockNetworkMonitor"
+        public static let networkMonitorStatus = "NetworkMonitor status:"
+    }
 }
