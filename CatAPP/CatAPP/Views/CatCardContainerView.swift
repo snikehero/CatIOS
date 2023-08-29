@@ -23,6 +23,9 @@ struct CatCardContainerView: View {
                 .buttonStyle(PlainButtonStyle())
 
             }
+            .onDelete(perform: { indexSet in
+                catViewModel.deleteFromCoreData(at: indexSet)
+            })
             .fullScreenCover(isPresented: $isPresented) {
                 ShowCatDetailsView(petViewModel: catViewModel, identifier: $identifierValue)
             }

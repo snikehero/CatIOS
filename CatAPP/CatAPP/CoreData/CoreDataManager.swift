@@ -105,4 +105,16 @@ extension CoreDataManager {
             }
         }
     }
+    func removeData(singlePet: PetDetail) {
+        let fetchRequest = Cat.fetchRequest()
+        let predicate = NSPredicate(format: "identifier BEGINSWITH %@", singlePet.id)
+        fetchRequest.predicate = predicate
+        backgroundContext.perform {
+            if let catObject = try? self.backgroundContext.fetch(fetchRequest).first {
+                self.backgroundContext.delete(catObject)
+                print("removed Data")
+                try? self.backgroundContext.save()
+            }
+        }
+    }
 }
