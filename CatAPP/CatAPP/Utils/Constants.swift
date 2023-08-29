@@ -63,4 +63,15 @@ enum Constants {
         public static let networkMonitorMock = "MockNetworkMonitor"
         public static let networkMonitorStatus = "NetworkMonitor status:"
     }
+    enum NoNetwork {
+        public static let noNetworkTitle = "Cats not available"
+        public static let noNetworkDescription = "The Cat app has no internet connection."
+        public static let noNetworkTopPading = CGFloat(100)
+        public static let noNetworkLeading = CGFloat(10)
+        public static let noNetworkBottomPading = CGFloat(100)
+        public static let noNetworkTrailing = CGFloat(10)
+        public static let noNetworkString = "wifi.slash"
+        public static let networkImageSystemSyze = CGFloat(30)
+        public static let DescriptionNoNetworkImage = Image("NetworkImage")
+    }
 }
