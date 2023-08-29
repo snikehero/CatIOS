@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct CatAPPApp: App {
+    @StateObject var networkMonitor = NetworkMonitor()
     var body: some Scene {
         WindowGroup {
             TabNavigationView()
+                .environmentObject(networkMonitor)
         }
     }
 }
