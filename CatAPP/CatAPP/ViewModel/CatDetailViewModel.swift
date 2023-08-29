@@ -45,6 +45,14 @@ import Foundation
             pets.insert(singlePet, at: index)
         }
     }
+    func deleteFromCoreData(at offsets: IndexSet) {
+        print(offsets)
+        for offset in offsets {
+            let singlePet = pets[offset]
+            CoreDataManager.shared.removeData(singlePet: singlePet)
+            pets.remove(at: offset)
+        }
+    }
 }
 
 extension CatDetailViewModel {
