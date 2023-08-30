@@ -18,11 +18,14 @@ struct CatCardContainerView: View {
                     identifierValue = singlePet.id
                     isPresented.toggle()
                 } label : {
-                    CatCardView(singlePet: singlePet)
+                    CatCardView(singlePet: singlePet, catViewModel: catViewModel)
                 }
                 .buttonStyle(PlainButtonStyle())
 
             }
+            .onDelete(perform: { indexSet in
+                catViewModel.deleteFromCoreData(at: indexSet)
+            })
             .fullScreenCover(isPresented: $isPresented) {
                 ShowCatDetailsView(petViewModel: catViewModel, identifier: $identifierValue)
             }

@@ -75,6 +75,8 @@ struct ShowCatDetailsView: View {
                         Button {
                             isEditingState.toggle()
                             isEditable.toggle()
+                            updateModel(singlePet: singlePet)
+                            petViewModel.updateToCoreData(singlePet: singlePet, identifier: singlePet.id)
                         } label: {
                             Text(DetailsConstants.saveButton)
                         }
@@ -95,6 +97,12 @@ struct ShowCatDetailsView: View {
         petBreed = singlePet.breed
         petAge = singlePet.petYear
         petAppointment = singlePet.appointment
+    }
+    func updateModel(singlePet: PetDetail) {
+        self.singlePet.name = petName
+        self.singlePet.breed = petBreed
+        self.singlePet.petYear = petAge
+        self.singlePet.appointment = petAppointment
     }
 }
 

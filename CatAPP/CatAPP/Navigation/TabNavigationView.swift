@@ -9,8 +9,11 @@ import SwiftUI
 
 struct TabNavigationView: View {
     @StateObject var petViewModel = CatDetailViewModel()
+    @StateObject var randomCatViewModel = RandomCatViewModel(networkManager: NetworkManager(),
+                                                             endpointBuilder: EndpointBuilder())
     fileprivate typealias TabConstants = Constants.TabNavigation
     @Environment(\.managedObjectContext) var managedObjectContext
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     var body: some View {
         TabView {
             CatView(catViewModel: petViewModel)
@@ -18,23 +21,26 @@ struct TabNavigationView: View {
                     Label(TabConstants.catLabel,
                           systemImage: TabConstants.catTabImage)
                 }
-            RandomCatView()
-                .tabItem {
-                    Label(TabConstants.randomLabel,
-                          systemImage: TabConstants.catRandomImage)
-                }
-            CoreDataUsageView()
-                .tabItem {
-                    Label("CoreData",
-                    systemImage: "externaldrive.fill")
-                }
+            if networkMonitor.isConnected {
+                RandomCatView(randomCatViewModel: randomCatViewModel)
+                    .tabItem {
+                        Label(TabConstants.randomLabel,
+                              systemImage: TabConstants.catRandomImage)
+                    }
+            } else {
+              NoInternetView()
+                    .tabItem {
+                        Label(TabConstants.randomLabel,
+                              systemImage: TabConstants.catRandomImage)
+                    }
+            }
         }
-
     }
 }
 
 struct TabNavigationView_Previews: PreviewProvider {
     static var previews: some View {
         TabNavigationView()
+            .environmentObject(NetworkMonitor.init(isConnected: false))
     }
 }

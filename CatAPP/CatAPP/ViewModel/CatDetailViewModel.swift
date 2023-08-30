@@ -16,22 +16,41 @@ import Foundation
 
     private func updateArray(singlePet: PetDetail) {
         pets.append(singlePet)
-        print("Updated Array")
     }
 
     private func saveToCoreData(singlePet: PetDetail) {
         CoreDataManager.shared.saveCat(singlePet: singlePet)
-        print("Saved to CoreData")
     }
 
     func transformData(petModel: [Cat]) {
         pets = petModel.map { $0.toPetDetail() }
     }
+
     func searchById(arrayOfPets: [PetDetail], identifier: String) -> PetDetail {
         if let singlePet = arrayOfPets.first(where: {$0.id == identifier}) {
             return singlePet
         } else {
             return PetDetail.mockJojo
+        }
+    }
+
+    func updateToCoreData(singlePet: PetDetail, identifier: String ) {
+        CoreDataManager.shared.updateData(singlePet: singlePet, identifier: identifier)
+        updatePets(singlePet: singlePet)
+    }
+
+    private func updatePets(singlePet: PetDetail) {
+        if let index = pets.firstIndex(where: { $0.id == singlePet.id }) {
+            pets.remove(at: index)
+            pets.insert(singlePet, at: index)
+        }
+    }
+    func deleteFromCoreData(at offsets: IndexSet) {
+        print(offsets)
+        for offset in offsets {
+            let singlePet = pets[offset]
+            CoreDataManager.shared.removeData(singlePet: singlePet)
+            pets.remove(at: offset)
         }
     }
 }

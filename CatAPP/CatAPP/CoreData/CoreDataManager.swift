@@ -24,6 +24,8 @@ class CoreDataManager {
         return persistenceContainer.viewContext
     }
 
+    lazy var backgroundContext = persistenceContainer.newBackgroundContext()
+
     func load() {
         persistenceContainer.loadPersistentStores { storeDescription, error in
             guard error == nil else {
@@ -31,6 +33,14 @@ class CoreDataManager {
             }
             print(storeDescription)
         }
+
+    }
+
+    func configureContext() {
+        viewContext.automaticallyMergesChangesFromParent = true
+        backgroundContext.automaticallyMergesChangesFromParent = true
+        backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
     }
 
     func save() {
@@ -81,4 +91,29 @@ extension CoreDataManager {
         }
     }
 
+    func updateData(singlePet: PetDetail, identifier: String) {
+        let fetchRequest = Cat.fetchRequest()
+        let predicate = NSPredicate(format: "identifier BEGINSWITH %@", singlePet.id)
+        fetchRequest.predicate = predicate
+        backgroundContext.perform {
+            if let catObject = try? self.backgroundContext.fetch(fetchRequest).first {
+                catObject.name = singlePet.name
+                catObject.appointment = singlePet.appointment
+                catObject.breed = singlePet.breed
+                catObject.year  = Int32(singlePet.petYear)
+                try? self.backgroundContext.save()
+            }
+        }
+    }
+    func removeData(singlePet: PetDetail) {
+        let fetchRequest = Cat.fetchRequest()
+        let predicate = NSPredicate(format: "identifier BEGINSWITH %@", singlePet.id)
+        fetchRequest.predicate = predicate
+        backgroundContext.perform {
+            if let catObject = try? self.backgroundContext.fetch(fetchRequest).first {
+                self.backgroundContext.delete(catObject)
+                try? self.backgroundContext.save()
+            }
+        }
+    }
 }

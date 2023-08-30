@@ -10,7 +10,7 @@ import SwiftUI
 struct CatCardView: View {
     fileprivate typealias CardConstants = Constants.CatCard
     var singlePet: PetDetail
-
+    @ObservedObject var catViewModel: CatDetailViewModel
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: CardConstants.cardCornerRadius, style: .continuous)
@@ -42,7 +42,7 @@ struct CatCardView: View {
 }
 struct CatCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CatCardView(singlePet: PetDetail.mockMomo)
+        CatCardView(singlePet: PetDetail.mockJojo, catViewModel: CatDetailViewModel())
     }
 }
 struct CardNameText: View {
