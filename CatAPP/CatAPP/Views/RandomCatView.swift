@@ -20,7 +20,9 @@ struct RandomCatView: View {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .cornerRadius(30)
+                        .cornerRadius(CardConstants.photoFrameRadius)
+                        .frame(width: CardConstants.photoFrameWidth,
+                               height: CardConstants.photoFrameHeight)
                 }, placeholder: {
                     ProgressView()
                 })

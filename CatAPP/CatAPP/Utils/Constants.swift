@@ -57,6 +57,9 @@ enum Constants {
     }
     enum RandomCat {
         public static let reloadButton = "Reload"
+        public static let photoFrameWidth = CGFloat(500)
+        public static let photoFrameHeight = CGFloat(300)
+        public static let photoFrameRadius = CGFloat(30)
     }
     enum NetworkMonitorConstants {
         public static let networkMonitor = "NetworkMonitor"
