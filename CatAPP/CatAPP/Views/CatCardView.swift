@@ -32,7 +32,7 @@ struct CatCardView: View {
                 }
                 .padding(CardConstants.padding)
         }
-        .frame(maxWidth: CardConstants.cardWidth, maxHeight: CardConstants.cardHeight)
+        .frame(maxWidth: .infinity, maxHeight: CardConstants.cardHeight)
     }
 
 }

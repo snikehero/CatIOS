@@ -29,7 +29,9 @@ struct CatCardContainerView: View {
             .fullScreenCover(isPresented: $isPresented) {
                 ShowCatDetailsView(petViewModel: catViewModel, identifier: $identifierValue)
             }
+            .listRowSeparator(.hidden)
         }
+        .listStyle(.plain)
 
     }
 }
