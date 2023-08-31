@@ -32,7 +32,7 @@ enum Constants {
     }
     enum CatView {
         public static let plusIcon = Image(systemName: "plus")
-        public static let createPetLabel = "Tap to add a pet"
+        public static let createPetLabel = "Tap to add a cat"
     }
     enum Color {
         public static let mainBackgroundColor = "BackgroundColor"

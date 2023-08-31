@@ -35,9 +35,11 @@ struct CatDetailsView: View {
                             Text("\($0) \(DetailsConstants.ageLabel)")
                         }
                     }
-                    TextField(DetailsConstants.breedForm,
-                              text: $petBreed)
-                    .autocorrectionDisabled()
+                    Picker(DetailsConstants.breedForm, selection: $petBreed) {
+                        ForEach(CatBreed.allCases) { breed in
+                            Text(breed.rawValue).tag(breed)
+                        }
+                    }
                     DatePicker(selection: $petAppointment, in: Date.now...,
                                displayedComponents: .date) {
                         Text(DetailsConstants.dateForm)

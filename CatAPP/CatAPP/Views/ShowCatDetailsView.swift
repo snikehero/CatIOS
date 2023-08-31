@@ -40,10 +40,12 @@ struct ShowCatDetailsView: View {
                         }
                     }
                     .disabled(isEditable)
-                    TextField(DetailsConstants.breedForm,
-                              text: $petBreed)
+                    Picker(DetailsConstants.breedForm, selection: $petBreed) {
+                        ForEach(CatBreed.allCases) { breed in
+                            Text(breed.rawValue).tag(breed)
+                        }
+                    }
                     .disabled(isEditable)
-                    .autocorrectionDisabled()
                     DatePicker(selection: $petAppointment, in: Date.now...,
                                displayedComponents: .date) {
                         Text(DetailsConstants.dateForm)

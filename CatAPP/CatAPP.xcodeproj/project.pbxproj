@@ -23,6 +23,7 @@
 		4A8D85DF2A8EBECC007A7F7C /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D85DE2A8EBECC007A7F7C /* PhotoPicker.swift */; };
 		4A9401792A93CEC900509779 /* CatAPP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A9401772A93CEC900509779 /* CatAPP.xcdatamodeld */; };
 		4A94017B2A93CF5100509779 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94017A2A93CF5100509779 /* CoreDataManager.swift */; };
+		4ACB9C542AA0F36800972680 /* CatBreeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACB9C532AA0F36800972680 /* CatBreeds.swift */; };
 		4ACEA5512A9D07A500596968 /* EndpointBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEA5502A9D07A500596968 /* EndpointBuilder.swift */; };
 		4ACEA5582A9E449700596968 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEA5572A9E449700596968 /* NetworkMonitor.swift */; };
 		4ACEA55A2A9E45E700596968 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEA5592A9E45E700596968 /* NoInternetView.swift */; };
@@ -53,6 +54,7 @@
 		4A8D85DE2A8EBECC007A7F7C /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		4A9401782A93CEC900509779 /* CatAPP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CatAPP.xcdatamodel; sourceTree = "<group>"; };
 		4A94017A2A93CF5100509779 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		4ACB9C532AA0F36800972680 /* CatBreeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreeds.swift; sourceTree = "<group>"; };
 		4ACEA5502A9D07A500596968 /* EndpointBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointBuilder.swift; sourceTree = "<group>"; };
 		4ACEA5572A9E449700596968 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		4ACEA5592A9E45E700596968 /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				4AEBF0262A8D2B5E00A6DBF7 /* Constants.swift */,
+				4ACB9C532AA0F36800972680 /* CatBreeds.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				4ACEA55A2A9E45E700596968 /* NoInternetView.swift in Sources */,
 				4A8D85D92A8EA909007A7F7C /* VaccineFormView.swift in Sources */,
 				4A701C8F2A93BB9100CFB002 /* CatCardContainerView.swift in Sources */,
+				4ACB9C542AA0F36800972680 /* CatBreeds.swift in Sources */,
 				4A94017B2A93CF5100509779 /* CoreDataManager.swift in Sources */,
 				4A8D85DF2A8EBECC007A7F7C /* PhotoPicker.swift in Sources */,
 				4A490ADF2A9CF97D00605AC1 /* RandomCatModel.swift in Sources */,
@@ -445,6 +449,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CatAPP/Preview Content\"";
+				DEVELOPMENT_TEAM = 5UHQHHLNGV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -473,6 +478,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CatAPP/Preview Content\"";
+				DEVELOPMENT_TEAM = 5UHQHHLNGV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
