@@ -13,24 +13,27 @@ struct RandomCatView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                AsyncImage(url: URL(string: randomCatViewModel.randomCat.first?.urlString
-                                    ?? RandomCatModel.randomCatMock.urlString),
-                           content: { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(CardConstants.photoFrameRadius)
-                        .frame(width: CardConstants.photoFrameWidth,
-                               height: CardConstants.photoFrameHeight)
-                }, placeholder: {
-                    ProgressView()
-                })
-                Text("Swipe down to refresh")
+            ZStack {
+                Color(Constants.Color.mainBackgroundColor)
+                ScrollView {
+                    AsyncImage(url: URL(string: randomCatViewModel.randomCat.first?.urlString
+                                        ?? RandomCatModel.randomCatMock.urlString),
+                               content: { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(CardConstants.photoFrameRadius)
+                            .frame(width: CardConstants.photoFrameWidth,
+                                   height: CardConstants.photoFrameHeight)
+                    }, placeholder: {
+                        ProgressView()
+                    })
+                    Text("Swipe down to refresh")
+                }
             }
-        }
-        .refreshable {
-            randomCatViewModel.fetchRandomCat()
+            .refreshable {
+                randomCatViewModel.fetchRandomCat()
+            }
         }
     }
 }

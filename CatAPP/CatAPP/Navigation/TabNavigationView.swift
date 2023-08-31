@@ -15,26 +15,31 @@ struct TabNavigationView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var networkMonitor: NetworkMonitor
     var body: some View {
-        TabView {
-            CatView(catViewModel: petViewModel)
-                .tabItem {
-                    Label(TabConstants.catLabel,
-                          systemImage: TabConstants.catTabImage)
+        Group {
+            TabView {
+                CatView(catViewModel: petViewModel)
+                    .tabItem {
+                        Label(TabConstants.catLabel,
+                              systemImage: TabConstants.catTabImage)
+                    }
+                if networkMonitor.isConnected {
+                    RandomCatView(randomCatViewModel: randomCatViewModel)
+                        .tabItem {
+                            Label(TabConstants.randomLabel,
+                                  systemImage: TabConstants.catRandomImage)
+                        }
+                } else {
+                    NoInternetView()
+                        .tabItem {
+                            Label(TabConstants.randomLabel,
+                                  systemImage: TabConstants.catRandomImage)
+                        }
                 }
-            if networkMonitor.isConnected {
-                RandomCatView(randomCatViewModel: randomCatViewModel)
-                    .tabItem {
-                        Label(TabConstants.randomLabel,
-                              systemImage: TabConstants.catRandomImage)
-                    }
-            } else {
-              NoInternetView()
-                    .tabItem {
-                        Label(TabConstants.randomLabel,
-                              systemImage: TabConstants.catRandomImage)
-                    }
             }
+
         }
+        .toolbar(.visible, for: .tabBar)
+        .toolbarBackground(.visible, for: .tabBar)
     }
 }
 
