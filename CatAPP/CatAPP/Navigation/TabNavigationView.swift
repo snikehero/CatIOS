@@ -36,7 +36,6 @@ struct TabNavigationView: View {
                         }
                 }
             }
-
         }
         .toolbar(.visible, for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)

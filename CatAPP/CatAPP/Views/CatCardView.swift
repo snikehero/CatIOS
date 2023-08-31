@@ -14,7 +14,7 @@ struct CatCardView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: CardConstants.cardCornerRadius, style: .continuous)
-                .fill(.white)
+                .fill(Color("BackgroundCard"))
                 .shadow(radius: CardConstants.cardShadow)
                 HStack(spacing: CardConstants.spacing) {
                     CardNameText(name: singlePet.name)
