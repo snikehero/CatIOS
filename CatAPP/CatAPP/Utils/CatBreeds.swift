@@ -36,6 +36,7 @@ enum CatBreed: String, CaseIterable, Identifiable {
     case nebelung = "Nebelung"
     case norwegianForest = "Norwegian Forest"
     case ocicat = "Ocicat"
+    case other = "Other"
     case orientalShorthair = "Oriental Shorthair"
     case persian = "Persian"
     case ragamuffin = "Ragamuffin"
@@ -52,5 +53,6 @@ enum CatBreed: String, CaseIterable, Identifiable {
     case tonkinese = "Tonkinese"
     case turkishAngora = "Turkish Angora"
     case turkishVan = "Turkish Van"
+    case unknown = "Unknown"
     var id: String {self.rawValue}
 }
