@@ -21,7 +21,7 @@ enum Constants {
         public static let defaultBreed = "Callejero"
         public static let defaultAppointment = " 15 Octubre"
         public static let padding = CGFloat(20)
-        public static let cardWidth = CGFloat(350)
+        public static let cardWidth = CGFloat(600)
         public static let cardHeight = CGFloat(150)
     }
     enum TabNavigation {
@@ -76,5 +76,8 @@ enum Constants {
         public static let noNetworkString = "wifi.slash"
         public static let networkImageSystemSyze = CGFloat(30)
         public static let DescriptionNoNetworkImage = Image("NetworkImage")
+    }
+    enum CardContainer {
+        public static let frameMaxWidth = CGFloat(700)
     }
 }

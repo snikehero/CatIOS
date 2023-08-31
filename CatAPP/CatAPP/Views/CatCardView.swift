@@ -16,8 +16,6 @@ struct CatCardView: View {
             RoundedRectangle(cornerRadius: CardConstants.cardCornerRadius, style: .continuous)
                 .fill(.white)
                 .shadow(radius: CardConstants.cardShadow)
-            Button {
-            } label : {
                 HStack(spacing: CardConstants.spacing) {
                     CardNameText(name: singlePet.name)
                     Spacer()
@@ -33,10 +31,8 @@ struct CatCardView: View {
                     }
                 }
                 .padding(CardConstants.padding)
-            }
-            .buttonStyle(PlainButtonStyle())
         }
-        .frame(width: CardConstants.cardWidth, height: CardConstants.cardHeight)
+        .frame(maxWidth: CardConstants.cardWidth, maxHeight: CardConstants.cardHeight)
     }
 
 }
