@@ -10,6 +10,8 @@ import SwiftUI
 struct NoInternetView: View {
     @State private var isShowingAlert = false
     var body: some View {
+        ZStack {
+            Color(Constants.Color.mainBackgroundColor)
             VStack {
                 NoNetworkTitle()
                 NoInternetDescription()
@@ -17,6 +19,7 @@ struct NoInternetView: View {
             }
         }
     }
+}
 
 struct NoInternetView_Previews: PreviewProvider {
     static var previews: some View {
