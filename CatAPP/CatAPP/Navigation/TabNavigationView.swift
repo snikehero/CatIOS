@@ -35,6 +35,16 @@ struct TabNavigationView: View {
                                   systemImage: TabConstants.catRandomImage)
                         }
                 }
+                SearchCatView(catViewModel: petViewModel)
+                    .tabItem {
+                        Label("Search",
+                              systemImage: "magnifyingglass")
+                    }
+                InfiniteScrollingView(catViewModel: petViewModel)
+                    .tabItem {
+                        Label("InfiniteScrolling",
+                              systemImage: "infinity")
+                    }
             }
         }
         .toolbar(.visible, for: .tabBar)

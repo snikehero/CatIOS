@@ -8,6 +8,15 @@
 import Foundation
 @MainActor class CatDetailViewModel: ObservableObject {
     @Published var pets: [PetDetail] = []
+    @Published var filteredPets: [PetDetail] = []
+    @Published var searchText = ""
+    var filteredCats: [PetDetail] {
+        if searchText.isEmpty {
+            return pets
+        } else {
+            return pets.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+        }
+    }
     func saveData(name: String, petAge: Int, appointment: Date, breed: String ) {
         let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
         updateArray(singlePet: singlePet)
@@ -52,6 +61,9 @@ import Foundation
             CoreDataManager.shared.removeData(singlePet: singlePet)
             pets.remove(at: offset)
         }
+    }
+    func shouldLoadData(id: Int) -> Bool {
+        return id == pets.count - 2
     }
 }
 
