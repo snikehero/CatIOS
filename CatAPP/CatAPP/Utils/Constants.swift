@@ -21,7 +21,7 @@ enum Constants {
         public static let defaultBreed = "Callejero"
         public static let defaultAppointment = " 15 Octubre"
         public static let padding = CGFloat(20)
-        public static let cardWidth = CGFloat(350)
+        public static let cardWidth = CGFloat(600)
         public static let cardHeight = CGFloat(150)
     }
     enum TabNavigation {
@@ -32,7 +32,7 @@ enum Constants {
     }
     enum CatView {
         public static let plusIcon = Image(systemName: "plus")
-        public static let createPetLabel = "Tap to add a pet"
+        public static let createPetLabel = "Tap to add a cat"
     }
     enum Color {
         public static let mainBackgroundColor = "BackgroundColor"
@@ -57,6 +57,9 @@ enum Constants {
     }
     enum RandomCat {
         public static let reloadButton = "Reload"
+        public static let photoFrameWidth = CGFloat(500)
+        public static let photoFrameHeight = CGFloat(300)
+        public static let photoFrameRadius = CGFloat(30)
     }
     enum NetworkMonitorConstants {
         public static let networkMonitor = "NetworkMonitor"
@@ -73,5 +76,8 @@ enum Constants {
         public static let noNetworkString = "wifi.slash"
         public static let networkImageSystemSyze = CGFloat(30)
         public static let DescriptionNoNetworkImage = Image("NetworkImage")
+    }
+    enum CardContainer {
+        public static let frameMaxWidth = CGFloat(700)
     }
 }

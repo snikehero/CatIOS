@@ -27,6 +27,5 @@ import Foundation
                     }
                 }
             }
-        print(randomCat.first?.urlString)
     }
 }

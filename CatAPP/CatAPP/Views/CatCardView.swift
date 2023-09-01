@@ -14,10 +14,8 @@ struct CatCardView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: CardConstants.cardCornerRadius, style: .continuous)
-                .fill(.white)
+                .fill(Color("BackgroundCard"))
                 .shadow(radius: CardConstants.cardShadow)
-            Button {
-            } label : {
                 HStack(spacing: CardConstants.spacing) {
                     CardNameText(name: singlePet.name)
                     Spacer()
@@ -33,10 +31,8 @@ struct CatCardView: View {
                     }
                 }
                 .padding(CardConstants.padding)
-            }
-            .buttonStyle(PlainButtonStyle())
         }
-        .frame(width: CardConstants.cardWidth, height: CardConstants.cardHeight)
+        .frame(maxWidth: .infinity, maxHeight: CardConstants.cardHeight)
     }
 
 }

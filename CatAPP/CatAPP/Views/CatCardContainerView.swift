@@ -19,9 +19,9 @@ struct CatCardContainerView: View {
                     isPresented.toggle()
                 } label : {
                     CatCardView(singlePet: singlePet, catViewModel: catViewModel)
+                        .frame(maxWidth: Constants.CardContainer.frameMaxWidth)
                 }
                 .buttonStyle(PlainButtonStyle())
-
             }
             .onDelete(perform: { indexSet in
                 catViewModel.deleteFromCoreData(at: indexSet)
@@ -29,7 +29,10 @@ struct CatCardContainerView: View {
             .fullScreenCover(isPresented: $isPresented) {
                 ShowCatDetailsView(petViewModel: catViewModel, identifier: $identifierValue)
             }
+            .listRowSeparator(.hidden)
         }
+        .listStyle(.plain)
+
     }
 }
 
