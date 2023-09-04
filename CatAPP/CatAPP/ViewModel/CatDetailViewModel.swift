@@ -10,6 +10,8 @@ import Foundation
     @Published var pets: [PetDetail] = []
     @Published var filteredPets: [PetDetail] = []
     @Published var searchText = ""
+    @Published var  visibleTags: [String] = []
+    private let tagsPerPage = 20
     var filteredCats: [PetDetail] {
         if searchText.isEmpty {
             return pets
@@ -64,6 +66,19 @@ import Foundation
     }
     func shouldLoadData(id: Int) -> Bool {
         return id == pets.count - 2
+    }
+    func loadInitialTags() {
+        visibleTags = Array(catTags.prefix(tagsPerPage))
+    }
+
+    func loadMoreTags() {
+        let startIndex = visibleTags.count
+        let endIndex = min(startIndex + tagsPerPage, catTags.count)
+
+        if startIndex < endIndex {
+            let newTags = Array(catTags[startIndex..<endIndex])
+            visibleTags.append(contentsOf: newTags)
+        }
     }
 }
 

@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct InfiniteScrollingView: View {
-    @State private var visibleTags: [String] = []
     @ObservedObject var catViewModel: CatDetailViewModel
-    private let tagsPerPage = 20
     private let scrollThreshold: CGFloat = 100.0
     private var allTagsLoaded: Bool {
         return visibleTags.count == catTags.count
@@ -19,34 +17,21 @@ struct InfiniteScrollingView: View {
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach(visibleTags, id: \.self) { eachTag in
+                ForEach(catViewModel.visibleTags, id: \.self) { eachTag in
                     ListItem(singleTag: eachTag)
                 }
                 if !allTagsLoaded {
                     ProgressView()
-                        .onAppear(perform: loadMoreTags)
+                        .onAppear(perform: catViewModel.loadMoreTags)
                 } else {
                     Text("All tags have been loaded.")
                         .padding()
                 }
             }
         }
-        .onAppear(perform: loadInitialTags)
+        .onAppear(perform: catViewModel.loadInitialTags)
     }
 
-    private func loadInitialTags() {
-        visibleTags = Array(catTags.prefix(tagsPerPage))
-    }
-
-    private func loadMoreTags() {
-        let startIndex = visibleTags.count
-        let endIndex = min(startIndex + tagsPerPage, catTags.count)
-
-        if startIndex < endIndex {
-            let newTags = Array(catTags[startIndex..<endIndex])
-            visibleTags.append(contentsOf: newTags)
-        }
-    }
 }
 struct InfiniteScrollingView_Previews: PreviewProvider {
     static var previews: some View {
