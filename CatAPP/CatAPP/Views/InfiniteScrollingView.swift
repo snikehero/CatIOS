@@ -11,7 +11,7 @@ struct InfiniteScrollingView: View {
     @ObservedObject var catViewModel: CatDetailViewModel
     private let scrollThreshold: CGFloat = 100.0
     private var allTagsLoaded: Bool {
-        return visibleTags.count == catTags.count
+        return catViewModel.visibleTags.count == catTags.count
     }
 
     var body: some View {
