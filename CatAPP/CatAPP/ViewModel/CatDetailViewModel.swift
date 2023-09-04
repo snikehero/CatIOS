@@ -11,7 +11,7 @@ import Foundation
     @Published var filteredPets: [PetDetail] = []
     @Published var searchText = ""
     @Published var  visibleTags: [String] = []
-    private let tagsPerPage = 20
+    private let tagsPerPage = Constants.InfiniteScrolling.TagsPerPage
     var filteredCats: [PetDetail] {
         if searchText.isEmpty {
             return pets

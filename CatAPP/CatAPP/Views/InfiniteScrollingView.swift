@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InfiniteScrollingView: View {
     @ObservedObject var catViewModel: CatDetailViewModel
-    private let scrollThreshold: CGFloat = 100.0
+    private let scrollThreshold: CGFloat = Constants.InfiniteScrolling.scrollThreshold
     private var allTagsLoaded: Bool {
         return catViewModel.visibleTags.count == catTags.count
     }
@@ -24,7 +24,7 @@ struct InfiniteScrollingView: View {
                     ProgressView()
                         .onAppear(perform: catViewModel.loadMoreTags)
                 } else {
-                    Text("All tags have been loaded.")
+                    Text(Constants.InfiniteScrolling.allTextLoaded)
                         .padding()
                 }
             }
@@ -48,6 +48,6 @@ struct ListItem: View {
                 .padding()
             Spacer()
         }
-        .background(Color.gray.opacity(0.2))
+        .background(Color.gray.opacity(Constants.InfiniteScrolling.backgroundOpacity))
     }
 }

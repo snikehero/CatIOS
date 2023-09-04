@@ -80,4 +80,10 @@ enum Constants {
     enum CardContainer {
         public static let frameMaxWidth = CGFloat(700)
     }
+    enum InfiniteScrolling {
+        public static let TagsPerPage = 20
+        public static let scrollThreshold = CGFloat(100.0)
+        public static let backgroundOpacity = CGFloat(0.2)
+        public static let allTextLoaded = "All tags have been loaded"
+    }
 }
