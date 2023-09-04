@@ -15,9 +15,6 @@ class EndpointBuilder {
     }
     func getRandomCat() -> URL? {
         self.components.path = EndpointBuilder.randomCatPath
-//        components.queryItems = [
-//        URLQueryItem(name: "json", value: "true")
-//        ]
         print(components)
         return components.url
     }
