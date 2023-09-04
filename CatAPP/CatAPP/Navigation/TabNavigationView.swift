@@ -37,13 +37,13 @@ struct TabNavigationView: View {
                 }
                 SearchCatView(catViewModel: petViewModel)
                     .tabItem {
-                        Label("Search",
-                              systemImage: "magnifyingglass")
+                        Label(TabConstants.searchLabel,
+                              systemImage: TabConstants.searchImage)
                     }
                 InfiniteScrollingView(catViewModel: petViewModel)
                     .tabItem {
-                        Label("InfiniteScrolling",
-                              systemImage: "infinity")
+                        Label(TabConstants.infiniteLabel,
+                              systemImage: TabConstants.infiniteImage)
                     }
             }
         }

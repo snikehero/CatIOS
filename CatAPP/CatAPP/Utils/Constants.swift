@@ -29,6 +29,10 @@ enum Constants {
         public static let catTabImage = "doc"
         public static let randomLabel = "Random"
         public static let catRandomImage = "magazine"
+        public static let searchLabel = "Search"
+        public static let searchImage = "magnifyingglass"
+        public static let infiniteLabel = "Infinite Scrolling"
+        public static let infiniteImage = "infinity"
     }
     enum CatView {
         public static let plusIcon = Image(systemName: "plus")
@@ -85,5 +89,6 @@ enum Constants {
         public static let scrollThreshold = CGFloat(100.0)
         public static let backgroundOpacity = CGFloat(0.2)
         public static let allTextLoaded = "All tags have been loaded"
+
     }
 }
