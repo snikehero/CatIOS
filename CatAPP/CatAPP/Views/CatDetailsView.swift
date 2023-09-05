@@ -78,7 +78,9 @@ struct CatDetailsView: View {
                         petViewModel.saveData(name: petName,
                                               petAge: petAge,
                                               appointment: petAppointment,
-                                              breed: petBreed)
+                                              breed: petBreed,
+                                              vaccine: petVaccines.first ?? "unknown",
+                                              vaccineDate: petVaccinesDate.first ?? Date.now)
                         showingAlert = true
                     } label: {
                         Text(DetailsConstants.saveButton)

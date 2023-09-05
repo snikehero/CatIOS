@@ -6,7 +6,7 @@
 //
 
 import CoreData
-
+import SwiftUI
 class CoreDataManager {
     private let persistenceContainer: NSPersistentContainer
 
@@ -52,6 +52,7 @@ class CoreDataManager {
             }
         }
     }
+
 }
 
 extension CoreDataManager {
@@ -68,20 +69,37 @@ extension CoreDataManager {
         }
     }
 
-    func saveCat(singlePet: PetDetail) {
+    func saveCat(singlePet: PetDetail, vaccine: String, vaccineDate: Date) {
         let newCat = Cat(context: viewContext)
         newCat.identifier = singlePet.id
         newCat.name = singlePet.name
         newCat.year = Int32(singlePet.petYear)
         newCat.appointment = singlePet.appointment
         newCat.breed = singlePet.breed
+        let newVaccineEntry = Vaccine(context: viewContext)
+        newVaccineEntry.vaccineName = vaccine
+        newVaccineEntry.vaccineDate = vaccineDate
+        newVaccineEntry.cat = newCat
+        newCat.addToVaccine(newVaccineEntry)
+
         do {
             try viewContext.save()
         } catch let error {
             fatalError(error.localizedDescription)
         }
     }
+    func saveVaccines(catEntity: Cat, vaccine: String, vaccineDate: Date ) {
+        let newVaccineEntry = Vaccine(context: viewContext)
+        newVaccineEntry.vaccineName = vaccine
+        newVaccineEntry.vaccineDate = vaccineDate
+        catEntity.addToVaccine(newVaccineEntry)
+        do {
+            try viewContext.save()
+        } catch let error {
+            fatalError(error.localizedDescription)
+        }
 
+    }
     func fetch() -> [Cat] {
         let fetchRequest = Cat.fetchRequest()
         if let result = try? self.viewContext.fetch(fetchRequest) {

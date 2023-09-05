@@ -11,6 +11,6 @@ enum CatVaccine: String, CaseIterable, Identifiable {
     case felineLeukemia = "Feline Leukemia"
     case distemper = "Distemper"
     case felineHerpesVirus = "Feline herpes virus"
-    case felineCalicivirus = "feline calici virus"
+    case felineCalicivirus = "Feline calici virus"
     var id: String {self.rawValue}
 }

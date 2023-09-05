@@ -20,7 +20,8 @@ struct ShowCatDetailsView: View {
     @Binding var identifier: String
     @State var singlePet = PetDetail.mockJojo
     @State var isEditingState = true
-
+    @State var petVaccines: [String] = []
+    @State var petVaccinesDate: [Date] = []
     var body: some View {
         NavigationStack {
             Form {
@@ -52,8 +53,20 @@ struct ShowCatDetailsView: View {
                     }
                                .disabled(isEditable)
                 }
-                Section(header: Text(DetailsConstants.vaccineSection)) {
-                    VaccineFormView()
+                Section(header: Text("Vaccines")) {
+                    ForEach(0..<petVaccines.count, id: \.self) { index in
+                        VStack {
+                            Picker("Vaccine", selection: $petVaccines[index]) {
+                                ForEach(CatVaccine.allCases) { vaccine in
+                                    Text(vaccine.rawValue).tag(vaccine)
+                                }
+                            }
+                            DatePicker(selection: $petVaccinesDate[index], in: Date.now...,
+                                       displayedComponents: .date) {
+                                Text("Vaccine Date")
+                            }
+                        }
+                    }
                 }
             }
             .onAppear {
@@ -99,6 +112,7 @@ struct ShowCatDetailsView: View {
         petBreed = singlePet.breed
         petAge = singlePet.petYear
         petAppointment = singlePet.appointment
+        
     }
     func updateModel(singlePet: PetDetail) {
         self.singlePet.name = petName

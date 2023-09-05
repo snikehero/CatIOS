@@ -19,7 +19,7 @@ extension Cat {
     @NSManaged public var breed: String
     @NSManaged public var name: String
     @NSManaged public var identifier: String
-
+    @NSManaged public var vaccine: NSSet?
     func toPetDetail() -> PetDetail {
         return PetDetail(
             id: self.identifier,
@@ -30,5 +30,19 @@ extension Cat {
         )
     }
 }
+extension Cat {
 
+    @objc(addVaccineObject:)
+    @NSManaged public func addToVaccine(_ value: Vaccine)
+
+    @objc(removeVaccineObject:)
+    @NSManaged public func removeFromVaccine(_ value: Vaccine)
+
+    @objc(addVaccine:)
+    @NSManaged public func addToVaccine(_ values: NSSet)
+
+    @objc(removeVaccine:)
+    @NSManaged public func removeFromVaccine(_ values: NSSet)
+
+}
 extension Cat : Identifiable { }

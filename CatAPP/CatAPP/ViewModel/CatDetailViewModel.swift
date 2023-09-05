@@ -16,18 +16,19 @@ import Foundation
         }
             return pets.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
-    func saveData(name: String, petAge: Int, appointment: Date, breed: String ) {
+    func saveData(name: String, petAge: Int, appointment: Date, breed: String,vaccine: String, vaccineDate: Date ) {
         let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
         updateArray(singlePet: singlePet)
-        saveToCoreData(singlePet: singlePet)
+        saveToCoreData(singlePet: singlePet, vaccine: vaccine, vaccineDate: vaccineDate)
+
     }
 
     private func updateArray(singlePet: PetDetail) {
         pets.append(singlePet)
     }
 
-    private func saveToCoreData(singlePet: PetDetail) {
-        CoreDataManager.shared.saveCat(singlePet: singlePet)
+    private func saveToCoreData(singlePet: PetDetail, vaccine: String, vaccineDate: Date) {
+        CoreDataManager.shared.saveCat(singlePet: singlePet, vaccine: vaccine, vaccineDate: vaccineDate)
     }
 
     func transformData(petModel: [Cat]) {
@@ -58,9 +59,6 @@ import Foundation
             CoreDataManager.shared.removeData(singlePet: singlePet)
             pets.remove(at: offset)
         }
-    }
-    func createNewAppointment(singlePet: PetDetail) {
-        print("Created appointment for \(singlePet)")
     }
 }
 
