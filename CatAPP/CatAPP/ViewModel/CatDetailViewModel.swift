@@ -14,7 +14,7 @@ import Foundation
         if searchText.isEmpty {
             return pets
         }
-            return pets.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+        return pets.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
     func saveData(name: String, petAge: Int, appointment: Date, breed: String ) {
         let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
@@ -38,7 +38,7 @@ import Foundation
         if let singlePet = arrayOfPets.first(where: {$0.id == identifier}) {
             return singlePet
         }
-            return PetDetail.mockJojo
+        return PetDetail.mockJojo
     }
 
     func updateToCoreData(singlePet: PetDetail, identifier: String ) {
