@@ -52,7 +52,6 @@ class CoreDataManager {
             }
         }
     }
-
 }
 
 extension CoreDataManager {
