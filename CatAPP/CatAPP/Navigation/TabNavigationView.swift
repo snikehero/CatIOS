@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TabNavigationView: View {
+    @StateObject var tagViewModel = CatTagViewModel(networkManager: NetworkManager(),
+                                                    endpointBuilder: EndpointBuilder())
     @StateObject var petViewModel = CatDetailViewModel()
     @StateObject var randomCatViewModel = RandomCatViewModel(networkManager: NetworkManager(),
                                                              endpointBuilder: EndpointBuilder())
@@ -35,15 +37,23 @@ struct TabNavigationView: View {
                                   systemImage: TabConstants.catRandomImage)
                         }
                 }
+                if networkMonitor.isConnected {
+                    InfiniteScrollingView(tagViewModel: tagViewModel)
+                        .tabItem {
+                            Label(TabConstants.infiniteLabel,
+                                  systemImage: TabConstants.infiniteImage)
+                        }
+                } else {
+                    NoInternetView()
+                        .tabItem {
+                            Label(TabConstants.infiniteLabel,
+                                  systemImage: TabConstants.catRandomImage)
+                        }
+                }
                 SearchCatView(catViewModel: petViewModel)
                     .tabItem {
                         Label(TabConstants.searchLabel,
                               systemImage: TabConstants.searchImage)
-                    }
-                InfiniteScrollingView(catViewModel: petViewModel)
-                    .tabItem {
-                        Label(TabConstants.infiniteLabel,
-                              systemImage: TabConstants.infiniteImage)
                     }
             }
         }

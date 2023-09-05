@@ -18,8 +18,14 @@ class EndpointBuilder {
         print(components)
         return components.url
     }
+    func getCatTags() -> URL? {
+        self.components.path = EndpointBuilder.tagPath
+        print(components)
+        return components.url
+    }
 }
 extension EndpointBuilder {
     static let randomCatPath: String = "/v1/images/search"
     static let imageURL: String = "https://cataas.com/cat"
+    static let tagPath: String = "/api/tags"
 }

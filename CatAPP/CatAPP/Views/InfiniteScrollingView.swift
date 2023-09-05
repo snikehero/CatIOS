@@ -8,34 +8,34 @@
 import SwiftUI
 
 struct InfiniteScrollingView: View {
-    @ObservedObject var catViewModel: CatDetailViewModel
+    @ObservedObject var tagViewModel: CatTagViewModel
     private let scrollThreshold: CGFloat = Constants.InfiniteScrolling.scrollThreshold
-    private var allTagsLoaded: Bool {
-        return catViewModel.visibleTags.count == catTags.count
-    }
 
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach(catViewModel.visibleTags, id: \.self) { eachTag in
+                ForEach(tagViewModel.visibleTags, id: \.self) { eachTag in
                     ListItem(singleTag: eachTag)
                 }
-                if !allTagsLoaded {
+                if !tagViewModel.allTagsLoaded {
                     ProgressView()
-                        .onAppear(perform: catViewModel.loadMoreTags)
+                        .onAppear(perform: tagViewModel.loadMoreTags)
                 } else {
                     Text(Constants.InfiniteScrolling.allTextLoaded)
                         .padding()
                 }
             }
         }
-        .onAppear(perform: catViewModel.loadInitialTags)
+        .onAppear(perform: tagViewModel.loadInitialTags)
+        .onAppear(perform: tagViewModel.fetchAllTags)
     }
 
 }
 struct InfiniteScrollingView_Previews: PreviewProvider {
     static var previews: some View {
-        InfiniteScrollingView(catViewModel: CatDetailViewModel())
+        InfiniteScrollingView(tagViewModel: CatTagViewModel(networkManager:
+                                                                NetworkManager(),
+                                                            endpointBuilder: EndpointBuilder()))
     }
 }
 
