@@ -92,7 +92,6 @@ extension CoreDataManager {
     func fetch() -> [Cat] {
         let fetchRequest = Cat.fetchRequest()
         if let result = try? self.viewContext.fetch(fetchRequest) {
-            print("RESULTADO DE GATO \(result.description)")
             return result
         } else {
             return []

@@ -81,7 +81,6 @@ struct CatDetailsView: View {
                                               appointment: petAppointment,
                                               breed: petBreed
                                               )
-
                         showingAlert = true
                     } label: {
                         Text(DetailsConstants.saveButton)
@@ -102,6 +101,7 @@ struct CatDetailsView: View {
         petVaccines.append("")
         petVaccinesDate.append(Date())
     }
+
     func addToModel() {
         for index in petVaccines.enumerated() {
             let vaccineName = petVaccines[index.offset]
