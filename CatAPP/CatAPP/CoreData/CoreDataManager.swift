@@ -89,18 +89,7 @@ extension CoreDataManager {
             fatalError(error.localizedDescription)
         }
     }
-    func saveVaccines(catEntity: Cat, vaccine: String, vaccineDate: Date ) {
-        let newVaccineEntry = Vaccine(context: viewContext)
-        newVaccineEntry.vaccineName = vaccine
-        newVaccineEntry.vaccineDate = vaccineDate
-        catEntity.addToVaccine(newVaccineEntry)
-        do {
-            try viewContext.save()
-        } catch let error {
-            fatalError(error.localizedDescription)
-        }
 
-    }
     func fetch() -> [Cat] {
         let fetchRequest = Cat.fetchRequest()
         if let result = try? self.viewContext.fetch(fetchRequest) {
@@ -125,6 +114,7 @@ extension CoreDataManager {
             }
         }
     }
+
     func removeData(singlePet: PetDetail) {
         let fetchRequest = Cat.fetchRequest()
         let predicate = NSPredicate(format: "identifier BEGINSWITH %@", singlePet.id)
