@@ -49,19 +49,19 @@ struct CatDetailsView: View {
                 Button {
                     createNewVaccine()
                 } label: {
-                    Text("Add New Vaccine")
+                    Text(DetailsConstants.createVaccineLabel)
                 }
-                Section(header: Text("Vaccines")) {
+                Section(header: Text(DetailsConstants.vaccineSectionLabel)) {
                     ForEach(0..<petVaccines.count, id: \.self) { index in
                         VStack {
-                            Picker("Vaccine", selection: $petVaccines[index]) {
+                            Picker(DetailsConstants.vaccinePickerLabel, selection: $petVaccines[index]) {
                                 ForEach(CatVaccine.allCases) { vaccine in
                                     Text(vaccine.rawValue).tag(vaccine)
                                 }
                             }
                             DatePicker(selection: $petVaccinesDate[index], in: Date.now...,
                                        displayedComponents: .date) {
-                                Text("Vaccine Date")
+                                Text(DetailsConstants.vaccineDatePickerLabel)
                             }
                         }
                     }

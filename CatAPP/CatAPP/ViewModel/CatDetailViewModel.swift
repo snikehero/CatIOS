@@ -18,7 +18,11 @@ import Foundation
             return pets.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
     func saveData(name: String, petAge: Int, appointment: Date, breed: String) {
-        let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment, vaccines: vaccines)
+        let singlePet = PetDetail(name: name,
+                                  petYear: petAge,
+                                  breed: breed,
+                                  appointment: appointment,
+                                  vaccines: vaccines)
         print(singlePet)
         updateArray(singlePet: singlePet)
         saveToCoreData(singlePet: singlePet, vaccines: singlePet.vaccines )
@@ -62,7 +66,6 @@ import Foundation
             pets.remove(at: offset)
         }
     }
-    
 }
 
 extension CatDetailViewModel {

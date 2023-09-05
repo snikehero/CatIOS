@@ -53,12 +53,12 @@ struct ShowCatDetailsView: View {
                     }
                                .disabled(isEditable)
                 }
-                Section(header: Text("Vaccines")) {
+                Section(header: Text(DetailsConstants.vaccineSection)) {
                     ForEach(0..<singlePet.vaccines.count, id: \.self) { index in
                         VStack {
                             Text(singlePet.vaccines[index].vaccineName)
-                            Text(singlePet.vaccines[index].vaccineDate.formatted())
-                                .font(.system(size: 18))
+                            Text(singlePet.vaccines[index].vaccineDate.formatted(.dateTime.day().month().year()))
+                                .font(.system(size: DetailsConstants.dateFontSize))
                                 .foregroundColor(.secondary)
                         }
                     }
