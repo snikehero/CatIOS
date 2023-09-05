@@ -17,7 +17,8 @@ struct CatDetailsView: View {
     @State var petAppointment: Date = Date.now
     @State var petBreed: String = CatBreed.abyssinian.rawValue
     @State private var showingAlert = false
-
+    @State var petVaccines: [String] = []
+    @State var petVaccinesDate: [Date] = []
     var body: some View {
         NavigationStack {
             Form {
@@ -45,8 +46,25 @@ struct CatDetailsView: View {
                         Text(DetailsConstants.dateForm)
                     }
                 }
-                Section(header: Text(DetailsConstants.vaccineSection)) {
-                    VaccineFormView()
+                Button {
+                    createNewVaccine()
+                } label: {
+                    Text("Add New Vaccine")
+                }
+                Section(header: Text("Vaccines")) {
+                    ForEach(0..<petVaccines.count, id: \.self) { index in
+                        VStack {
+                            Picker("Vaccine", selection: $petVaccines[index]) {
+                                ForEach(CatVaccine.allCases) { vaccine in
+                                    Text(vaccine.rawValue).tag(vaccine)
+                                }
+                            }
+                            DatePicker(selection: $petVaccinesDate[index], in: Date.now...,
+                                       displayedComponents: .date) {
+                                Text("Vaccine Date")
+                            }
+                        }
+                    }
                 }
             }
             .alert(DetailsConstants.alertMessage, isPresented: $showingAlert) {
@@ -76,6 +94,10 @@ struct CatDetailsView: View {
                 }
             }
         }
+    }
+    func createNewVaccine() {
+        petVaccines.append("")
+        petVaccinesDate.append(Date())
     }
 }
 

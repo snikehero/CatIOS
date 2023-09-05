@@ -59,6 +59,9 @@ import Foundation
             pets.remove(at: offset)
         }
     }
+    func createNewAppointment(singlePet: PetDetail) {
+        print("Created appointment for \(singlePet)")
+    }
 }
 
 extension CatDetailViewModel {
