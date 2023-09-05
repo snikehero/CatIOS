@@ -50,11 +50,6 @@ struct TabNavigationView: View {
                                   systemImage: TabConstants.catRandomImage)
                         }
                 }
-                SearchCatView(catViewModel: petViewModel)
-                    .tabItem {
-                        Label(TabConstants.searchLabel,
-                              systemImage: TabConstants.searchImage)
-                    }
             }
         }
         .toolbar(.visible, for: .tabBar)
