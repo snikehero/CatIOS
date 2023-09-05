@@ -10,16 +10,18 @@ import Foundation
     @Published var pets: [PetDetail] = []
     @Published var filteredPets: [PetDetail] = []
     @Published var searchText = ""
+    @Published var vaccines: [PetVaccineModel] = []
     var filteredCats: [PetDetail] {
         if searchText.isEmpty {
             return pets
         }
             return pets.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
-    func saveData(name: String, petAge: Int, appointment: Date, breed: String,vaccine: String, vaccineDate: Date ) {
-        let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
+    func saveData(name: String, petAge: Int, appointment: Date, breed: String) {
+        let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment, vaccines: vaccines)
+        print(singlePet)
         updateArray(singlePet: singlePet)
-        saveToCoreData(singlePet: singlePet, vaccine: vaccine, vaccineDate: vaccineDate)
+        saveToCoreData(singlePet: singlePet, vaccines: singlePet.vaccines )
 
     }
 
@@ -27,8 +29,8 @@ import Foundation
         pets.append(singlePet)
     }
 
-    private func saveToCoreData(singlePet: PetDetail, vaccine: String, vaccineDate: Date) {
-        CoreDataManager.shared.saveCat(singlePet: singlePet, vaccine: vaccine, vaccineDate: vaccineDate)
+    private func saveToCoreData(singlePet: PetDetail, vaccines: [PetVaccineModel]) {
+        CoreDataManager.shared.saveCat(singlePet: singlePet, vaccines: vaccines)
     }
 
     func transformData(petModel: [Cat]) {
@@ -60,6 +62,7 @@ import Foundation
             pets.remove(at: offset)
         }
     }
+    
 }
 
 extension CatDetailViewModel {

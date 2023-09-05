@@ -69,19 +69,20 @@ extension CoreDataManager {
         }
     }
 
-    func saveCat(singlePet: PetDetail, vaccine: String, vaccineDate: Date) {
+    func saveCat(singlePet: PetDetail, vaccines: [PetVaccineModel]) {
         let newCat = Cat(context: viewContext)
         newCat.identifier = singlePet.id
         newCat.name = singlePet.name
         newCat.year = Int32(singlePet.petYear)
         newCat.appointment = singlePet.appointment
         newCat.breed = singlePet.breed
-        let newVaccineEntry = Vaccine(context: viewContext)
-        newVaccineEntry.vaccineName = vaccine
-        newVaccineEntry.vaccineDate = vaccineDate
-        newVaccineEntry.cat = newCat
-        newCat.addToVaccine(newVaccineEntry)
-
+        vaccines.forEach { vaccineModel in
+            let newVaccineEntry = Vaccine(context: viewContext)
+            newVaccineEntry.vaccineName = vaccineModel.vaccineName
+            newVaccineEntry.vaccineDate = vaccineModel.vaccineDate
+            newVaccineEntry.cat = newCat
+            newCat.addToVaccine(newVaccineEntry)
+        }
         do {
             try viewContext.save()
         } catch let error {
@@ -103,6 +104,7 @@ extension CoreDataManager {
     func fetch() -> [Cat] {
         let fetchRequest = Cat.fetchRequest()
         if let result = try? self.viewContext.fetch(fetchRequest) {
+            print("RESULTADO DE GATO \(result.description)")
             return result
         } else {
             return []

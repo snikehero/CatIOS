@@ -75,12 +75,13 @@ struct CatDetailsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
+                        addToModel()
                         petViewModel.saveData(name: petName,
                                               petAge: petAge,
                                               appointment: petAppointment,
-                                              breed: petBreed,
-                                              vaccine: petVaccines.first ?? "unknown",
-                                              vaccineDate: petVaccinesDate.first ?? Date.now)
+                                              breed: petBreed
+                                              )
+
                         showingAlert = true
                     } label: {
                         Text(DetailsConstants.saveButton)
@@ -100,6 +101,14 @@ struct CatDetailsView: View {
     func createNewVaccine() {
         petVaccines.append("")
         petVaccinesDate.append(Date())
+    }
+    func addToModel() {
+        for index in petVaccines.enumerated() {
+            let vaccineName = petVaccines[index.offset]
+            let vaccineDate = petVaccinesDate[index.offset]
+            let petVaccineModel = PetVaccineModel(vaccineName: vaccineName, vaccineDate: vaccineDate)
+            petViewModel.vaccines.append(petVaccineModel)
+        }
     }
 }
 

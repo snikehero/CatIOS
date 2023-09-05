@@ -54,17 +54,12 @@ struct ShowCatDetailsView: View {
                                .disabled(isEditable)
                 }
                 Section(header: Text("Vaccines")) {
-                    ForEach(0..<petVaccines.count, id: \.self) { index in
+                    ForEach(0..<singlePet.vaccines.count, id: \.self) { index in
                         VStack {
-                            Picker("Vaccine", selection: $petVaccines[index]) {
-                                ForEach(CatVaccine.allCases) { vaccine in
-                                    Text(vaccine.rawValue).tag(vaccine)
-                                }
-                            }
-                            DatePicker(selection: $petVaccinesDate[index], in: Date.now...,
-                                       displayedComponents: .date) {
-                                Text("Vaccine Date")
-                            }
+                            Text(singlePet.vaccines[index].vaccineName)
+                            Text(singlePet.vaccines[index].vaccineDate.formatted())
+                                .font(.system(size: 18))
+                                .foregroundColor(.secondary)
                         }
                     }
                 }
@@ -112,7 +107,6 @@ struct ShowCatDetailsView: View {
         petBreed = singlePet.breed
         petAge = singlePet.petYear
         petAppointment = singlePet.appointment
-        
     }
     func updateModel(singlePet: PetDetail) {
         self.singlePet.name = petName

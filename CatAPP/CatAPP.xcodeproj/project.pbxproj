@@ -18,6 +18,7 @@
 		4A6963B62A97D2FD00EC5049 /* CatObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6963B52A97D2FD00EC5049 /* CatObject+Extension.swift */; };
 		4A701C8F2A93BB9100CFB002 /* CatCardContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A701C8E2A93BB9100CFB002 /* CatCardContainerView.swift */; };
 		4A701C912A93BB9900CFB002 /* CatCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A701C902A93BB9900CFB002 /* CatCardView.swift */; };
+		4A790D762AA7A8A00063A397 /* PetVaccineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A790D752AA7A8A00063A397 /* PetVaccineModel.swift */; };
 		4A8D85D72A8E95F4007A7F7C /* CatDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D85D62A8E95F4007A7F7C /* CatDetailsView.swift */; };
 		4A8D85DB2A8EAD7A007A7F7C /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D85DA2A8EAD7A007A7F7C /* PetModel.swift */; };
 		4A8D85DD2A8EAE7F007A7F7C /* CatDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D85DC2A8EAE7F007A7F7C /* CatDetailViewModel.swift */; };
@@ -55,6 +56,7 @@
 		4A6963B52A97D2FD00EC5049 /* CatObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatObject+Extension.swift"; sourceTree = "<group>"; };
 		4A701C8E2A93BB9100CFB002 /* CatCardContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatCardContainerView.swift; sourceTree = "<group>"; };
 		4A701C902A93BB9900CFB002 /* CatCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatCardView.swift; sourceTree = "<group>"; };
+		4A790D752AA7A8A00063A397 /* PetVaccineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetVaccineModel.swift; sourceTree = "<group>"; };
 		4A8D85D62A8E95F4007A7F7C /* CatDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsView.swift; sourceTree = "<group>"; };
 		4A8D85DA2A8EAD7A007A7F7C /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
 		4A8D85DC2A8EAE7F007A7F7C /* CatDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewModel.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				4A8D85DA2A8EAD7A007A7F7C /* PetModel.swift */,
 				4A490ADE2A9CF97D00605AC1 /* RandomCatModel.swift */,
 				4A597F932AA68824009FE392 /* CatTagModel.swift */,
+				4A790D752AA7A8A00063A397 /* PetVaccineModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				4ACEA55A2A9E45E700596968 /* NoInternetView.swift in Sources */,
 				4A597F942AA68824009FE392 /* CatTagModel.swift in Sources */,
 				4AD2367C2AA7844A009DEEA8 /* CatVaccines.swift in Sources */,
+				4A790D762AA7A8A00063A397 /* PetVaccineModel.swift in Sources */,
 				4A701C8F2A93BB9100CFB002 /* CatCardContainerView.swift in Sources */,
 				4ACB9C542AA0F36800972680 /* CatBreeds.swift in Sources */,
 				4AD5903F2AA2646E00717328 /* InfiniteScrollingView.swift in Sources */,
