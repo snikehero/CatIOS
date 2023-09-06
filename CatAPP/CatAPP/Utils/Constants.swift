@@ -29,6 +29,10 @@ enum Constants {
         public static let catTabImage = "doc"
         public static let randomLabel = "Random"
         public static let catRandomImage = "magazine"
+        public static let searchLabel = "Search"
+        public static let searchImage = "magnifyingglass"
+        public static let infiniteLabel = "Infinite Scrolling"
+        public static let infiniteImage = "infinity"
     }
     enum CatView {
         public static let plusIcon = Image(systemName: "plus")
@@ -50,6 +54,8 @@ enum Constants {
         public static let alertMessage = "Data has been saved."
         public static let alertButton = "Ok"
         public static let editButton = "Edit"
+        public static let minimumAge = Int(0)
+        public static let maximumAge = Int(25)
     }
     enum PhotoPicker {
         public static let placeholderFrameWidth = CGFloat(100)
@@ -79,5 +85,12 @@ enum Constants {
     }
     enum CardContainer {
         public static let frameMaxWidth = CGFloat(700)
+    }
+    enum InfiniteScrolling {
+        public static let TagsPerPage = 20
+        public static let scrollThreshold = CGFloat(100.0)
+        public static let backgroundOpacity = CGFloat(0.2)
+        public static let allTextLoaded = "All tags have been loaded"
+
     }
 }

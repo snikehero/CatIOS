@@ -35,7 +35,7 @@ struct ShowCatDetailsView: View {
                     .disabled(isEditable)
                     .autocorrectionDisabled()
                     Picker(DetailsConstants.ageForm, selection: $petAge) {
-                        ForEach(0 ..< 20) {
+                        ForEach(DetailsConstants.minimumAge ..< DetailsConstants.maximumAge) {
                             Text("\($0) \(DetailsConstants.ageLabel)")
                         }
                     }

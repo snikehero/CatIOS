@@ -8,6 +8,14 @@
 import Foundation
 @MainActor class CatDetailViewModel: ObservableObject {
     @Published var pets: [PetDetail] = []
+    @Published var filteredPets: [PetDetail] = []
+    @Published var searchText = ""
+    var filteredCats: [PetDetail] {
+        if searchText.isEmpty {
+            return pets
+        }
+        return pets.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+    }
     func saveData(name: String, petAge: Int, appointment: Date, breed: String ) {
         let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
         updateArray(singlePet: singlePet)
@@ -29,9 +37,8 @@ import Foundation
     func searchById(arrayOfPets: [PetDetail], identifier: String) -> PetDetail {
         if let singlePet = arrayOfPets.first(where: {$0.id == identifier}) {
             return singlePet
-        } else {
-            return PetDetail.mockJojo
         }
+        return PetDetail.mockJojo
     }
 
     func updateToCoreData(singlePet: PetDetail, identifier: String ) {
@@ -46,7 +53,6 @@ import Foundation
         }
     }
     func deleteFromCoreData(at offsets: IndexSet) {
-        print(offsets)
         for offset in offsets {
             let singlePet = pets[offset]
             CoreDataManager.shared.removeData(singlePet: singlePet)
