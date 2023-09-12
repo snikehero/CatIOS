@@ -10,24 +10,31 @@ import Foundation
     @Published var pets: [PetDetail] = []
     @Published var filteredPets: [PetDetail] = []
     @Published var searchText = ""
+    @Published var vaccines: [PetVaccineModel] = []
     var filteredCats: [PetDetail] {
         if searchText.isEmpty {
             return pets
         }
         return pets.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
-    func saveData(name: String, petAge: Int, appointment: Date, breed: String ) {
-        let singlePet = PetDetail(name: name, petYear: petAge, breed: breed, appointment: appointment)
+    func saveData(name: String, petAge: Int, appointment: Date, breed: String) {
+        let singlePet = PetDetail(name: name,
+                                  petYear: petAge,
+                                  breed: breed,
+                                  appointment: appointment,
+                                  vaccines: vaccines)
+        print(singlePet)
         updateArray(singlePet: singlePet)
-        saveToCoreData(singlePet: singlePet)
+        saveToCoreData(singlePet: singlePet, vaccines: singlePet.vaccines )
+
     }
 
     private func updateArray(singlePet: PetDetail) {
         pets.append(singlePet)
     }
 
-    private func saveToCoreData(singlePet: PetDetail) {
-        CoreDataManager.shared.saveCat(singlePet: singlePet)
+    private func saveToCoreData(singlePet: PetDetail, vaccines: [PetVaccineModel]) {
+        CoreDataManager.shared.saveCat(singlePet: singlePet, vaccines: vaccines)
     }
 
     func transformData(petModel: [Cat]) {

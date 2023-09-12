@@ -20,7 +20,8 @@ struct ShowCatDetailsView: View {
     @Binding var identifier: String
     @State var singlePet = PetDetail.mockJojo
     @State var isEditingState = true
-
+    @State var petVaccines: [String] = []
+    @State var petVaccinesDate: [Date] = []
     var body: some View {
         NavigationStack {
             Form {
@@ -53,7 +54,14 @@ struct ShowCatDetailsView: View {
                                .disabled(isEditable)
                 }
                 Section(header: Text(DetailsConstants.vaccineSection)) {
-                    VaccineFormView()
+                    ForEach(0..<singlePet.vaccines.count, id: \.self) { index in
+                        VStack {
+                            Text(singlePet.vaccines[index].vaccineName)
+                            Text(singlePet.vaccines[index].vaccineDate.formatted(.dateTime.day().month().year()))
+                                .font(.system(size: DetailsConstants.dateFontSize))
+                                .foregroundColor(.secondary)
+                        }
+                    }
                 }
             }
             .onAppear {

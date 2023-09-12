@@ -56,6 +56,12 @@ enum Constants {
         public static let editButton = "Edit"
         public static let minimumAge = Int(0)
         public static let maximumAge = Int(25)
+        public static let appointmentSection = "Appointment"
+        public static let createVaccineLabel = "Add new vaccine"
+        public static let vaccineSectionLabel = "Vaccines"
+        public static let vaccinePickerLabel = "Vaccine"
+        public static let vaccineDatePickerLabel = "Vaccine date"
+        public static let dateFontSize = CGFloat(18)
     }
     enum PhotoPicker {
         public static let placeholderFrameWidth = CGFloat(100)

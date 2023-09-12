@@ -6,7 +6,7 @@
 //
 
 import CoreData
-
+import SwiftUI
 class CoreDataManager {
     private let persistenceContainer: NSPersistentContainer
 
@@ -68,13 +68,20 @@ extension CoreDataManager {
         }
     }
 
-    func saveCat(singlePet: PetDetail) {
+    func saveCat(singlePet: PetDetail, vaccines: [PetVaccineModel]) {
         let newCat = Cat(context: viewContext)
         newCat.identifier = singlePet.id
         newCat.name = singlePet.name
         newCat.year = Int32(singlePet.petYear)
         newCat.appointment = singlePet.appointment
         newCat.breed = singlePet.breed
+        vaccines.forEach { vaccineModel in
+            let newVaccineEntry = Vaccine(context: viewContext)
+            newVaccineEntry.vaccineName = vaccineModel.vaccineName
+            newVaccineEntry.vaccineDate = vaccineModel.vaccineDate
+            newVaccineEntry.cat = newCat
+            newCat.addToVaccine(newVaccineEntry)
+        }
         do {
             try viewContext.save()
         } catch let error {
@@ -105,6 +112,7 @@ extension CoreDataManager {
             }
         }
     }
+
     func removeData(singlePet: PetDetail) {
         let fetchRequest = Cat.fetchRequest()
         let predicate = NSPredicate(format: "identifier BEGINSWITH %@", singlePet.id)
