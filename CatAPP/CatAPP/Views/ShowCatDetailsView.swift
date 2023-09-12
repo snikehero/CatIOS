@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShowCatDetailsView: View {
-    @ObservedObject var petViewModel : CatDetailViewModel
+    @ObservedObject var petViewModel: CatDetailViewModel
     fileprivate typealias DetailsConstants = Constants.Details
     @Environment(\.dismiss) var dismiss
     @State private var showingAlert = false

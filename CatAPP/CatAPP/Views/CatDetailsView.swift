@@ -11,7 +11,7 @@ import PhotosUI
 struct CatDetailsView: View {
     fileprivate typealias DetailsConstants = Constants.Details
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var petViewModel : CatDetailViewModel
+    @ObservedObject var petViewModel: CatDetailViewModel
     @State var petName: String = ""
     @State var petAge: Int = 0
     @State var petAppointment: Date = Date.now

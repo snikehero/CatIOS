@@ -10,7 +10,7 @@ import SwiftUI
 class CoreDataManager {
     private let persistenceContainer: NSPersistentContainer
 
-    static let shared : CoreDataManager = {
+    static let shared: CoreDataManager = {
        let coreDataManager = CoreDataManager(modelName: "CatAPP")
         coreDataManager.load()
         return coreDataManager

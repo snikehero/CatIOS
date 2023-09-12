@@ -35,7 +35,7 @@ struct InfiniteScrollingView_Previews: PreviewProvider {
     static var previews: some View {
         InfiniteScrollingView(
             tagViewModel: CatTagViewModel(
-                networkManager:NetworkManager(),
+                networkManager: NetworkManager(),
                 endpointBuilder: EndpointBuilder()
             )
         )
