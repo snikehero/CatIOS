@@ -19,7 +19,7 @@ struct CatCardContainerView: View {
                         identifierValue = singlePet.id
                         isPresented.toggle()
                     } label : {
-                        CatCardView(singlePet: singlePet, catViewModel: catViewModel)
+                        CatCardView(singlePet: singlePet)
                             .frame(maxWidth: Constants.CardContainer.frameMaxWidth)
                     }
                     .buttonStyle(PlainButtonStyle())
