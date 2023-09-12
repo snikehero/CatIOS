@@ -58,4 +58,5 @@ identifier_name:
     - id
     - URL
     - GlobalAPIKey
+    -Vaccine+CoreDataProperties.swift
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, codeclimate, junit, html, emoji, sonarqube, markdown, github-actions-logging, summary)
