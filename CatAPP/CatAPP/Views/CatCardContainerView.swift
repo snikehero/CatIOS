@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct CatCardContainerView: View {
-    @ObservedObject var catViewModel: CatDetailViewModel
-    @State private var isPresented = false
-    @State private var identifierValue = "123"
+    @ObservedObject var catListViewModel: CatListViewModel
+    @ObservedObject var cardViewModel: CatCardContainerViewModel
     var body: some View {
         NavigationView {
             List {
-                ForEach(catViewModel.filteredCats) { singlePet in
+                ForEach(cardViewModel.filteredCats) { singlePet in
                     Button {
-                        identifierValue = singlePet.id
-                        isPresented.toggle()
+                        cardViewModel.identifierValue = singlePet.id
+                        cardViewModel.isPresented.toggle()
                     } label: {
                         CatCardView(singlePet: singlePet)
                             .frame(maxWidth: Constants.CardContainer.frameMaxWidth)
@@ -25,21 +24,24 @@ struct CatCardContainerView: View {
                     .buttonStyle(PlainButtonStyle())
                 }
                 .onDelete(perform: { indexSet in
-                    catViewModel.deleteFromCoreData(at: indexSet)
+                    cardViewModel.deleteFromCoreData(at: indexSet)
                 })
-                .fullScreenCover(isPresented: $isPresented) {
-                    ShowCatDetailsView(petViewModel: catViewModel, identifier: $identifierValue)
+                .fullScreenCover(isPresented: $cardViewModel.isPresented) {
+                    ShowCatDetailsView(catListViewModel: catListViewModel,
+                                       petViewModel: UpdateCatViewModel(catListViewModel: catListViewModel,
+                                                                        identifier: cardViewModel.identifierValue))
                 }
                 .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
         }
-        .searchable(text: $catViewModel.searchText)
+        .searchable(text: $cardViewModel.searchText)
     }
 }
 
 struct CatCardContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        CatCardContainerView(catViewModel: CatDetailViewModel())
+        CatCardContainerView( catListViewModel: .init(),
+                             cardViewModel: .init(pets: CatDetailViewModel.petsMock))
     }
 }

@@ -10,16 +10,17 @@ import SwiftUI
 struct TabNavigationView: View {
     @StateObject var tagViewModel = CatTagViewModel(networkManager: NetworkManager(),
                                                     endpointBuilder: EndpointBuilder())
-    @StateObject var petViewModel = CatDetailViewModel()
+
     @StateObject var randomCatViewModel = RandomCatViewModel(networkManager: NetworkManager(),
                                                              endpointBuilder: EndpointBuilder())
+    @StateObject var catListviewModel = CatListViewModel()
     fileprivate typealias TabConstants = Constants.TabNavigation
     @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var networkMonitor: NetworkMonitor
     var body: some View {
         Group {
             TabView {
-                CatView(catViewModel: petViewModel)
+                CatView(catListViewModel: catListviewModel)
                     .tabItem {
                         Label(TabConstants.catLabel,
                               systemImage: TabConstants.catTabImage)

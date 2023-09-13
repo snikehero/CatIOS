@@ -11,14 +11,7 @@ import PhotosUI
 struct CatDetailsView: View {
     fileprivate typealias DetailsConstants = Constants.Details
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var petViewModel: CatDetailViewModel
-    @State var petName: String = ""
-    @State var petAge: Int = 0
-    @State var petAppointment: Date = Date.now
-    @State var petBreed: String = CatBreed.abyssinian.rawValue
-    @State private var showingAlert = false
-    @State var petVaccines: [String] = []
-    @State var petVaccinesDate: [Date] = []
+    @StateObject var petViewModel: CatDetailViewModel
     var body: some View {
         NavigationStack {
             Form {
@@ -29,37 +22,37 @@ struct CatDetailsView: View {
                 }
                 Section(header: Text(DetailsConstants.detailsSection)) {
                     TextField(DetailsConstants.nameForm,
-                              text: $petName)
+                              text: $petViewModel.petName)
                     .autocorrectionDisabled()
-                    Picker(DetailsConstants.ageForm, selection: $petAge) {
+                    Picker(DetailsConstants.ageForm, selection: $petViewModel.petAge) {
                         ForEach(DetailsConstants.minimumAge ..< DetailsConstants.maximumAge) {
                             Text("\($0) \(DetailsConstants.ageLabel)")
                         }
                     }
-                    Picker(DetailsConstants.breedForm, selection: $petBreed) {
+                    Picker(DetailsConstants.breedForm, selection: $petViewModel.petBreed) {
                         ForEach(CatBreed.allCases) { breed in
                             Text(breed.rawValue).tag(breed)
                         }
                     }
-                    DatePicker(selection: $petAppointment, in: Date.now...,
+                    DatePicker(selection: $petViewModel.petAppointment, in: Date.now...,
                                displayedComponents: .date) {
                         Text(DetailsConstants.dateForm)
                     }
                 }
                 Button {
-                    createNewVaccine()
+                    petViewModel.createNewVaccine()
                 } label: {
                     Text(DetailsConstants.createVaccineLabel)
                 }
                 Section(header: Text(DetailsConstants.vaccineSectionLabel)) {
-                    ForEach(0..<petVaccines.count, id: \.self) { index in
+                    ForEach(0..<petViewModel.petVaccines.count, id: \.self) { index in
                         VStack {
-                            Picker(DetailsConstants.vaccinePickerLabel, selection: $petVaccines[index]) {
+                            Picker(DetailsConstants.vaccinePickerLabel, selection: $petViewModel.petVaccines[index]) {
                                 ForEach(CatVaccine.allCases) { vaccine in
                                     Text(vaccine.rawValue).tag(vaccine)
                                 }
                             }
-                            DatePicker(selection: $petVaccinesDate[index], in: Date.now...,
+                            DatePicker(selection: $petViewModel.petVaccinesDate[index], in: Date.now...,
                                        displayedComponents: .date) {
                                 Text(DetailsConstants.vaccineDatePickerLabel)
                             }
@@ -67,7 +60,7 @@ struct CatDetailsView: View {
                     }
                 }
             }
-            .alert(DetailsConstants.alertMessage, isPresented: $showingAlert) {
+            .alert(DetailsConstants.alertMessage, isPresented: $petViewModel.showingAlert) {
                 Button(DetailsConstants.alertButton, role: .cancel) {
                     dismiss()
                 }
@@ -75,17 +68,17 @@ struct CatDetailsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        addToModel()
-                        petViewModel.saveData(name: petName,
-                                              petAge: petAge,
-                                              appointment: petAppointment,
-                                              breed: petBreed
+                        petViewModel.addToModel()
+                        petViewModel.saveData(name: petViewModel.petName,
+                                              petAge: petViewModel.petAge,
+                                              appointment: petViewModel.petAppointment,
+                                              breed: petViewModel.petBreed
                                               )
-                        showingAlert = true
+                        petViewModel.showingAlert = true
                     } label: {
                         Text(DetailsConstants.saveButton)
                     }
-                    .disabled(petName.isEmpty || petBreed.isEmpty)
+                    .disabled(petViewModel.petName.isEmpty || petViewModel.petBreed.isEmpty)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
@@ -97,23 +90,10 @@ struct CatDetailsView: View {
             }
         }
     }
-    func createNewVaccine() {
-        petVaccines.append("")
-        petVaccinesDate.append(Date())
-    }
-
-    func addToModel() {
-        for index in petVaccines.enumerated() {
-            let vaccineName = petVaccines[index.offset]
-            let vaccineDate = petVaccinesDate[index.offset]
-            let petVaccineModel = PetVaccineModel(vaccineName: vaccineName, vaccineDate: vaccineDate)
-            petViewModel.vaccines.append(petVaccineModel)
-        }
-    }
 }
 
 struct CatDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        CatDetailsView(petViewModel: CatDetailViewModel(), petAppointment: Date())
+        CatDetailsView(petViewModel: CatDetailViewModel(catListViewModel: CatListViewModel()))
     }
 }

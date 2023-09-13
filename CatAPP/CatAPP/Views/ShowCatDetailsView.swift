@@ -8,20 +8,10 @@
 import SwiftUI
 
 struct ShowCatDetailsView: View {
-    @ObservedObject var petViewModel: CatDetailViewModel
+    @ObservedObject var catListViewModel: CatListViewModel
+    @StateObject var petViewModel: UpdateCatViewModel
     fileprivate typealias DetailsConstants = Constants.Details
     @Environment(\.dismiss) var dismiss
-    @State private var showingAlert = false
-    @State var petName: String = ""
-    @State var petAge: Int = 0
-    @State var petAppointment: Date = Date.now
-    @State var petBreed: String = ""
-    @State var isEditable = true
-    @Binding var identifier: String
-    @State var singlePet = PetDetail.mockJojo
-    @State var isEditingState = true
-    @State var petVaccines: [String] = []
-    @State var petVaccinesDate: [Date] = []
     var body: some View {
         NavigationStack {
             Form {
@@ -32,32 +22,33 @@ struct ShowCatDetailsView: View {
                 }
                 Section(header: Text(DetailsConstants.detailsSection)) {
                     TextField(DetailsConstants.nameForm,
-                              text: $petName)
-                    .disabled(isEditable)
+                              text: $petViewModel.petName)
+                    .disabled(petViewModel.isEditable)
                     .autocorrectionDisabled()
-                    Picker(DetailsConstants.ageForm, selection: $petAge) {
+                    Picker(DetailsConstants.ageForm, selection: $petViewModel.petAge) {
                         ForEach(DetailsConstants.minimumAge ..< DetailsConstants.maximumAge) {
                             Text("\($0) \(DetailsConstants.ageLabel)")
                         }
                     }
-                    .disabled(isEditable)
-                    Picker(DetailsConstants.breedForm, selection: $petBreed) {
+                    .disabled(petViewModel.isEditable)
+                    Picker(DetailsConstants.breedForm, selection: $petViewModel.petBreed) {
                         ForEach(CatBreed.allCases) { breed in
                             Text(breed.rawValue).tag(breed)
                         }
                     }
-                    .disabled(isEditable)
-                    DatePicker(selection: $petAppointment, in: Date.now...,
+                    .disabled(petViewModel.isEditable)
+                    DatePicker(selection: $petViewModel.petAppointment, in: Date.now...,
                                displayedComponents: .date) {
                         Text(DetailsConstants.dateForm)
                     }
-                               .disabled(isEditable)
+                               .disabled(petViewModel.isEditable)
                 }
                 Section(header: Text(DetailsConstants.vaccineSection)) {
-                    ForEach(0..<singlePet.vaccines.count, id: \.self) { index in
+                    ForEach(0..<petViewModel.singlePet.vaccines.count, id: \.self) { index in
                         VStack {
-                            Text(singlePet.vaccines[index].vaccineName)
-                            Text(singlePet.vaccines[index].vaccineDate.formatted(.dateTime.day().month().year()))
+                            Text(petViewModel.singlePet.vaccines[index].vaccineName)
+                            Text(petViewModel.singlePet.vaccines[index].vaccineDate
+                                .formatted(.dateTime.day().month().year()))
                                 .font(.system(size: DetailsConstants.dateFontSize))
                                 .foregroundColor(.secondary)
                         }
@@ -65,16 +56,16 @@ struct ShowCatDetailsView: View {
                 }
             }
             .onAppear {
-                singlePet = petViewModel.searchById(arrayOfPets: petViewModel.pets,
-                                                    identifier: identifier)
-                fillData(singlePet: singlePet)
+                petViewModel.singlePet = petViewModel.searchById(arrayOfPets: petViewModel.catListViewModel.pets,
+                                                                 identifier: petViewModel.identifier)
+                petViewModel.fillData(singlePet: petViewModel.singlePet)
             }
             .toolbar {
-                if isEditingState {
+                if petViewModel.isEditingState {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            isEditable.toggle()
-                            isEditingState.toggle()
+                            petViewModel.isEditable.toggle()
+                            petViewModel.isEditingState.toggle()
                         } label: {
                             Text(DetailsConstants.editButton)
                         }
@@ -83,10 +74,11 @@ struct ShowCatDetailsView: View {
                 } else {
                     ToolbarItem(placement: .navigationBarTrailing ) {
                         Button {
-                            isEditingState.toggle()
-                            isEditable.toggle()
-                            updateModel(singlePet: singlePet)
-                            petViewModel.updateToCoreData(singlePet: singlePet, identifier: singlePet.id)
+                            petViewModel.isEditingState.toggle()
+                            petViewModel.isEditable.toggle()
+                            petViewModel.updateModel(singlePet: petViewModel.singlePet)
+                            petViewModel.updateToCoreData(singlePet: petViewModel.singlePet,
+                                                          identifier: petViewModel.singlePet.id)
                         } label: {
                             Text(DetailsConstants.saveButton)
                         }
@@ -102,22 +94,14 @@ struct ShowCatDetailsView: View {
             }
         }
     }
-    func fillData(singlePet: PetDetail) {
-        petName = singlePet.name
-        petBreed = singlePet.breed
-        petAge = singlePet.petYear
-        petAppointment = singlePet.appointment
-    }
-    func updateModel(singlePet: PetDetail) {
-        self.singlePet.name = petName
-        self.singlePet.breed = petBreed
-        self.singlePet.petYear = petAge
-        self.singlePet.appointment = petAppointment
-    }
+
 }
 
 struct ShowCatDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ShowCatDetailsView(petViewModel: CatDetailViewModel(), identifier: .constant("123"))
+        ShowCatDetailsView(catListViewModel: CatListViewModel(),
+                           petViewModel: UpdateCatViewModel(
+                            catListViewModel: CatListViewModel(),
+                            identifier: "123"))
     }
 }

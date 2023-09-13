@@ -6,39 +6,38 @@
 //
 
 import Foundation
+
 @MainActor class CatDetailViewModel: ObservableObject {
-    @Published var pets: [PetDetail] = []
-    @Published var filteredPets: [PetDetail] = []
-    @Published var searchText = ""
+    var catListViewModel: CatListViewModel
+
+//    @Published var pets: [PetDetail] = []
     @Published var vaccines: [PetVaccineModel] = []
-    var filteredCats: [PetDetail] {
-        if searchText.isEmpty {
-            return pets
-        }
-        return pets.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+
+    @Published var singlePet: PetDetail = .mockMica
+    @Published var petName: String = ""
+    @Published var petAge: Int = 0
+    @Published var petAppointment: Date = Date.now
+    @Published var petBreed: String = CatBreed.abyssinian.rawValue
+    @Published var showingAlert = false
+    @Published var petVaccines: [String] = []
+    @Published var petVaccinesDate: [Date] = []
+
+    init(catListViewModel: CatListViewModel) {
+        self.catListViewModel = catListViewModel
     }
+
     func saveData(name: String, petAge: Int, appointment: Date, breed: String) {
         let singlePet = PetDetail(name: name,
                                   petYear: petAge,
                                   breed: breed,
                                   appointment: appointment,
                                   vaccines: vaccines)
-        print(singlePet)
-        updateArray(singlePet: singlePet)
+        catListViewModel.updateArray(singlePet: singlePet)
         saveToCoreData(singlePet: singlePet, vaccines: singlePet.vaccines )
-
-    }
-
-    private func updateArray(singlePet: PetDetail) {
-        pets.append(singlePet)
     }
 
     private func saveToCoreData(singlePet: PetDetail, vaccines: [PetVaccineModel]) {
         CoreDataManager.shared.saveCat(singlePet: singlePet, vaccines: vaccines)
-    }
-
-    func transformData(petModel: [Cat]) {
-        pets = petModel.map { $0.toPetDetail() }
     }
 
     func searchById(arrayOfPets: [PetDetail], identifier: String) -> PetDetail {
@@ -48,22 +47,17 @@ import Foundation
         return PetDetail.mockJojo
     }
 
-    func updateToCoreData(singlePet: PetDetail, identifier: String ) {
-        CoreDataManager.shared.updateData(singlePet: singlePet, identifier: identifier)
-        updatePets(singlePet: singlePet)
+    func createNewVaccine() {
+        petVaccines.append("")
+        petVaccinesDate.append(Date())
     }
 
-    private func updatePets(singlePet: PetDetail) {
-        if let index = pets.firstIndex(where: { $0.id == singlePet.id }) {
-            pets.remove(at: index)
-            pets.insert(singlePet, at: index)
-        }
-    }
-    func deleteFromCoreData(at offsets: IndexSet) {
-        for offset in offsets {
-            let singlePet = pets[offset]
-            CoreDataManager.shared.removeData(singlePet: singlePet)
-            pets.remove(at: offset)
+    func addToModel() {
+        for index in petVaccines.enumerated() {
+            let vaccineName = petVaccines[index.offset]
+            let vaccineDate = petVaccinesDate[index.offset]
+            let petVaccineModel = PetVaccineModel(vaccineName: vaccineName, vaccineDate: vaccineDate)
+            vaccines.append(petVaccineModel)
         }
     }
 }
