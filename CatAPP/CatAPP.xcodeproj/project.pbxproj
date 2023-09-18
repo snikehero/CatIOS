@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0B13712AB8E213001829FC /* CatAPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B13702AB8E213001829FC /* CatAPPTests.swift */; };
+		4A0B137C2AB8E50C001829FC /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B137B2AB8E50C001829FC /* TestCoreDataStack.swift */; };
+		4A0B13802AB8E9EC001829FC /* TestCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B137F2AB8E9EC001829FC /* TestCoreDataManager.swift */; };
 		4A21FF892A954FD60053D7E1 /* ShowCatDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21FF882A954FD60053D7E1 /* ShowCatDetailsView.swift */; };
 		4A3D2E402AA8F44B00B372F8 /* PetVaccineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D2E3F2AA8F44A00B372F8 /* PetVaccineModel.swift */; };
 		4A3D2E432AA8F54000B372F8 /* Vaccine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D2E412AA8F54000B372F8 /* Vaccine+CoreDataClass.swift */; };
@@ -46,7 +49,22 @@
 		4AEBF0272A8D2B5E00A6DBF7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBF0262A8D2B5E00A6DBF7 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4A0B13722AB8E213001829FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4AEBEFF62A8BD3DB00A6DBF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4AEBEFFD2A8BD3DB00A6DBF7;
+			remoteInfo = CatAPP;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		4A0B136E2AB8E213001829FC /* CatAPPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatAPPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A0B13702AB8E213001829FC /* CatAPPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPPTests.swift; sourceTree = "<group>"; };
+		4A0B137B2AB8E50C001829FC /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
+		4A0B137F2AB8E9EC001829FC /* TestCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataManager.swift; sourceTree = "<group>"; };
+		4A0B13812AB8F55F001829FC /* CatAPP.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CatAPP.xctestplan; sourceTree = "<group>"; };
 		4A21FF882A954FD60053D7E1 /* ShowCatDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCatDetailsView.swift; sourceTree = "<group>"; };
 		4A3D2E3F2AA8F44A00B372F8 /* PetVaccineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetVaccineModel.swift; sourceTree = "<group>"; };
 		4A3D2E412AA8F54000B372F8 /* Vaccine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vaccine+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -88,6 +106,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4A0B136B2AB8E213001829FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4AEBEFFB2A8BD3DB00A6DBF7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -153,6 +178,16 @@
 			path = CatList;
 			sourceTree = "<group>";
 		};
+		4A0B136F2AB8E213001829FC /* CatAPPTests */ = {
+			isa = PBXGroup;
+			children = (
+				4A0B13702AB8E213001829FC /* CatAPPTests.swift */,
+				4A0B137B2AB8E50C001829FC /* TestCoreDataStack.swift */,
+				4A0B137F2AB8E9EC001829FC /* TestCoreDataManager.swift */,
+			);
+			path = CatAPPTests;
+			sourceTree = "<group>";
+		};
 		4A490AE22A9CFE8000605AC1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,7 +214,9 @@
 		4AEBEFF52A8BD3DB00A6DBF7 = {
 			isa = PBXGroup;
 			children = (
+				4A0B13812AB8F55F001829FC /* CatAPP.xctestplan */,
 				4AEBF0002A8BD3DB00A6DBF7 /* CatAPP */,
+				4A0B136F2AB8E213001829FC /* CatAPPTests */,
 				4AEBEFFF2A8BD3DB00A6DBF7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -188,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				4AEBEFFE2A8BD3DB00A6DBF7 /* CatAPP.app */,
+				4A0B136E2AB8E213001829FC /* CatAPPTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -273,6 +311,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4A0B136D2AB8E213001829FC /* CatAPPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A0B13762AB8E213001829FC /* Build configuration list for PBXNativeTarget "CatAPPTests" */;
+			buildPhases = (
+				4A0B136A2AB8E213001829FC /* Sources */,
+				4A0B136B2AB8E213001829FC /* Frameworks */,
+				4A0B136C2AB8E213001829FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A0B13732AB8E213001829FC /* PBXTargetDependency */,
+			);
+			name = CatAPPTests;
+			productName = CatAPPTests;
+			productReference = 4A0B136E2AB8E213001829FC /* CatAPPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4AEBEFFD2A8BD3DB00A6DBF7 /* CatAPP */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4AEBF00C2A8BD3DD00A6DBF7 /* Build configuration list for PBXNativeTarget "CatAPP" */;
@@ -301,6 +357,10 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					4A0B136D2AB8E213001829FC = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 4AEBEFFD2A8BD3DB00A6DBF7;
+					};
 					4AEBEFFD2A8BD3DB00A6DBF7 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -320,11 +380,19 @@
 			projectRoot = "";
 			targets = (
 				4AEBEFFD2A8BD3DB00A6DBF7 /* CatAPP */,
+				4A0B136D2AB8E213001829FC /* CatAPPTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4A0B136C2AB8E213001829FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4AEBEFFC2A8BD3DB00A6DBF7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,6 +426,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4A0B136A2AB8E213001829FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A0B13712AB8E213001829FC /* CatAPPTests.swift in Sources */,
+				4A0B13802AB8E9EC001829FC /* TestCoreDataManager.swift in Sources */,
+				4A0B137C2AB8E50C001829FC /* TestCoreDataStack.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4AEBEFFA2A8BD3DB00A6DBF7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,7 +480,49 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4A0B13732AB8E213001829FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4AEBEFFD2A8BD3DB00A6DBF7 /* CatAPP */;
+			targetProxy = 4A0B13722AB8E213001829FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		4A0B13742AB8E213001829FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moises.CatAPPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CatAPP.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CatAPP";
+			};
+			name = Debug;
+		};
+		4A0B13752AB8E213001829FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moises.CatAPPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CatAPP.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CatAPP";
+			};
+			name = Release;
+		};
 		4AEBF00A2A8BD3DD00A6DBF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -578,6 +698,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4A0B13762AB8E213001829FC /* Build configuration list for PBXNativeTarget "CatAPPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A0B13742AB8E213001829FC /* Debug */,
+				4A0B13752AB8E213001829FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4AEBEFF92A8BD3DB00A6DBF7 /* Build configuration list for PBXProject "CatAPP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

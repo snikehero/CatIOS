@@ -15,7 +15,6 @@ class CoreDataManager {
         coreDataManager.load()
         return coreDataManager
     }()
-
     private init(modelName: String) {
         self.persistenceContainer = NSPersistentContainer(name: modelName)
     }
@@ -96,6 +95,15 @@ extension CoreDataManager {
         } else {
             return []
         }
+    }
+
+    func fetchSingleCat(singlePet: PetDetail) -> Cat {
+        let fetchRequest = Cat.fetchRequest()
+        let predicate = NSPredicate(format: "identifier BEGINSWITH %@", singlePet.id)
+        fetchRequest.predicate = predicate
+        let result = (try? self.viewContext.fetch(fetchRequest).first)!
+        return result
+
     }
 
     func updateData(singlePet: PetDetail, identifier: String) {
