@@ -98,6 +98,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A0B135F2AB8CDAF001829FC /* CatCardContainer */ = {
+			isa = PBXGroup;
+			children = (
+				4A701C902A93BB9900CFB002 /* CatCardView.swift */,
+				4A80BDAA2AB10F8E00BEFEB0 /* CatCardContainerViewModel.swift */,
+				4A701C8E2A93BB9100CFB002 /* CatCardContainerView.swift */,
+			);
+			path = CatCardContainer;
+			sourceTree = "<group>";
+		};
+		4A0B13602AB8CDBF001829FC /* RandomCat */ = {
+			isa = PBXGroup;
+			children = (
+				4A490AE02A9CFDD200605AC1 /* RandomCatViewModel.swift */,
+				4AEBF0242A8D2AA400A6DBF7 /* RandomCatView.swift */,
+			);
+			path = RandomCat;
+			sourceTree = "<group>";
+		};
+		4A0B13612AB8CDD3001829FC /* CatDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4A8D85D62A8E95F4007A7F7C /* CatDetailsView.swift */,
+				4A8D85DC2A8EAE7F007A7F7C /* CatDetailViewModel.swift */,
+			);
+			path = CatDetails;
+			sourceTree = "<group>";
+		};
+		4A0B13622AB8CDEB001829FC /* InfiniteScroll */ = {
+			isa = PBXGroup;
+			children = (
+				4AD5903E2AA2646E00717328 /* InfiniteScrollingView.swift */,
+				4A597F912AA68600009FE392 /* CatTagViewModel.swift */,
+			);
+			path = InfiniteScroll;
+			sourceTree = "<group>";
+		};
+		4A0B13632AB8CDFF001829FC /* ShowCatDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4A80BDB22AB1348300BEFEB0 /* UpdateCatViewModel.swift */,
+				4A21FF882A954FD60053D7E1 /* ShowCatDetailsView.swift */,
+			);
+			path = ShowCatDetails;
+			sourceTree = "<group>";
+		};
+		4A0B13642AB8CE10001829FC /* CatList */ = {
+			isa = PBXGroup;
+			children = (
+				4A80BDB02AB125C700BEFEB0 /* CatListViewModel.swift */,
+				4AEBF0222A8D2A9D00A6DBF7 /* CatView.swift */,
+			);
+			path = CatList;
+			sourceTree = "<group>";
+		};
 		4A490AE22A9CFE8000605AC1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +199,6 @@
 				4A9401762A93CE8D00509779 /* CoreData */,
 				4AEBF01A2A8D275100A6DBF7 /* Utils */,
 				4AEBF0152A8D261700A6DBF7 /* Components */,
-				4AEBF0142A8D260D00A6DBF7 /* ViewModel */,
 				4AEBF0132A8D25FD00A6DBF7 /* Models */,
 				4AEBF0122A8D25F700A6DBF7 /* Views */,
 				4AEBF00F2A8D25DF00A6DBF7 /* Navigation */,
@@ -176,14 +230,13 @@
 		4AEBF0122A8D25F700A6DBF7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4A701C8E2A93BB9100CFB002 /* CatCardContainerView.swift */,
-				4A701C902A93BB9900CFB002 /* CatCardView.swift */,
-				4AEBF0222A8D2A9D00A6DBF7 /* CatView.swift */,
-				4AEBF0242A8D2AA400A6DBF7 /* RandomCatView.swift */,
-				4A8D85D62A8E95F4007A7F7C /* CatDetailsView.swift */,
-				4A21FF882A954FD60053D7E1 /* ShowCatDetailsView.swift */,
+				4A0B13642AB8CE10001829FC /* CatList */,
+				4A0B13632AB8CDFF001829FC /* ShowCatDetails */,
+				4A0B13622AB8CDEB001829FC /* InfiniteScroll */,
+				4A0B13612AB8CDD3001829FC /* CatDetails */,
+				4A0B13602AB8CDBF001829FC /* RandomCat */,
+				4A0B135F2AB8CDAF001829FC /* CatCardContainer */,
 				4ACEA5592A9E45E700596968 /* NoInternetView.swift */,
-				4AD5903E2AA2646E00717328 /* InfiniteScrollingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,19 +250,6 @@
 				4A597F932AA68824009FE392 /* CatTagModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		4AEBF0142A8D260D00A6DBF7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				4A8D85DC2A8EAE7F007A7F7C /* CatDetailViewModel.swift */,
-				4A490AE02A9CFDD200605AC1 /* RandomCatViewModel.swift */,
-				4A597F912AA68600009FE392 /* CatTagViewModel.swift */,
-				4A80BDAA2AB10F8E00BEFEB0 /* CatCardContainerViewModel.swift */,
-				4A80BDB02AB125C700BEFEB0 /* CatListViewModel.swift */,
-				4A80BDB22AB1348300BEFEB0 /* UpdateCatViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		4AEBF0152A8D261700A6DBF7 /* Components */ = {

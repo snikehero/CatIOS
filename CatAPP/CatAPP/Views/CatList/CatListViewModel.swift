@@ -10,11 +10,6 @@ import Foundation
 class CatListViewModel: ObservableObject {
     @Published var pets: [PetDetail] = []
 
-    static let shared: CatListViewModel = {
-        let catListViewModel = CatListViewModel()
-        return catListViewModel
-    }()
-
     func transformData(petModel: [Cat]) {
         pets = petModel.map { $0.toPetDetail() }
     }
@@ -22,6 +17,7 @@ class CatListViewModel: ObservableObject {
     func updateArray(singlePet: PetDetail) {
         pets.append(singlePet)
     }
+
     func updatePets(singlePet: PetDetail) {
         if let index = pets.firstIndex(where: { $0.id == singlePet.id }) {
             pets.remove(at: index)

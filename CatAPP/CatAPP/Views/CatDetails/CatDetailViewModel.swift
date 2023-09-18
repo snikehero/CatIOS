@@ -38,13 +38,6 @@ import Foundation
         CoreDataManager.shared.saveCat(singlePet: singlePet, vaccines: vaccines)
     }
 
-    func searchById(arrayOfPets: [PetDetail], identifier: String) -> PetDetail {
-        if let singlePet = arrayOfPets.first(where: {$0.id == identifier}) {
-            return singlePet
-        }
-        return PetDetail.mockJojo
-    }
-
     func createNewVaccine() {
         petVaccines.append("")
         petVaccinesDate.append(Date())
