@@ -10,9 +10,7 @@ import Foundation
 @MainActor class CatDetailViewModel: ObservableObject {
     var catListViewModel: CatListViewModel
 
-//    @Published var pets: [PetDetail] = []
     @Published var vaccines: [PetVaccineModel] = []
-
     @Published var singlePet: PetDetail = .mockMica
     @Published var petName: String = ""
     @Published var petAge: Int = 0

@@ -42,6 +42,6 @@ struct CatCardContainerView: View {
 struct CatCardContainerView_Previews: PreviewProvider {
     static var previews: some View {
         CatCardContainerView( catListViewModel: .init(),
-                             cardViewModel: .init(pets: CatDetailViewModel.petsMock))
+                              cardViewModel: .init(pets: CatDetailViewModel.petsMock))
     }
 }
