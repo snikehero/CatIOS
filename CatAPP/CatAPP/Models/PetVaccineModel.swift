@@ -13,4 +13,3 @@ struct PetVaccineModel: Codable {
 extension PetVaccineModel {
     static var mock = PetVaccineModel(vaccineName: "AIDS", vaccineDate: Date.now)
 }
-

@@ -39,7 +39,7 @@ struct CatView: View {
             }
         }
         .onAppear {
-            catListViewModel.transformData(petModel: CoreDataManager.shared.fetch())
+            catListViewModel.transformData(petModel: CoreDataManager.shared.fetchAllCats())
         }
         .fullScreenCover(isPresented: $showingSheet) {
             CatDetailsView(petViewModel: CatDetailViewModel(catListViewModel: catListViewModel))

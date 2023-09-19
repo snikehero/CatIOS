@@ -77,8 +77,7 @@ struct ShowCatDetailsView: View {
                             petViewModel.isEditingState.toggle()
                             petViewModel.isEditable.toggle()
                             petViewModel.updateModel(singlePet: petViewModel.singlePet)
-                            petViewModel.updateToCoreData(singlePet: petViewModel.singlePet,
-                                                          identifier: petViewModel.singlePet.id)
+                            petViewModel.updateToCoreData(singlePet: petViewModel.singlePet)
                         } label: {
                             Text(DetailsConstants.saveButton)
                         }

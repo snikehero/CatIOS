@@ -54,19 +54,6 @@ class CoreDataManager {
 }
 
 extension CoreDataManager {
-    func createDefaultItem() {
-        let defaultCat = Cat(context: viewContext)
-        defaultCat.name = "Jojo"
-        defaultCat.year = 5
-        defaultCat.appointment = Date.now
-        defaultCat.breed = "Electrico"
-        do {
-            try viewContext.save()
-        } catch let error {
-            fatalError(error.localizedDescription)
-        }
-    }
-
     func saveCat(singlePet: PetDetail, vaccines: [PetVaccineModel]) {
         let newCat = Cat(context: viewContext)
         newCat.identifier = singlePet.id
@@ -88,7 +75,7 @@ extension CoreDataManager {
         }
     }
 
-    func fetch() -> [Cat] {
+    func fetchAllCats() -> [Cat] {
         let fetchRequest = Cat.fetchRequest()
         if let result = try? self.viewContext.fetch(fetchRequest) {
             return result
@@ -106,30 +93,17 @@ extension CoreDataManager {
 
     }
 
-    func updateData(singlePet: PetDetail, identifier: String) {
-        let fetchRequest = Cat.fetchRequest()
-        let predicate = NSPredicate(format: "identifier BEGINSWITH %@", singlePet.id)
-        fetchRequest.predicate = predicate
-        backgroundContext.perform {
-            if let catObject = try? self.backgroundContext.fetch(fetchRequest).first {
-                catObject.name = singlePet.name
-                catObject.appointment = singlePet.appointment
-                catObject.breed = singlePet.breed
-                catObject.year  = Int32(singlePet.petYear)
-                try? self.backgroundContext.save()
-            }
-        }
+    func updateCat(singleCat: Cat, newCat: PetDetail) -> Cat {
+        let catObject = fetchSingleCat(singlePet: singleCat.toPetDetail())
+        catObject.name = newCat.name
+        catObject.appointment = newCat.appointment
+        catObject.breed = newCat.breed
+        catObject.year = Int32(newCat.petYear)
+        return catObject
     }
 
-    func removeData(singlePet: PetDetail) {
-        let fetchRequest = Cat.fetchRequest()
-        let predicate = NSPredicate(format: "identifier BEGINSWITH %@", singlePet.id)
-        fetchRequest.predicate = predicate
-        backgroundContext.perform {
-            if let catObject = try? self.backgroundContext.fetch(fetchRequest).first {
-                self.backgroundContext.delete(catObject)
-                try? self.backgroundContext.save()
-            }
-        }
+    func removeCat(singlePet: PetDetail) {
+        let catObject = fetchSingleCat(singlePet: singlePet)
+        self.viewContext.delete(catObject)
     }
 }

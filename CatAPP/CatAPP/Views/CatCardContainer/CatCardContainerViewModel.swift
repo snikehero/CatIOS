@@ -26,8 +26,9 @@ class CatCardContainerViewModel: ObservableObject {
     func deleteFromCoreData(at offsets: IndexSet) {
         for offset in offsets {
             let singlePet = pets[offset]
-            CoreDataManager.shared.removeData(singlePet: singlePet)
+            CoreDataManager.shared.removeCat(singlePet: singlePet)
             pets.remove(at: offset)
+            CoreDataManager.shared.save()
         }
     }
     func updatePets(singlePet: PetDetail) {
