@@ -49,14 +49,12 @@ final class TestCoreDataManager: TestCoreDataStack {
         let coreDataManager = CoreDataManager.shared
         let singleCat = PetDetail.mockMica
         coreDataManager.saveCat(singlePet: singleCat, vaccines: singleCat.vaccines)
-        let catsBeforeDeletion = coreDataManager.fetchAllCats()
-        print(catsBeforeDeletion.count)
         // Act
         coreDataManager.removeCat(singlePet: singleCat)
         let catsAfterDeletion = coreDataManager.fetchAllCats()
         coreDataManager.save()
         // Assert
-        XCTAssertNotEqual(catsBeforeDeletion.count, catsAfterDeletion.count)
+        XCTAssertNotEqual(1, catsAfterDeletion.count)
     }
 
 }

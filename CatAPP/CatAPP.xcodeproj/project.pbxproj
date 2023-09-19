@@ -10,6 +10,7 @@
 		4A0B13712AB8E213001829FC /* CatAPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B13702AB8E213001829FC /* CatAPPTests.swift */; };
 		4A0B137C2AB8E50C001829FC /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B137B2AB8E50C001829FC /* TestCoreDataStack.swift */; };
 		4A0B13802AB8E9EC001829FC /* TestCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B137F2AB8E9EC001829FC /* TestCoreDataManager.swift */; };
+		4A17C3C22ABA422200EC6684 /* TestCatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17C3C12ABA422200EC6684 /* TestCatListViewModel.swift */; };
 		4A21FF892A954FD60053D7E1 /* ShowCatDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21FF882A954FD60053D7E1 /* ShowCatDetailsView.swift */; };
 		4A3D2E402AA8F44B00B372F8 /* PetVaccineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D2E3F2AA8F44A00B372F8 /* PetVaccineModel.swift */; };
 		4A3D2E432AA8F54000B372F8 /* Vaccine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D2E412AA8F54000B372F8 /* Vaccine+CoreDataClass.swift */; };
@@ -65,6 +66,7 @@
 		4A0B137B2AB8E50C001829FC /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
 		4A0B137F2AB8E9EC001829FC /* TestCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataManager.swift; sourceTree = "<group>"; };
 		4A0B13812AB8F55F001829FC /* CatAPP.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CatAPP.xctestplan; sourceTree = "<group>"; };
+		4A17C3C12ABA422200EC6684 /* TestCatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCatListViewModel.swift; sourceTree = "<group>"; };
 		4A21FF882A954FD60053D7E1 /* ShowCatDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCatDetailsView.swift; sourceTree = "<group>"; };
 		4A3D2E3F2AA8F44A00B372F8 /* PetVaccineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetVaccineModel.swift; sourceTree = "<group>"; };
 		4A3D2E412AA8F54000B372F8 /* Vaccine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vaccine+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				4A0B13702AB8E213001829FC /* CatAPPTests.swift */,
 				4A0B137B2AB8E50C001829FC /* TestCoreDataStack.swift */,
 				4A0B137F2AB8E9EC001829FC /* TestCoreDataManager.swift */,
+				4A17C3C12ABA422200EC6684 /* TestCatListViewModel.swift */,
 			);
 			path = CatAPPTests;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A0B13712AB8E213001829FC /* CatAPPTests.swift in Sources */,
+				4A17C3C22ABA422200EC6684 /* TestCatListViewModel.swift in Sources */,
 				4A0B13802AB8E9EC001829FC /* TestCoreDataManager.swift in Sources */,
 				4A0B137C2AB8E50C001829FC /* TestCoreDataStack.swift in Sources */,
 			);
