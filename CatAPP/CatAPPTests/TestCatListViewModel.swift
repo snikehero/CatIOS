@@ -23,16 +23,16 @@ final class TestCatListViewModel: XCTestCase {
         // Arrange
         let viewModel = CatListViewModel()
         let coreData = CoreDataManager.shared
+        let catToSave = PetDetail.mockJojo
+        coreData.saveCat(singlePet: catToSave, vaccines: catToSave.vaccines)
         let catsData = coreData.fetchAllCats()
         // Act
         viewModel.transformData(petModel: catsData)
         let transformedPets = viewModel.pets
         print("TRANSFORMED PETS")
         print(transformedPets)
-
         // Assert
-        
-
+        XCTAssertEqual(transformedPets.isEmpty, false)
     }
 
 }
