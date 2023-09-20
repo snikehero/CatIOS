@@ -9,7 +9,14 @@ import XCTest
 @testable import CatAPP
 import CoreData
 final class TestCoreDataManager: TestCoreDataStack {
-
+    func test_Save_ViewContextCanBeSaved() {
+        // Arrange
+        let coreDataManager = CoreDataManager.shared
+        // Act
+        coreDataManager.save()
+        // Assert
+        XCTAssertNoThrow(coreDataManager.save())
+    }
     func test_SaveCat_CatHasBeenSaved() {
         // Recibe los datos de la ui y crea el objeto de gato que se puede guardar en CoreData
         // Arrange
@@ -26,7 +33,6 @@ final class TestCoreDataManager: TestCoreDataStack {
         XCTAssertEqual(singlePet.breed, fetchedCat.breed)
         XCTAssertEqual(singlePet.vaccines.count, 1)
     }
-
     func test_UpdateCat_CatCanBeUpdated() {
         // Recibir un gato que exista en CoreData, posterior a ello,
         // Realizar un update de algun dato, y guardarlo en Coredata, probar buscando ese dato.
@@ -55,6 +61,27 @@ final class TestCoreDataManager: TestCoreDataStack {
         coreDataManager.save()
         // Assert
         XCTAssertNotEqual(1, catsAfterDeletion.count)
+    }
+
+    func test_FetchAllCats_CatsCanBeFetched() {
+        // Probar si el arreglo de fetched cats no esta vacio.
+        // Arrange
+        let coreDataManager = CoreDataManager.shared
+        // Act
+        let fetchedCats = coreDataManager.fetchAllCats()
+        // Assert
+        XCTAssertFalse(fetchedCats.isEmpty, "Fetched cat array has data")
+
+    }
+    func test_FetchAllCats_CatsCantBeFetched() {
+        // Probar si el arreglo de fetched cats esta vacio
+        // Arrange
+        let coreDataManager = CoreDataManager(modelName: "asd")
+        // Act
+        let fetchedCats = coreDataManager.fetchAllCats()
+        // Assert
+        XCTAssertTrue(fetchedCats.isEmpty, "Fetched cat array is empty")
+
     }
 
 }

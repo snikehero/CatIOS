@@ -48,6 +48,10 @@ class UpdateCatViewModel: ObservableObject {
         self.singlePet.appointment = petAppointment
     }
 
+    func createSingleCat() {
+       singlePet = searchById(arrayOfPets: catListViewModel.pets, identifier: identifier)
+    }
+
     func searchById(arrayOfPets: [PetDetail], identifier: String) -> PetDetail {
         if let singlePet = arrayOfPets.first(where: {$0.id == identifier}) {
             return singlePet

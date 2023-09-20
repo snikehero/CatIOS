@@ -11,11 +11,11 @@ class CoreDataManager {
     private let persistenceContainer: NSPersistentContainer
 
     static let shared: CoreDataManager = {
-       let coreDataManager = CoreDataManager(modelName: "CatAPP")
+        let coreDataManager = CoreDataManager(modelName: "CatAPP")
         coreDataManager.load()
         return coreDataManager
     }()
-    private init(modelName: String) {
+    init(modelName: String) {
         self.persistenceContainer = NSPersistentContainer(name: modelName)
     }
 
@@ -32,7 +32,6 @@ class CoreDataManager {
             }
             print(storeDescription)
         }
-
     }
 
     func configureContext() {
@@ -68,11 +67,7 @@ extension CoreDataManager {
             newVaccineEntry.cat = newCat
             newCat.addToVaccine(newVaccineEntry)
         }
-        do {
-            try viewContext.save()
-        } catch let error {
-            fatalError(error.localizedDescription)
-        }
+        save()
     }
 
     func fetchAllCats() -> [Cat] {
@@ -90,7 +85,6 @@ extension CoreDataManager {
         fetchRequest.predicate = predicate
         let result = (try? self.viewContext.fetch(fetchRequest).first)!
         return result
-
     }
 
     func updateCat(singleCat: Cat, newCat: PetDetail) -> Cat {

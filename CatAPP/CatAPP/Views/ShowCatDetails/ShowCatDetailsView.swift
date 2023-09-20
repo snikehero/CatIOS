@@ -56,8 +56,7 @@ struct ShowCatDetailsView: View {
                 }
             }
             .onAppear {
-                petViewModel.singlePet = petViewModel.searchById(arrayOfPets: petViewModel.catListViewModel.pets,
-                                                                 identifier: petViewModel.identifier)
+                petViewModel.createSingleCat()
                 petViewModel.fillData(singlePet: petViewModel.singlePet)
             }
             .toolbar {
