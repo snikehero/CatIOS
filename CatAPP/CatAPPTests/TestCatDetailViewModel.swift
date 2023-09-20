@@ -41,7 +41,7 @@ final class TestCatDetailViewModel: XCTestCase {
         XCTAssertEqual(viewModel.petVaccines.count, 1)
         XCTAssertEqual(viewModel.petVaccinesDate.count, 1)
     }
-    
+
     func test_AddToModel_VaccineCanBeAdded() {
         // Agregar una vacuna al arreglo de vacunas, verificar que la vacuna este dentro del arreglo
         // Arrange
