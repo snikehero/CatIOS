@@ -7,7 +7,7 @@
 
 import Foundation
 
-@MainActor class CatDetailViewModel: ObservableObject {
+class CatDetailViewModel: ObservableObject {
     var catListViewModel: CatListViewModel
 
     @Published var vaccines: [PetVaccineModel] = []
@@ -25,7 +25,7 @@ import Foundation
     }
 
     func saveData(name: String, petAge: Int, appointment: Date, breed: String) {
-        let singlePet = PetDetail(name: name,
+        singlePet = PetDetail(name: name,
                                   petYear: petAge,
                                   breed: breed,
                                   appointment: appointment,

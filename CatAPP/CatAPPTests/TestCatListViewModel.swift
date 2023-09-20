@@ -19,6 +19,7 @@ final class TestCatListViewModel: XCTestCase {
         // Assert
         XCTAssertEqual(cats.count, 1)
     }
+
     func test_TransformData_CatCanBeTransformed() {
         // Arrange
         let viewModel = CatListViewModel()
@@ -29,8 +30,6 @@ final class TestCatListViewModel: XCTestCase {
         // Act
         viewModel.transformData(petModel: catsData)
         let transformedPets = viewModel.pets
-        print("TRANSFORMED PETS")
-        print(transformedPets)
         // Assert
         XCTAssertEqual(transformedPets.isEmpty, false)
     }
