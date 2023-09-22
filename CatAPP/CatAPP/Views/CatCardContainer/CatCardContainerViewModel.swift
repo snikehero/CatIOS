@@ -31,10 +31,4 @@ class CatCardContainerViewModel: ObservableObject {
             CoreDataManager.shared.save()
         }
     }
-    func updatePets(singlePet: PetDetail) {
-        if let index = pets.firstIndex(where: { $0.id == singlePet.id }) {
-            pets.remove(at: index)
-            pets.insert(singlePet, at: index)
-        }
-    }
 }

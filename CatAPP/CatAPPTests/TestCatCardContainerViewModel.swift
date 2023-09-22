@@ -6,30 +6,56 @@
 //
 
 import XCTest
-
+@testable import CatAPP
 final class TestCatCardContainerViewModel: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_DeleteFromCoreData_CanBeDeleted() {
+        // La funcion borra el gato especifico de coredata,
+        // Tambien borra el gato del arreglo de pets.
+        // Se puede probar verificando que el arreglo de gatos contiene -1 elemento.
+        // Arrange
+        let catListVM = CatListViewModel()
+        let coreData = CoreDataManager.shared
+        catListVM.transformData(petModel: coreData.fetchAllCats())
+        let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)
+        let catsBeforeDeletion = catCardViewModel.pets
+        // Act
+        catCardViewModel.deleteFromCoreData(at: IndexSet(integer: 0)) // Will delete the first item
+        // Assert
+        XCTAssertNotEqual(catCardViewModel.pets.count, catsBeforeDeletion.count)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func test_filteredCats_catsCanBeFiltered() {
+        // La variable filtered cats sirve para ir filtrando el total de gatos depentiendo de searchText
+        // Se puede probar, verificando si cuando searchText es vacio, retorna el arreglo completo
+        // Cuando searchText tenga algo, el arreglo disminuira.
+        // Arrange
+        let catListVM = CatListViewModel()
+        let coreData = CoreDataManager.shared
+        catListVM.transformData(petModel: coreData.fetchAllCats())
+        let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)
+        let catsBefore = catCardViewModel.filteredCats
+        // Act
+        catCardViewModel.searchText = "Mica"
+        let filteredCats = catCardViewModel.filteredCats
+        // Assert
+        XCTAssertNotEqual(catsBefore.count, filteredCats.count)
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func test_FilteredCats_CatsDontHaveAFilter() {
+        // Cuando SearchText esta facio, el filtro debe retornar directamente el arreglo completo de pets.
+        // Arrange
+        let catListVM = CatListViewModel()
+        let coreData = CoreDataManager.shared
+        catListVM.transformData(petModel: coreData.fetchAllCats())
+        let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)
+        let catsBefore = catCardViewModel.filteredCats
+        // Act
+        catCardViewModel.searchText = ""
+        let filteredCats = catCardViewModel.filteredCats
+        // Assert
+        XCTAssertEqual(filteredCats.count, catsBefore.count)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 
 }
