@@ -24,7 +24,7 @@ final class TestCatListViewModel: XCTestCase {
     func test_TransformData_CatCanBeTransformed() {
         // Arrange
         let viewModel = CatListViewModel()
-        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreDataManager.loadStore()
         let catToSave = PetDetail.mockJojo
         coreDataManager.saveCat(singlePet: catToSave, vaccines: catToSave.vaccines)

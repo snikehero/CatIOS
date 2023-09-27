@@ -16,7 +16,7 @@ final class TestCatCardContainerViewModel: XCTestCase {
         // Se puede probar verificando que el arreglo de gatos contiene -1 elemento.
         // Arrange
         let catListVM = CatListViewModel()
-        let coreData = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        let coreData = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreData.loadStore()
         catListVM.transformData(petModel: coreData.fetchAllCats())
         let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)
@@ -33,7 +33,7 @@ final class TestCatCardContainerViewModel: XCTestCase {
         // Cuando searchText tenga algo, el arreglo disminuira.
         // Arrange
         let catListVM = CatListViewModel()
-        let coreData = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        let coreData = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreData.loadStore()
         catListVM.transformData(petModel: coreData.fetchAllCats())
         let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)
@@ -49,7 +49,7 @@ final class TestCatCardContainerViewModel: XCTestCase {
         // Cuando SearchText esta vacio, el filtro debe retornar directamente el arreglo completo de pets.
         // Arrange
         let catListVM = CatListViewModel()
-        let coreData = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        let coreData = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreData.loadStore()
         catListVM.transformData(petModel: coreData.fetchAllCats())
         let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)

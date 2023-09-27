@@ -11,7 +11,7 @@ import CoreData
 final class TestCoreDataManager: XCTestCase {
     func test_Save_ViewContextCanBeSaved() {
         // Arrange
-        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreDataManager.loadStore()
         // coreDataManager.loadInMemory()
         // Act
@@ -22,7 +22,7 @@ final class TestCoreDataManager: XCTestCase {
     func test_SaveCat_CatHasBeenSaved() {
         // Recibe los datos de la ui y crea el objeto de gato que se puede guardar en CoreData
         // Arrange
-        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreDataManager.loadStore()
        // let coreDataManager = CoreDataManager.shared
         let singlePet = PetDetail.mockJojo
@@ -41,7 +41,7 @@ final class TestCoreDataManager: XCTestCase {
         // Recibir un gato que exista en CoreData, posterior a ello,
         // Realizar un update de algun dato, y guardarlo en Coredata, probar buscando ese dato.
         // Arrange
-        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreDataManager.loadStore()
         let singleCat = PetDetail.mockJojo
         coreDataManager.saveCat(singlePet: singleCat, vaccines: singleCat.vaccines)
@@ -57,7 +57,7 @@ final class TestCoreDataManager: XCTestCase {
     func test_DeleteCat_CatCanBeDeleted() {
         // Fetchear un gato en CoreData, aplicar el borrado, verificar que no se puede fetchear otra vez.
         // Arrange
-        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreDataManager.loadStore()
         let singleCat = PetDetail.mockMica
         coreDataManager.saveCat(singlePet: singleCat, vaccines: singleCat.vaccines)
@@ -72,7 +72,7 @@ final class TestCoreDataManager: XCTestCase {
     func test_FetchAllCats_CatsCanBeFetched() {
         // Probar si el arreglo de fetched cats no esta vacio.
         // Arrange
-        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreDataManager.loadStore()
         // Act
         let fetchedCats = coreDataManager.fetchAllCats()
@@ -83,7 +83,7 @@ final class TestCoreDataManager: XCTestCase {
     func test_FetchAllCats_CatsCantBeFetched() {
         // Probar si el arreglo de fetched cats esta vacio
         // Arrange
-        let coreDataManager = CoreDataManager(modelName: "asd", storeType: NSInMemoryStoreType)
+        let coreDataManager = CoreDataManager(modelName: "asd", storeType: StoreTypes.NSInMemoryStoreType)
         // Act
         let fetchedCats = coreDataManager.fetchAllCats()
         // Assert

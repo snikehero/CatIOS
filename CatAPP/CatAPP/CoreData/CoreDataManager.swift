@@ -7,12 +7,17 @@
 
 import CoreData
 import SwiftUI
+struct StoreTypes {
+    static let NSSQLiteStoreType = "NsSQLiteStoreType"
+    static let NSInMemoryStoreType = "NSInMemoryStoreType"
+}
+
 class CoreDataManager {
     private let persistenceContainer: NSPersistentContainer
 
     static let shared: CoreDataManager = {
-        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: NSSQLiteStoreType)
-        coreDataManager.load()
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSSQLiteStoreType)
+        coreDataManager.loadStore()
         return coreDataManager
     }()
     let storeType: String
@@ -27,16 +32,6 @@ class CoreDataManager {
 
     lazy var backgroundContext = persistenceContainer.newBackgroundContext()
 
-    func load() {
-        persistenceContainer.loadPersistentStores { storeDescription, error in
-            guard error == nil else {
-                fatalError(String(describing: error?.localizedDescription))
-            }
-            print(storeDescription)
-        }
-
-    }
-
     func loadStore() {
         let persistenceStoreDescription = NSPersistentStoreDescription()
         persistenceStoreDescription.type = storeType
@@ -44,9 +39,8 @@ class CoreDataManager {
             guard error == nil else {
                 fatalError(String(describing: error?.localizedDescription))
             }
-//            print(persistenceStoreDescription)
+            print(persistenceStoreDescription)
         }
-
     }
 
     func configureContext() {
@@ -89,7 +83,7 @@ extension CoreDataManager {
         let fetchRequest = Cat.fetchRequest()
         if let result = try? self.viewContext.fetch(fetchRequest) {
             return result
-        } else {    
+        } else {
             return []
         }
     }

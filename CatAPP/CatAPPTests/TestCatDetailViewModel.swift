@@ -14,7 +14,7 @@ final class TestCatDetailViewModel: XCTestCase {
         // Verificar que un gato se puede crear y guardar en PetDetail, para posteriormente
         // agregarse a coredata, se podria probar verificando que existe el objeto en CoreData
         // Arrange
-        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreDataManager.loadStore()
         let catListViewModel = CatListViewModel()
         catListViewModel.transformData(petModel: coreDataManager.fetchAllCats())
