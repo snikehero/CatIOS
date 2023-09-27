@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import CatAPP
-
+import CoreData
 final class TestUpdateCatViewModel: XCTestCase {
 
     func test_FillCatToUpload_CatCanBeFilled() {
@@ -63,7 +63,8 @@ final class TestUpdateCatViewModel: XCTestCase {
         // Mandar este arreglo como inicializador para el UpdateCatVM
         // Buscar el gato guardado por id/
         // Arrange
-        let coreData = CoreDataManager.shared
+        let coreData = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        coreData.loadStore()
         let catToAdd = PetDetail.mockMomo
         coreData.saveCat(singlePet: catToAdd, vaccines: catToAdd.vaccines)
         let catListVM = CatListViewModel()
@@ -81,7 +82,8 @@ final class TestUpdateCatViewModel: XCTestCase {
         // Mandar este arreglo como inicializador para el UpdateCatVM
         // Buscar el gato guardado por id/
         // Arrange
-        let coreData = CoreDataManager.shared
+        let coreData = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        coreData.loadStore()
         let catToAdd = PetDetail.mockMomo
         coreData.saveCat(singlePet: catToAdd, vaccines: catToAdd.vaccines)
         let catListVM = CatListViewModel()
@@ -98,7 +100,8 @@ final class TestUpdateCatViewModel: XCTestCase {
         // Posterior a esto, mandar este arreglo como inicializador para el UpdateCatViewModel
         // Buscar por ID uno de los gatos mockeados y actualizar la variable single pet
         // Arrange
-        let coreData = CoreDataManager.shared
+        let coreData = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        coreData.loadStore()
         let catToAdd = PetDetail.mockSushi
         coreData.saveCat(singlePet: catToAdd, vaccines: catToAdd.vaccines)
         let catListVM = CatListViewModel()
@@ -122,7 +125,8 @@ final class TestUpdateCatViewModel: XCTestCase {
         // asi como el cambio en el arreglo de gatos en catListViewModel.
         // Se probara primero haciendo cambio entre mockMica y mockSushi.
         // Arrange
-        let coreData = CoreDataManager.shared
+        let coreData = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        coreData.loadStore()
         let catToAdd = PetDetail.mockMica
         coreData.saveCat(singlePet: catToAdd, vaccines: catToAdd.vaccines)
         let catListVM = CatListViewModel()

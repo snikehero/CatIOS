@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import CoreData
 @testable import CatAPP
 final class TestCatListViewModel: XCTestCase {
 
@@ -23,10 +24,11 @@ final class TestCatListViewModel: XCTestCase {
     func test_TransformData_CatCanBeTransformed() {
         // Arrange
         let viewModel = CatListViewModel()
-        let coreData = CoreDataManager.shared
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        coreDataManager.loadStore()
         let catToSave = PetDetail.mockJojo
-        coreData.saveCat(singlePet: catToSave, vaccines: catToSave.vaccines)
-        let catsData = coreData.fetchAllCats()
+        coreDataManager.saveCat(singlePet: catToSave, vaccines: catToSave.vaccines)
+        let catsData = coreDataManager.fetchAllCats()
         // Act
         viewModel.transformData(petModel: catsData)
         let transformedPets = viewModel.pets

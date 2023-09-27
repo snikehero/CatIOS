@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4A0B13712AB8E213001829FC /* CatAPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B13702AB8E213001829FC /* CatAPPTests.swift */; };
-		4A0B137C2AB8E50C001829FC /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B137B2AB8E50C001829FC /* TestCoreDataStack.swift */; };
 		4A0B13802AB8E9EC001829FC /* TestCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B137F2AB8E9EC001829FC /* TestCoreDataManager.swift */; };
 		4A17C3C22ABA422200EC6684 /* TestCatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17C3C12ABA422200EC6684 /* TestCatListViewModel.swift */; };
 		4A21FF892A954FD60053D7E1 /* ShowCatDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21FF882A954FD60053D7E1 /* ShowCatDetailsView.swift */; };
@@ -66,7 +65,6 @@
 /* Begin PBXFileReference section */
 		4A0B136E2AB8E213001829FC /* CatAPPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatAPPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A0B13702AB8E213001829FC /* CatAPPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPPTests.swift; sourceTree = "<group>"; };
-		4A0B137B2AB8E50C001829FC /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
 		4A0B137F2AB8E9EC001829FC /* TestCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataManager.swift; sourceTree = "<group>"; };
 		4A0B13812AB8F55F001829FC /* CatAPP.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CatAPP.xctestplan; sourceTree = "<group>"; };
 		4A17C3C12ABA422200EC6684 /* TestCatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCatListViewModel.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				4A0B13702AB8E213001829FC /* CatAPPTests.swift */,
-				4A0B137B2AB8E50C001829FC /* TestCoreDataStack.swift */,
 				4A0B137F2AB8E9EC001829FC /* TestCoreDataManager.swift */,
 				4A17C3C12ABA422200EC6684 /* TestCatListViewModel.swift */,
 				4A31F2A52ABB7BE500DA9366 /* TestCatDetailViewModel.swift */,
@@ -448,7 +445,6 @@
 				4A31F2A62ABB7BE500DA9366 /* TestCatDetailViewModel.swift in Sources */,
 				4A17C3C22ABA422200EC6684 /* TestCatListViewModel.swift in Sources */,
 				4A0B13802AB8E9EC001829FC /* TestCoreDataManager.swift in Sources */,
-				4A0B137C2AB8E50C001829FC /* TestCoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

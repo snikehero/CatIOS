@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import CatAPP
+import CoreData
 final class TestCatCardContainerViewModel: XCTestCase {
 
     func test_DeleteFromCoreData_CanBeDeleted() {
@@ -15,7 +16,8 @@ final class TestCatCardContainerViewModel: XCTestCase {
         // Se puede probar verificando que el arreglo de gatos contiene -1 elemento.
         // Arrange
         let catListVM = CatListViewModel()
-        let coreData = CoreDataManager.shared
+        let coreData = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        coreData.loadStore()
         catListVM.transformData(petModel: coreData.fetchAllCats())
         let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)
         let catsBeforeDeletion = catCardViewModel.pets
@@ -31,7 +33,8 @@ final class TestCatCardContainerViewModel: XCTestCase {
         // Cuando searchText tenga algo, el arreglo disminuira.
         // Arrange
         let catListVM = CatListViewModel()
-        let coreData = CoreDataManager.shared
+        let coreData = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        coreData.loadStore()
         catListVM.transformData(petModel: coreData.fetchAllCats())
         let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)
         let catsBefore = catCardViewModel.filteredCats
@@ -43,10 +46,11 @@ final class TestCatCardContainerViewModel: XCTestCase {
     }
 
     func test_FilteredCats_CatsDontHaveAFilter() {
-        // Cuando SearchText esta facio, el filtro debe retornar directamente el arreglo completo de pets.
+        // Cuando SearchText esta vacio, el filtro debe retornar directamente el arreglo completo de pets.
         // Arrange
         let catListVM = CatListViewModel()
-        let coreData = CoreDataManager.shared
+        let coreData = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        coreData.loadStore()
         catListVM.transformData(petModel: coreData.fetchAllCats())
         let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)
         let catsBefore = catCardViewModel.filteredCats
@@ -56,6 +60,4 @@ final class TestCatCardContainerViewModel: XCTestCase {
         // Assert
         XCTAssertEqual(filteredCats.count, catsBefore.count)
     }
-
-
 }

@@ -11,14 +11,16 @@ class CoreDataManager {
     private let persistenceContainer: NSPersistentContainer
 
     static let shared: CoreDataManager = {
-        let coreDataManager = CoreDataManager(modelName: "CatAPP")
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: NSSQLiteStoreType)
         coreDataManager.load()
         return coreDataManager
     }()
-    init(modelName: String) {
-        self.persistenceContainer = NSPersistentContainer(name: modelName)
-    }
+    let storeType: String
 
+    init(modelName: String, storeType: String) {
+        self.persistenceContainer = NSPersistentContainer(name: modelName)
+        self.storeType = storeType
+    }
     var viewContext: NSManagedObjectContext {
         return persistenceContainer.viewContext
     }
@@ -32,6 +34,19 @@ class CoreDataManager {
             }
             print(storeDescription)
         }
+
+    }
+
+    func loadStore() {
+        let persistenceStoreDescription = NSPersistentStoreDescription()
+        persistenceStoreDescription.type = storeType
+        persistenceContainer.loadPersistentStores { persistenceStoreDescription, error in
+            guard error == nil else {
+                fatalError(String(describing: error?.localizedDescription))
+            }
+//            print(persistenceStoreDescription)
+        }
+
     }
 
     func configureContext() {
@@ -74,7 +89,7 @@ extension CoreDataManager {
         let fetchRequest = Cat.fetchRequest()
         if let result = try? self.viewContext.fetch(fetchRequest) {
             return result
-        } else {
+        } else {    
             return []
         }
     }

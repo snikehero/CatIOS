@@ -7,14 +7,15 @@
 
 import XCTest
 @testable import CatAPP
-
+import CoreData
 final class TestCatDetailViewModel: XCTestCase {
 
     func test_saveData_DataCanbeSaved() {
         // Verificar que un gato se puede crear y guardar en PetDetail, para posteriormente
         // agregarse a coredata, se podria probar verificando que existe el objeto en CoreData
         // Arrange
-        let coreDataManager = CoreDataManager.shared
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: NSInMemoryStoreType)
+        coreDataManager.loadStore()
         let catListViewModel = CatListViewModel()
         catListViewModel.transformData(petModel: coreDataManager.fetchAllCats())
         let catList = catListViewModel.pets
