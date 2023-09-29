@@ -7,19 +7,15 @@
 
 import CoreData
 import SwiftUI
+
 struct StoreTypes {
     static let NSSQLiteStoreType = "NsSQLiteStoreType"
     static let NSInMemoryStoreType = "NSInMemoryStoreType"
 }
 
-class CoreDataManager {
+class CoreDataManager: ObservableObject {
     private let persistenceContainer: NSPersistentContainer
 
-    static let shared: CoreDataManager = {
-        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSSQLiteStoreType)
-        coreDataManager.loadStore()
-        return coreDataManager
-    }()
     let storeType: String
 
     init(modelName: String, storeType: String) {
@@ -30,8 +26,6 @@ class CoreDataManager {
         return persistenceContainer.viewContext
     }
 
-    lazy var backgroundContext = persistenceContainer.newBackgroundContext()
-
     func loadStore() {
         let persistenceStoreDescription = NSPersistentStoreDescription()
         persistenceStoreDescription.type = storeType
@@ -41,13 +35,6 @@ class CoreDataManager {
             }
             print(persistenceStoreDescription)
         }
-    }
-
-    func configureContext() {
-        viewContext.automaticallyMergesChangesFromParent = true
-        backgroundContext.automaticallyMergesChangesFromParent = true
-        backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-        backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
     }
 
     func save() {

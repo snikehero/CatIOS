@@ -10,6 +10,7 @@ import Foundation
 class UpdateCatViewModel: ObservableObject {
     var catListViewModel: CatListViewModel
     var identifier: String = ""
+    var manager: CoreDataManager
     @Published var catToUpload = PetDetail.mockMica
     @Published var showingAlert = false
     @Published var petName: String = ""
@@ -21,10 +22,14 @@ class UpdateCatViewModel: ObservableObject {
     @Published var isEditingState = true
     @Published var petVaccines: [String] = []
     @Published var petVaccinesDate: [Date] = []
+    var function: (PetDetail) -> Void
 
-    init(catListViewModel: CatListViewModel, identifier: String) {
+    init(catListViewModel: CatListViewModel, identifier: String, manager: CoreDataManager, funcion: @escaping (PetDetail) -> Void) {
+        // Pasar el arreglo como gato, y pasarle la funcion como closure.
         self.catListViewModel = catListViewModel
         self.identifier = identifier
+        self.manager = manager
+        self.function = catListViewModel.updatePets(singlePet:)
     }
 
     func fillCatToUpload(singlePet: PetDetail) {
@@ -58,12 +63,11 @@ class UpdateCatViewModel: ObservableObject {
         }
         return PetDetail.mockJojo
     }
-
     func updateToCoreData(singlePet: PetDetail ) {
         fillCatToUpload(singlePet: singlePet)
-       let fetchedCat =  CoreDataManager.shared.fetchSingleCat(singlePet: singlePet)
-        _ =  CoreDataManager.shared.updateCat(singleCat: fetchedCat, newCat: catToUpload)
-        CoreDataManager.shared.save()
-        catListViewModel.updatePets(singlePet: singlePet)
+        let fetchedCat =  manager.fetchSingleCat(singlePet: singlePet)
+        _ =  manager.updateCat(singleCat: fetchedCat, newCat: catToUpload)
+        manager.save()
+        function(singlePet)
     }
 }

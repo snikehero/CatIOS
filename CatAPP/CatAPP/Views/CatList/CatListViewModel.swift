@@ -9,7 +9,6 @@ import Foundation
 
 class CatListViewModel: ObservableObject {
     @Published var pets: [PetDetail] = []
-
     func transformData(petModel: [Cat]) {
         pets = petModel.map { $0.toPetDetail() }
     }

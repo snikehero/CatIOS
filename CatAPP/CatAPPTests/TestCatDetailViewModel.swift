@@ -19,7 +19,7 @@ final class TestCatDetailViewModel: XCTestCase {
         let catListViewModel = CatListViewModel()
         catListViewModel.transformData(petModel: coreDataManager.fetchAllCats())
         let catList = catListViewModel.pets
-        let viewModel = CatDetailViewModel(catListViewModel: catListViewModel)
+        let viewModel = CatDetailViewModel(catListViewModel: catListViewModel, manager: coreDataManager)
         let name = "Momito"
         let petAge = 4
         let catBreed = CatBreed.balinese
@@ -35,7 +35,8 @@ final class TestCatDetailViewModel: XCTestCase {
         // Agregar un espacio en el arrglo de PetVaccines y PetVaccinesDate, se prueba verificando que el arreglo
         // contenga algo
         // Arrange
-        let viewModel = CatDetailViewModel(catListViewModel: CatListViewModel())
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
+        let viewModel = CatDetailViewModel(catListViewModel: CatListViewModel(), manager: coreDataManager)
         // Act
         viewModel.createNewVaccine()
         // Assert
@@ -46,7 +47,8 @@ final class TestCatDetailViewModel: XCTestCase {
     func test_AddToModel_VaccineCanBeAdded() {
         // Agregar una vacuna al arreglo de vacunas, verificar que la vacuna este dentro del arreglo
         // Arrange
-        let viewModel = CatDetailViewModel(catListViewModel: CatListViewModel())
+        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
+        let viewModel = CatDetailViewModel(catListViewModel: CatListViewModel(), manager: coreDataManager)
         viewModel.petVaccines.append("AIDS")
         viewModel.petVaccinesDate.append(Date.now)
         // Act

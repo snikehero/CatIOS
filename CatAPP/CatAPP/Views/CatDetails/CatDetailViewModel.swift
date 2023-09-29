@@ -19,9 +19,10 @@ class CatDetailViewModel: ObservableObject {
     @Published var showingAlert = false
     @Published var petVaccines: [String] = []
     @Published var petVaccinesDate: [Date] = []
-
-    init(catListViewModel: CatListViewModel) {
+    var manager: CoreDataManager
+    init(catListViewModel: CatListViewModel, manager: CoreDataManager) {
         self.catListViewModel = catListViewModel
+        self.manager = manager
     }
 
     func saveData(name: String, petAge: Int, appointment: Date, breed: String) {
@@ -35,7 +36,7 @@ class CatDetailViewModel: ObservableObject {
     }
 
     private func saveToCoreData(singlePet: PetDetail, vaccines: [PetVaccineModel]) {
-        CoreDataManager.shared.saveCat(singlePet: singlePet, vaccines: vaccines)
+        manager.saveCat(singlePet: singlePet, vaccines: vaccines)
     }
 
     func createNewVaccine() {

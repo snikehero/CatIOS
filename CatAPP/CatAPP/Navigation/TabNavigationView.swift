@@ -14,13 +14,13 @@ struct TabNavigationView: View {
     @StateObject var randomCatViewModel = RandomCatViewModel(networkManager: NetworkManager(),
                                                              endpointBuilder: EndpointBuilder())
     @StateObject var catListviewModel = CatListViewModel()
+    @StateObject var coreDataLiveManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSSQLiteStoreType)
     fileprivate typealias TabConstants = Constants.TabNavigation
-    @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var networkMonitor: NetworkMonitor
     var body: some View {
         Group {
             TabView {
-                CatView(catListViewModel: catListviewModel)
+                CatView(catListViewModel: catListviewModel, coreDataLiveManager: coreDataLiveManager)
                     .tabItem {
                         Label(TabConstants.catLabel,
                               systemImage: TabConstants.catTabImage)
@@ -51,6 +51,9 @@ struct TabNavigationView: View {
                                   systemImage: TabConstants.catRandomImage)
                         }
                 }
+            }
+            .onAppear() {
+                coreDataLiveManager.loadStore()
             }
         }
         .toolbar(.visible, for: .tabBar)

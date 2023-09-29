@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CatView: View {
     @ObservedObject var catListViewModel: CatListViewModel
+    @ObservedObject var coreDataLiveManager: CoreDataManager
     fileprivate typealias CatConstants = Constants.CatView
     @State private var showingSheet = false
     @State private var petIsCreatedState = false
@@ -19,7 +20,9 @@ struct CatView: View {
                 Color(Constants.Color.mainBackgroundColor)
                 if !catListViewModel.pets.isEmpty {
                     CatCardContainerView(catListViewModel: catListViewModel,
-                                         cardViewModel: CatCardContainerViewModel(pets: catListViewModel.pets))
+                                         cardViewModel: CatCardContainerViewModel(pets: catListViewModel.pets,
+                                                                                  manager: coreDataLiveManager),
+                                         coreDataLiveManager: coreDataLiveManager)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
@@ -39,16 +42,17 @@ struct CatView: View {
             }
         }
         .onAppear {
-            catListViewModel.transformData(petModel: CoreDataManager.shared.fetchAllCats())
+            catListViewModel.transformData(petModel: coreDataLiveManager.fetchAllCats())
         }
         .fullScreenCover(isPresented: $showingSheet) {
-            CatDetailsView(petViewModel: CatDetailViewModel(catListViewModel: catListViewModel))
+            CatDetailsView(petViewModel: CatDetailViewModel(catListViewModel: catListViewModel, manager: coreDataLiveManager))
         }
     }
 }
 
 struct CatView_Previews: PreviewProvider {
     static var previews: some View {
-        CatView(catListViewModel: CatListViewModel())
+        CatView(catListViewModel: CatListViewModel(),
+                coreDataLiveManager: CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSSQLiteStoreType))
     }
 }

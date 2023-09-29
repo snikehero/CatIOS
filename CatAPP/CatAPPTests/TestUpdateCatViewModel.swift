@@ -15,7 +15,10 @@ final class TestUpdateCatViewModel: XCTestCase {
         // despues de que se haga la funcion, CatToUpload contenga lo mismo que SinglePet.
         // Arrange
         let catListViewModel = CatListViewModel()
-        let viewModel = UpdateCatViewModel(catListViewModel: catListViewModel, identifier: "1")
+        let viewModel = UpdateCatViewModel(catListViewModel: catListViewModel, identifier: "1",
+                                           manager: CoreDataManager(modelName: "CatAPP",
+                                                                    storeType: StoreTypes.NSInMemoryStoreType),
+                                           funcion: catListViewModel.updatePets(singlePet:))
         let testingCat = PetDetail.mockJojo
         // Act
         viewModel.fillCatToUpload(singlePet: testingCat)
@@ -28,7 +31,10 @@ final class TestUpdateCatViewModel: XCTestCase {
         // despues de que se haga la funcion, petName corresponda a singlePet.
         // Arrange
         let catListViewModel = CatListViewModel()
-        let viewModel = UpdateCatViewModel(catListViewModel: catListViewModel, identifier: "1")
+        let viewModel = UpdateCatViewModel(catListViewModel: catListViewModel, identifier: "1",
+                                           manager: CoreDataManager(modelName: "CatAPP",
+                                                                    storeType: StoreTypes.NSInMemoryStoreType),
+                                           funcion: catListViewModel.updatePets(singlePet:))
         let testingCat = PetDetail.mockSushi
         // Act
         viewModel.fillData(singlePet: testingCat)
@@ -41,7 +47,10 @@ final class TestUpdateCatViewModel: XCTestCase {
         // se puede testear verificando los valores de singlepet y petname
         // Arrange
         let catListViewModel = CatListViewModel()
-        let viewModel = UpdateCatViewModel(catListViewModel: catListViewModel, identifier: "1")
+        let viewModel = UpdateCatViewModel(catListViewModel: catListViewModel, identifier: "1",
+                                           manager: CoreDataManager(modelName: "CatAPP",
+                                                                    storeType: StoreTypes.NSInMemoryStoreType),
+                                           funcion: catListViewModel.updatePets(singlePet:))
         let testingCat = PetDetail.mockMica
         let petName = testingCat.name
         let petBreed = testingCat.breed
@@ -69,7 +78,8 @@ final class TestUpdateCatViewModel: XCTestCase {
         coreData.saveCat(singlePet: catToAdd, vaccines: catToAdd.vaccines)
         let catListVM = CatListViewModel()
         catListVM.transformData(petModel: coreData.fetchAllCats())
-        let updateCatVM = UpdateCatViewModel(catListViewModel: catListVM, identifier: catToAdd.id)
+        let updateCatVM = UpdateCatViewModel(catListViewModel: catListVM, identifier: catToAdd.id,manager: coreData,
+                                             funcion: catListVM.updatePets(singlePet:))
         // Act
         let catReturned = updateCatVM.searchById(arrayOfPets: catListVM.pets, identifier: catToAdd.id)
         // Assert
@@ -88,7 +98,9 @@ final class TestUpdateCatViewModel: XCTestCase {
         coreData.saveCat(singlePet: catToAdd, vaccines: catToAdd.vaccines)
         let catListVM = CatListViewModel()
         catListVM.transformData(petModel: coreData.fetchAllCats())
-        let updateCatVM = UpdateCatViewModel(catListViewModel: catListVM, identifier: "1")
+        let updateCatVM = UpdateCatViewModel(catListViewModel: catListVM, identifier: "1",
+                                             manager: coreData,
+                                             funcion: catListVM.updatePets(singlePet:))
         // Act
         let catReturned = updateCatVM.searchById(arrayOfPets: catListVM.pets, identifier: updateCatVM.identifier)
         // Assert
@@ -106,7 +118,9 @@ final class TestUpdateCatViewModel: XCTestCase {
         coreData.saveCat(singlePet: catToAdd, vaccines: catToAdd.vaccines)
         let catListVM = CatListViewModel()
         catListVM.transformData(petModel: coreData.fetchAllCats())
-        let updateCatVM = UpdateCatViewModel(catListViewModel: catListVM, identifier: catToAdd.id)
+        let updateCatVM = UpdateCatViewModel(catListViewModel: catListVM, identifier: catToAdd.id,
+                                             manager: coreData,
+                                             funcion: catListVM.updatePets(singlePet:))
         let singlePetBeforeFunction = updateCatVM.singlePet
         // Act
         updateCatVM.createSingleCat()
@@ -132,17 +146,17 @@ final class TestUpdateCatViewModel: XCTestCase {
         let catListVM = CatListViewModel()
         catListVM.transformData(petModel: coreData.fetchAllCats())
         let previousCats = catListVM.pets
-        let updateCatVM = UpdateCatViewModel(catListViewModel: catListVM, identifier: catToAdd.id)
+        let updateCatVM = UpdateCatViewModel(catListViewModel: catListVM, identifier: catToAdd.id, manager: coreData,
+                                             funcion: catListVM.updatePets(singlePet:))
         let catToUpdate = PetDetail.mockSushi
         updateCatVM.createSingleCat() // Se llena singlePet.
         updateCatVM.fillData(singlePet: catToUpdate) // Se llena la informacion nueva del gato
         updateCatVM.updateModel(singlePet: catToUpdate) // Se actualiza singlePet
-        // Act
-        // Se ejecuta la funcion para cambiar el entre mockMica y mockSushi
-        updateCatVM.updateToCoreData(singlePet: updateCatVM.singlePet)
-        // Assert
+//        // Act
+//        // Se ejecuta la funcion para cambiar el entre mockMica y mockSushi
+       updateCatVM.updateToCoreData(singlePet: updateCatVM.singlePet)
+//        // Assert
         XCTAssertNotEqual(catListVM.pets.last?.name, previousCats.last?.name)
 
     }
-
 }

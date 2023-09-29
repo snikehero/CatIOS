@@ -94,6 +94,7 @@ struct CatDetailsView: View {
 
 struct CatDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        CatDetailsView(petViewModel: CatDetailViewModel(catListViewModel: CatListViewModel()))
+        CatDetailsView(petViewModel: CatDetailViewModel(catListViewModel: CatListViewModel(),
+                                                        manager: CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)))
     }
 }

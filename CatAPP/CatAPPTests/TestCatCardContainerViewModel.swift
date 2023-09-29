@@ -19,7 +19,7 @@ final class TestCatCardContainerViewModel: XCTestCase {
         let coreData = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreData.loadStore()
         catListVM.transformData(petModel: coreData.fetchAllCats())
-        let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)
+        let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets, manager: coreData)
         let catsBeforeDeletion = catCardViewModel.pets
         // Act
         catCardViewModel.deleteFromCoreData(at: IndexSet(integer: 0)) // Will delete the first item
@@ -36,7 +36,7 @@ final class TestCatCardContainerViewModel: XCTestCase {
         let coreData = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreData.loadStore()
         catListVM.transformData(petModel: coreData.fetchAllCats())
-        let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)
+        let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets, manager: coreData)
         let catsBefore = catCardViewModel.filteredCats
         // Act
         catCardViewModel.searchText = "Mica"
@@ -52,7 +52,7 @@ final class TestCatCardContainerViewModel: XCTestCase {
         let coreData = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
         coreData.loadStore()
         catListVM.transformData(petModel: coreData.fetchAllCats())
-        let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets)
+        let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets, manager: coreData)
         let catsBefore = catCardViewModel.filteredCats
         // Act
         catCardViewModel.searchText = ""

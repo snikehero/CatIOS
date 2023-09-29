@@ -13,9 +13,11 @@ class CatCardContainerViewModel: ObservableObject {
     @Published var filteredPets: [PetDetail] = []
     @Published var searchText = ""
     @Published var pets: [PetDetail]
-
-    init(pets: [PetDetail]) {
+    var manager: CoreDataManager
+    init(pets: [PetDetail], manager: CoreDataManager) {
         self.pets = pets
+        self.manager = manager
+
     }
     var filteredCats: [PetDetail] {
         if searchText.isEmpty {
@@ -26,9 +28,9 @@ class CatCardContainerViewModel: ObservableObject {
     func deleteFromCoreData(at offsets: IndexSet) {
         for offset in offsets {
             let singlePet = pets[offset]
-            CoreDataManager.shared.removeCat(singlePet: singlePet)
+            manager.removeCat(singlePet: singlePet)
             pets.remove(at: offset)
-            CoreDataManager.shared.save()
+            manager.save()
         }
     }
 }

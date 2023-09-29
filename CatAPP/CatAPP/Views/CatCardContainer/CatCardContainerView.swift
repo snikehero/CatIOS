@@ -10,6 +10,7 @@ import SwiftUI
 struct CatCardContainerView: View {
     @ObservedObject var catListViewModel: CatListViewModel
     @ObservedObject var cardViewModel: CatCardContainerViewModel
+    @ObservedObject var coreDataLiveManager: CoreDataManager
     var body: some View {
         NavigationView {
             List {
@@ -29,7 +30,9 @@ struct CatCardContainerView: View {
                 .fullScreenCover(isPresented: $cardViewModel.isPresented) {
                     ShowCatDetailsView(catListViewModel: catListViewModel,
                                        petViewModel: UpdateCatViewModel(catListViewModel: catListViewModel,
-                                                                        identifier: cardViewModel.identifierValue))
+                                                                        identifier: cardViewModel.identifierValue,
+                                                                        manager: coreDataLiveManager,
+                                                                    funcion: catListViewModel.updatePets(singlePet:)))
                 }
                 .listRowSeparator(.hidden)
             }
@@ -42,6 +45,10 @@ struct CatCardContainerView: View {
 struct CatCardContainerView_Previews: PreviewProvider {
     static var previews: some View {
         CatCardContainerView( catListViewModel: .init(),
-                              cardViewModel: .init(pets: CatDetailViewModel.petsMock))
+                              cardViewModel: .init(pets: CatDetailViewModel.petsMock,
+                                                   manager: CoreDataManager(modelName: "CatAPP",
+                                                                            storeType: StoreTypes.NSInMemoryStoreType)),
+                              coreDataLiveManager: CoreDataManager(modelName: "CatAPP",
+                                                               storeType: StoreTypes.NSInMemoryStoreType))
     }
 }
