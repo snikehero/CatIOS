@@ -24,12 +24,13 @@ class UpdateCatViewModel: ObservableObject {
     @Published var petVaccinesDate: [Date] = []
     var function: (PetDetail) -> Void
 
-    init(catListViewModel: CatListViewModel, identifier: String, manager: CoreDataManager, funcion: @escaping (PetDetail) -> Void) {
+    init(catListViewModel: CatListViewModel, identifier: String,
+         manager: CoreDataManager, funcion: @escaping (PetDetail) -> Void) {
         // Pasar el arreglo como gato, y pasarle la funcion como closure.
         self.catListViewModel = catListViewModel
         self.identifier = identifier
         self.manager = manager
-        self.function = catListViewModel.updatePets(singlePet:)
+        self.function = funcion
     }
 
     func fillCatToUpload(singlePet: PetDetail) {

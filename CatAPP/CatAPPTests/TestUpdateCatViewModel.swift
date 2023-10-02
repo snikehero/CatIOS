@@ -78,7 +78,7 @@ final class TestUpdateCatViewModel: XCTestCase {
         coreData.saveCat(singlePet: catToAdd, vaccines: catToAdd.vaccines)
         let catListVM = CatListViewModel()
         catListVM.transformData(petModel: coreData.fetchAllCats())
-        let updateCatVM = UpdateCatViewModel(catListViewModel: catListVM, identifier: catToAdd.id,manager: coreData,
+        let updateCatVM = UpdateCatViewModel(catListViewModel: catListVM, identifier: catToAdd.id, manager: coreData,
                                              funcion: catListVM.updatePets(singlePet:))
         // Act
         let catReturned = updateCatVM.searchById(arrayOfPets: catListVM.pets, identifier: catToAdd.id)

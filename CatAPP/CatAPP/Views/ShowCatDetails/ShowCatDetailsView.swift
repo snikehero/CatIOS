@@ -76,7 +76,6 @@ struct ShowCatDetailsView: View {
                             petViewModel.isEditingState.toggle()
                             petViewModel.isEditable.toggle()
                             petViewModel.updateModel(singlePet: petViewModel.singlePet)
-                            //petViewModel.loadCoreDataStore()
                             petViewModel.updateToCoreData(singlePet: petViewModel.singlePet)
                         } label: {
                             Text(DetailsConstants.saveButton)
@@ -101,6 +100,8 @@ struct ShowCatDetailsView_Previews: PreviewProvider {
         ShowCatDetailsView(catListViewModel: CatListViewModel(),
                            petViewModel: UpdateCatViewModel(
                             catListViewModel: CatListViewModel(),
-                            identifier: "123", manager: CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSSQLiteStoreType), funcion: CatListViewModel().updatePets))
+                            identifier: "123",
+                            manager: CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSSQLiteStoreType),
+                            funcion: CatListViewModel().updatePets))
     }
 }

@@ -45,7 +45,9 @@ struct CatView: View {
             catListViewModel.transformData(petModel: coreDataLiveManager.fetchAllCats())
         }
         .fullScreenCover(isPresented: $showingSheet) {
-            CatDetailsView(petViewModel: CatDetailViewModel(catListViewModel: catListViewModel, manager: coreDataLiveManager))
+            CatDetailsView(petViewModel: CatDetailViewModel(catListViewModel: catListViewModel,
+                                                            manager: coreDataLiveManager)
+            )
         }
     }
 }
