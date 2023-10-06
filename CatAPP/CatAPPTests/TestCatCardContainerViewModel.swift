@@ -9,15 +9,16 @@ import XCTest
 @testable import CatAPP
 import CoreData
 final class TestCatCardContainerViewModel: XCTestCase {
-
+    let catListVM = CatListViewModel()
     func test_DeleteFromCoreData_CanBeDeleted() {
         // La funcion borra el gato especifico de coredata,
         // Tambien borra el gato del arreglo de pets.
         // Se puede probar verificando que el arreglo de gatos contiene -1 elemento.
         // Arrange
-        let catListVM = CatListViewModel()
-        let coreData = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
+        let coreData = CoreDataManager(persistenceContainer: CoreDataManager.mock)
         coreData.loadStore()
+        let catTosave = PetDetail.mockMica
+        coreData.saveCat(singlePet: catTosave, vaccines: catTosave.vaccines)
         catListVM.transformData(petModel: coreData.fetchAllCats())
         let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets, manager: coreData)
         let catsBeforeDeletion = catCardViewModel.pets
@@ -32,9 +33,12 @@ final class TestCatCardContainerViewModel: XCTestCase {
         // Se puede probar, verificando si cuando searchText es vacio, retorna el arreglo completo
         // Cuando searchText tenga algo, el arreglo disminuira.
         // Arrange
-        let catListVM = CatListViewModel()
-        let coreData = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
+        let coreData = CoreDataManager(persistenceContainer: CoreDataManager.mock)
         coreData.loadStore()
+        let catToSave = PetDetail.mockMica
+        let anotherCat = PetDetail.mockJojo
+        coreData.saveCat(singlePet: catToSave, vaccines: catToSave.vaccines)
+        coreData.saveCat(singlePet: anotherCat, vaccines: anotherCat.vaccines)
         catListVM.transformData(petModel: coreData.fetchAllCats())
         let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets, manager: coreData)
         let catsBefore = catCardViewModel.filteredCats
@@ -49,7 +53,7 @@ final class TestCatCardContainerViewModel: XCTestCase {
         // Cuando SearchText esta vacio, el filtro debe retornar directamente el arreglo completo de pets.
         // Arrange
         let catListVM = CatListViewModel()
-        let coreData = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
+        let coreData = CoreDataManager(persistenceContainer: CoreDataManager.mock)
         coreData.loadStore()
         catListVM.transformData(petModel: coreData.fetchAllCats())
         let catCardViewModel = CatCardContainerViewModel(pets: catListVM.pets, manager: coreData)

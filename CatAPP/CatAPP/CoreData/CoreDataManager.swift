@@ -8,27 +8,18 @@
 import CoreData
 import SwiftUI
 
-struct StoreTypes {
-    static let NSSQLiteStoreType = "NsSQLiteStoreType"
-    static let NSInMemoryStoreType = "NSInMemoryStoreType"
-}
-
 class CoreDataManager: ObservableObject {
     private let persistenceContainer: NSPersistentContainer
 
-    let storeType: String
-
-    init(modelName: String, storeType: String) {
-        self.persistenceContainer = NSPersistentContainer(name: modelName)
-        self.storeType = storeType
+    init(persistenceContainer: NSPersistentContainer) {
+        self.persistenceContainer = persistenceContainer
     }
+
     var viewContext: NSManagedObjectContext {
         return persistenceContainer.viewContext
     }
 
     func loadStore() {
-        let persistenceStoreDescription = NSPersistentStoreDescription()
-        persistenceStoreDescription.type = storeType
         persistenceContainer.loadPersistentStores { persistenceStoreDescription, error in
             guard error == nil else {
                 fatalError(String(describing: error?.localizedDescription))
@@ -45,6 +36,19 @@ class CoreDataManager: ObservableObject {
                 fatalError(error.localizedDescription)
             }
         }
+    }
+}
+
+extension CoreDataManager {
+    static var live: NSPersistentContainer {
+        return NSPersistentContainer.init(name: "CatAPP")
+    }
+    static var mock: NSPersistentContainer {
+        let persistentContainer = NSPersistentContainer.init(name: "CatAPP")
+        let persistentStoreDescription = NSPersistentStoreDescription()
+        persistentStoreDescription.type = NSInMemoryStoreType
+        persistentContainer.persistentStoreDescriptions = [persistentStoreDescription]
+        return persistentContainer
     }
 }
 

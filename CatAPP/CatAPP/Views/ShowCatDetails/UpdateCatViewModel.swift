@@ -26,7 +26,6 @@ class UpdateCatViewModel: ObservableObject {
 
     init(catListViewModel: CatListViewModel, identifier: String,
          manager: CoreDataManager, funcion: @escaping (PetDetail) -> Void) {
-        // Pasar el arreglo como gato, y pasarle la funcion como closure.
         self.catListViewModel = catListViewModel
         self.identifier = identifier
         self.manager = manager

@@ -101,7 +101,7 @@ struct ShowCatDetailsView_Previews: PreviewProvider {
                            petViewModel: UpdateCatViewModel(
                             catListViewModel: CatListViewModel(),
                             identifier: "123",
-                            manager: CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSSQLiteStoreType),
+                            manager: CoreDataManager(persistenceContainer: CoreDataManager.mock),
                             funcion: CatListViewModel().updatePets))
     }
 }

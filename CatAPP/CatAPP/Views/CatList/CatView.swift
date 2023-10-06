@@ -46,7 +46,7 @@ struct CatView: View {
         }
         .fullScreenCover(isPresented: $showingSheet) {
             CatDetailsView(petViewModel: CatDetailViewModel(catListViewModel: catListViewModel,
-                                                            manager: coreDataLiveManager)
+                                                                manager: coreDataLiveManager)
             )
         }
     }
@@ -55,6 +55,6 @@ struct CatView: View {
 struct CatView_Previews: PreviewProvider {
     static var previews: some View {
         CatView(catListViewModel: CatListViewModel(),
-                coreDataLiveManager: CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSSQLiteStoreType))
+                coreDataLiveManager: CoreDataManager(persistenceContainer: CoreDataManager.mock))
     }
 }

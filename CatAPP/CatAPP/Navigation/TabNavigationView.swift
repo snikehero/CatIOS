@@ -14,7 +14,7 @@ struct TabNavigationView: View {
     @StateObject var randomCatViewModel = RandomCatViewModel(networkManager: NetworkManager(),
                                                              endpointBuilder: EndpointBuilder())
     @StateObject var catListviewModel = CatListViewModel()
-    @StateObject var coreDataLiveManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSSQLiteStoreType)
+    @StateObject var coreDataLiveManager = CoreDataManager(persistenceContainer: CoreDataManager.live)
     fileprivate typealias TabConstants = Constants.TabNavigation
     @EnvironmentObject var networkMonitor: NetworkMonitor
     var body: some View {

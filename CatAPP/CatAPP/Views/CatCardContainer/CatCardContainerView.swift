@@ -46,9 +46,7 @@ struct CatCardContainerView_Previews: PreviewProvider {
     static var previews: some View {
         CatCardContainerView( catListViewModel: .init(),
                               cardViewModel: .init(pets: CatDetailViewModel.petsMock,
-                                                   manager: CoreDataManager(modelName: "CatAPP",
-                                                                            storeType: StoreTypes.NSInMemoryStoreType)),
-                              coreDataLiveManager: CoreDataManager(modelName: "CatAPP",
-                                                               storeType: StoreTypes.NSInMemoryStoreType))
+                                                   manager: CoreDataManager(persistenceContainer: CoreDataManager.mock)),
+                              coreDataLiveManager: CoreDataManager(persistenceContainer: CoreDataManager.mock))
     }
 }

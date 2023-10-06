@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 class NetworkManager {
     private let session = URLSession.shared
     private let decoder = Decoder()

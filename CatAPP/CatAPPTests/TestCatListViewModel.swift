@@ -9,7 +9,12 @@ import XCTest
 import CoreData
 @testable import CatAPP
 final class TestCatListViewModel: XCTestCase {
-
+    let manager = CoreDataManager(persistenceContainer: CoreDataManager.mock) // Remover Managers
+    let viewModel = CatListViewModel() // Remover catListViewmodel
+    override func setUp() { // Remover todos los load store
+        super.setUp()
+        manager.loadStore()
+    }
     func test_UpdateArray_petWasAdded() {
         // Arrange
         let viewModel = CatListViewModel()
@@ -23,9 +28,7 @@ final class TestCatListViewModel: XCTestCase {
 
     func test_TransformData_CatCanBeTransformed() {
         // Arrange
-        let viewModel = CatListViewModel()
-        let coreDataManager = CoreDataManager(modelName: "CatAPP", storeType: StoreTypes.NSInMemoryStoreType)
-        coreDataManager.loadStore()
+        let coreDataManager = manager
         let catToSave = PetDetail.mockJojo
         coreDataManager.saveCat(singlePet: catToSave, vaccines: catToSave.vaccines)
         let catsData = coreDataManager.fetchAllCats()
