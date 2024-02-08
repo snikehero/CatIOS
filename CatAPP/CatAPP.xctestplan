@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "9E6170C5-1F50-493E-9EC0-3E394E19A4AA",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:CatAPP.xcodeproj",
+      "identifier" : "4AEBEFFD2A8BD3DB00A6DBF7",
+      "name" : "CatAPP"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:CatAPP.xcodeproj",
+        "identifier" : "4A0B136D2AB8E213001829FC",
+        "name" : "CatAPPTests"
+      }
+    }
+  ],
+  "version" : 1
+}

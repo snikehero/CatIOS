@@ -30,6 +30,6 @@ extension Vaccine {
     }
 }
 
-extension Vaccine : Identifiable {
+extension Vaccine: Identifiable {
 
 }

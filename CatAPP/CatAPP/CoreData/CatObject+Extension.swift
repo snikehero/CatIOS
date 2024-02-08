@@ -21,7 +21,7 @@ extension Cat {
     @NSManaged public var identifier: String
     @NSManaged public var vaccine: NSSet?
     func toPetDetail() -> PetDetail {
-        let vaccines:  Set<Vaccine> = self.vaccine as? Set<Vaccine> ?? Set<Vaccine>()
+        let vaccines: Set<Vaccine> = self.vaccine as? Set<Vaccine> ?? Set<Vaccine>()
         return PetDetail(
             id: self.identifier,
             name: self.name,
@@ -32,7 +32,7 @@ extension Cat {
         )
     }
     public override var description: String {
-        let vaccines:  Set<Vaccine> = self.vaccine as? Set<Vaccine> ?? Set<Vaccine>()
+        let vaccines: Set<Vaccine> = self.vaccine as? Set<Vaccine> ?? Set<Vaccine>()
         return """
                 name: \(name)
                 petYear: \(year)
@@ -58,4 +58,4 @@ extension Cat {
     @NSManaged public func removeFromVaccine(_ values: NSSet)
 
 }
-extension Cat : Identifiable { }
+extension Cat: Identifiable { }

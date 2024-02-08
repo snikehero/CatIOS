@@ -10,16 +10,17 @@ import SwiftUI
 struct TabNavigationView: View {
     @StateObject var tagViewModel = CatTagViewModel(networkManager: NetworkManager(),
                                                     endpointBuilder: EndpointBuilder())
-    @StateObject var petViewModel = CatDetailViewModel()
+
     @StateObject var randomCatViewModel = RandomCatViewModel(networkManager: NetworkManager(),
                                                              endpointBuilder: EndpointBuilder())
+    @StateObject var catListviewModel = CatListViewModel()
+    @StateObject var coreDataLiveManager = CoreDataManager(persistenceContainer: CoreDataManager.live)
     fileprivate typealias TabConstants = Constants.TabNavigation
-    @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var networkMonitor: NetworkMonitor
     var body: some View {
         Group {
             TabView {
-                CatView(catViewModel: petViewModel)
+                CatView(catListViewModel: catListviewModel, coreDataLiveManager: coreDataLiveManager)
                     .tabItem {
                         Label(TabConstants.catLabel,
                               systemImage: TabConstants.catTabImage)
@@ -50,6 +51,9 @@ struct TabNavigationView: View {
                                   systemImage: TabConstants.catRandomImage)
                         }
                 }
+            }
+            .onAppear() {
+                coreDataLiveManager.loadStore()
             }
         }
         .toolbar(.visible, for: .tabBar)

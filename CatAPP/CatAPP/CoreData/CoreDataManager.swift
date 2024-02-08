@@ -7,40 +7,25 @@
 
 import CoreData
 import SwiftUI
-class CoreDataManager {
+
+class CoreDataManager: ObservableObject {
     private let persistenceContainer: NSPersistentContainer
 
-    static let shared : CoreDataManager = {
-       let coreDataManager = CoreDataManager(modelName: "CatAPP")
-        coreDataManager.load()
-        return coreDataManager
-    }()
-
-    private init(modelName: String) {
-        self.persistenceContainer = NSPersistentContainer(name: modelName)
+    init(persistenceContainer: NSPersistentContainer) {
+        self.persistenceContainer = persistenceContainer
     }
 
     var viewContext: NSManagedObjectContext {
         return persistenceContainer.viewContext
     }
 
-    lazy var backgroundContext = persistenceContainer.newBackgroundContext()
-
-    func load() {
-        persistenceContainer.loadPersistentStores { storeDescription, error in
+    func loadStore() {
+        persistenceContainer.loadPersistentStores { persistenceStoreDescription, error in
             guard error == nil else {
                 fatalError(String(describing: error?.localizedDescription))
             }
-            print(storeDescription)
+            print(persistenceStoreDescription)
         }
-
-    }
-
-    func configureContext() {
-        viewContext.automaticallyMergesChangesFromParent = true
-        backgroundContext.automaticallyMergesChangesFromParent = true
-        backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-        backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
     }
 
     func save() {
@@ -55,19 +40,19 @@ class CoreDataManager {
 }
 
 extension CoreDataManager {
-    func createDefaultItem() {
-        let defaultCat = Cat(context: viewContext)
-        defaultCat.name = "Jojo"
-        defaultCat.year = 5
-        defaultCat.appointment = Date.now
-        defaultCat.breed = "Electrico"
-        do {
-            try viewContext.save()
-        } catch let error {
-            fatalError(error.localizedDescription)
-        }
+    static var live: NSPersistentContainer {
+        return NSPersistentContainer.init(name: "CatAPP")
     }
+    static var mock: NSPersistentContainer {
+        let persistentContainer = NSPersistentContainer.init(name: "CatAPP")
+        let persistentStoreDescription = NSPersistentStoreDescription()
+        persistentStoreDescription.type = NSInMemoryStoreType
+        persistentContainer.persistentStoreDescriptions = [persistentStoreDescription]
+        return persistentContainer
+    }
+}
 
+extension CoreDataManager {
     func saveCat(singlePet: PetDetail, vaccines: [PetVaccineModel]) {
         let newCat = Cat(context: viewContext)
         newCat.identifier = singlePet.id
@@ -82,14 +67,10 @@ extension CoreDataManager {
             newVaccineEntry.cat = newCat
             newCat.addToVaccine(newVaccineEntry)
         }
-        do {
-            try viewContext.save()
-        } catch let error {
-            fatalError(error.localizedDescription)
-        }
+        save()
     }
 
-    func fetch() -> [Cat] {
+    func fetchAllCats() -> [Cat] {
         let fetchRequest = Cat.fetchRequest()
         if let result = try? self.viewContext.fetch(fetchRequest) {
             return result
@@ -98,30 +79,25 @@ extension CoreDataManager {
         }
     }
 
-    func updateData(singlePet: PetDetail, identifier: String) {
+    func fetchSingleCat(singlePet: PetDetail) -> Cat {
         let fetchRequest = Cat.fetchRequest()
         let predicate = NSPredicate(format: "identifier BEGINSWITH %@", singlePet.id)
         fetchRequest.predicate = predicate
-        backgroundContext.perform {
-            if let catObject = try? self.backgroundContext.fetch(fetchRequest).first {
-                catObject.name = singlePet.name
-                catObject.appointment = singlePet.appointment
-                catObject.breed = singlePet.breed
-                catObject.year  = Int32(singlePet.petYear)
-                try? self.backgroundContext.save()
-            }
-        }
+        let result = (try? self.viewContext.fetch(fetchRequest).first)!
+        return result
     }
 
-    func removeData(singlePet: PetDetail) {
-        let fetchRequest = Cat.fetchRequest()
-        let predicate = NSPredicate(format: "identifier BEGINSWITH %@", singlePet.id)
-        fetchRequest.predicate = predicate
-        backgroundContext.perform {
-            if let catObject = try? self.backgroundContext.fetch(fetchRequest).first {
-                self.backgroundContext.delete(catObject)
-                try? self.backgroundContext.save()
-            }
-        }
+    func updateCat(singleCat: Cat, newCat: PetDetail) -> Cat {
+        let catObject = fetchSingleCat(singlePet: singleCat.toPetDetail())
+        catObject.name = newCat.name
+        catObject.appointment = newCat.appointment
+        catObject.breed = newCat.breed
+        catObject.year = Int32(newCat.petYear)
+        return catObject
+    }
+
+    func removeCat(singlePet: PetDetail) {
+        let catObject = fetchSingleCat(singlePet: singlePet)
+        self.viewContext.delete(catObject)
     }
 }
