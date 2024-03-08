@@ -1,1 +1,8 @@
-This app allows User to Save data from any number of Pets that they have, it was firstly focused on Cats due to me having 4 cats, it uses coredata to save Cats data
+# Cat IOS
+An IOS application using Swift UI where you can keep data from your cats, Create, Read, Update, Delete cat data using CoreData.
+
+# What I Learned
+Core Data (Entities, Attributes, Relationships)
+Cat as a Service API to display a random Cat Image
+Infinite Scrolling
+Unit Testing
